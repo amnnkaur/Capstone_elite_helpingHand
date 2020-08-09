@@ -34,6 +34,10 @@
                                     <color key="titleColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aJw-34-FXv"/>
+                                    <segue destination="VVG-op-wgV" kind="show" id="W95-VK-qZW"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ky7-Ih-pOS">
                                 <rect key="frame" x="78" y="343" width="177" height="66"/>
@@ -85,7 +89,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
+            <point key="canvasLocation" x="130" y="114"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="axt-XC-DO2">
+            <objects>
+                <viewController id="VVG-op-wgV" customClass="LoginViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y0p-nb-ZCB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSB-Rs-fYK">
+                                <rect key="frame" x="35" y="89" width="94" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="32"/>
+                                <color key="textColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Gl-ZD-YmG">
+                                <rect key="frame" x="32" y="175" width="335" height="34"/>
+                                <color key="textColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SP-ho-54l">
+                                <rect key="frame" x="32" y="239" width="335" height="34"/>
+                                <color key="textColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWJ-pV-QZT">
+                                <rect key="frame" x="35" y="341" width="332" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yvV-bP-cpB" firstAttribute="trailing" secondItem="5Gl-ZD-YmG" secondAttribute="trailing" constant="47" id="Ef9-S7-lpA"/>
+                            <constraint firstItem="5Gl-ZD-YmG" firstAttribute="top" secondItem="tSB-Rs-fYK" secondAttribute="bottom" constant="42" id="GcB-iW-zF9"/>
+                            <constraint firstItem="1SP-ho-54l" firstAttribute="top" secondItem="5Gl-ZD-YmG" secondAttribute="bottom" constant="30" id="JWz-iE-qIW"/>
+                            <constraint firstItem="tSB-Rs-fYK" firstAttribute="top" secondItem="yvV-bP-cpB" secondAttribute="top" constant="89" id="QPd-NR-oFR"/>
+                            <constraint firstItem="5Gl-ZD-YmG" firstAttribute="leading" secondItem="yvV-bP-cpB" secondAttribute="leading" constant="32" id="U7p-hn-wYt"/>
+                            <constraint firstItem="tSB-Rs-fYK" firstAttribute="leading" secondItem="yvV-bP-cpB" secondAttribute="leading" constant="35" id="dIr-29-ZyC"/>
+                            <constraint firstItem="1SP-ho-54l" firstAttribute="leading" secondItem="yvV-bP-cpB" secondAttribute="leading" constant="32" id="uHK-Mh-QVe"/>
+                            <constraint firstItem="yvV-bP-cpB" firstAttribute="trailing" secondItem="1SP-ho-54l" secondAttribute="trailing" constant="47" id="xy3-j3-RJ7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yvV-bP-cpB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bam-vQ-gWb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xsk-Wp-gOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="113.83928571428571"/>
         </scene>
     </scenes>
     <resources>

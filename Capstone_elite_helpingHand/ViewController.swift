@@ -28,6 +28,10 @@ class ViewController: UIViewController {
         signUpBtn.layer.borderWidth = 1.0
         signUpBtn.layer.cornerRadius = 8.0
         signUpBtn.layer.borderColor = UIColor.darkGray.cgColor
+    }
+    
+    
+    @IBAction func loginAction(_ sender: UIButton) {
         
         
     }

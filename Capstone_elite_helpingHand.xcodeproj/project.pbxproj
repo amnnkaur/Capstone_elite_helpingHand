@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		2AE8F1E324E08C110003B085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1E224E08C110003B085 /* Assets.xcassets */; };
 		2AE8F1E624E08C110003B085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1E424E08C110003B085 /* LaunchScreen.storyboard */; };
 		2AE8F1EE24E08C5D0003B085 /* backg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1ED24E08C5D0003B085 /* backg.jpg */; };
+		2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */; };
 		3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		2AE8F1E524E08C110003B085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AE8F1E724E08C110003B085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AE8F1ED24E08C5D0003B085 /* backg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backg.jpg; sourceTree = "<group>"; };
+		2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.debug.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.debug.xcconfig"; sourceTree = "<group>"; };
 		485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.release.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.release.xcconfig"; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				2AE8F1E224E08C110003B085 /* Assets.xcassets */,
 				2AE8F1E424E08C110003B085 /* LaunchScreen.storyboard */,
 				2AE8F1E724E08C110003B085 /* Info.plist */,
+				2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */,
 			);
 			path = Capstone_elite_helpingHand;
 			sourceTree = "<group>";
@@ -91,7 +94,6 @@
 				3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */,
 				485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -211,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* ViewController.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
