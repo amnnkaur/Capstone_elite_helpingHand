@@ -14,6 +14,7 @@
 		2AE8F1E324E08C110003B085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1E224E08C110003B085 /* Assets.xcassets */; };
 		2AE8F1E624E08C110003B085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1E424E08C110003B085 /* LaunchScreen.storyboard */; };
 		2AE8F1EE24E08C5D0003B085 /* backg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1ED24E08C5D0003B085 /* backg.jpg */; };
+		3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		2AE8F1E524E08C110003B085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2AE8F1E724E08C110003B085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AE8F1ED24E08C5D0003B085 /* backg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backg.jpg; sourceTree = "<group>"; };
+		3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.debug.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.debug.xcconfig"; sourceTree = "<group>"; };
+		485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.release.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.release.xcconfig"; sourceTree = "<group>"; };
+		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02519852D73FBE7B547CE384 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2AE8F1CD24E08C100003B085 = {
 			isa = PBXGroup;
 			children = (
 				2AE8F1D824E08C100003B085 /* Capstone_elite_helpingHand */,
 				2AE8F1D724E08C100003B085 /* Products */,
+				823C4EF7CB9528786B8B94A8 /* Pods */,
+				02519852D73FBE7B547CE384 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +85,16 @@
 			path = Capstone_elite_helpingHand;
 			sourceTree = "<group>";
 		};
+		823C4EF7CB9528786B8B94A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */,
+				485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AE8F1EA24E08C110003B085 /* Build configuration list for PBXNativeTarget "Capstone_elite_helpingHand" */;
 			buildPhases = (
+				85806541B54C5CB9303C1E4E /* [CP] Check Pods Manifest.lock */,
 				2AE8F1D224E08C100003B085 /* Sources */,
 				2AE8F1D324E08C100003B085 /* Frameworks */,
 				2AE8F1D424E08C100003B085 /* Resources */,
+				1C330E6D621D810FD6F5AC8A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C330E6D621D810FD6F5AC8A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85806541B54C5CB9303C1E4E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Capstone_elite_helpingHand-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2AE8F1D224E08C100003B085 /* Sources */ = {
@@ -286,6 +355,7 @@
 		};
 		2AE8F1EB24E08C110003B085 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +374,7 @@
 		};
 		2AE8F1EC24E08C110003B085 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
