@@ -24,6 +24,8 @@
 		8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */; };
 		8ECDDCC924E1DCB700AEABBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC824E1DCB700AEABBA /* ContentView.swift */; };
 		8ECDDCCB24E1DD6200AEABBA /* JobDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */; };
+		8ECDDCCE24E1DE2800AEABBA /* JobResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCCD24E1DE2800AEABBA /* JobResults.swift */; };
+		8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstraints.swift; sourceTree = "<group>"; };
 		8ECDDCC824E1DCB700AEABBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailView.swift; sourceTree = "<group>"; };
+		8ECDDCCD24E1DE2800AEABBA /* JobResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobResults.swift; sourceTree = "<group>"; };
+		8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,6 +95,8 @@
 		2AE8F1D824E08C100003B085 /* Capstone_elite_helpingHand */ = {
 			isa = PBXGroup;
 			children = (
+				8ECDDCCF24E1DE3C00AEABBA /* Extension */,
+				8ECDDCCC24E1DE0A00AEABBA /* Model */,
 				8ECDDCC724E1DC7800AEABBA /* SwiftUI */,
 				8ECDDCC424E1C80B00AEABBA /* Constraints */,
 				8ECDDCBF24E1C72000AEABBA /* CustomStyles */,
@@ -143,6 +149,22 @@
 				8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		8ECDDCCC24E1DE0A00AEABBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8ECDDCCD24E1DE2800AEABBA /* JobResults.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8ECDDCCF24E1DE3C00AEABBA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,10 +291,12 @@
 				2AE8F1F824E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* ViewController.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
+				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
 				8ECDDCC324E1C75500AEABBA /* TextFieldStyle.swift in Sources */,
 				2AE8F1F224E0E5EB0003B085 /* SignUpViewController.swift in Sources */,
 				2AE8F1FA24E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift in Sources */,
+				8ECDDCCE24E1DE2800AEABBA /* JobResults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
