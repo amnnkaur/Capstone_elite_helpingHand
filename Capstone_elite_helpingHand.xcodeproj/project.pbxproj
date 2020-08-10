@@ -23,6 +23,7 @@
 		8ECDDCC324E1C75500AEABBA /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */; };
 		8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */; };
 		8ECDDCC924E1DCB700AEABBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC824E1DCB700AEABBA /* ContentView.swift */; };
+		8ECDDCCB24E1DD6200AEABBA /* JobDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstraints.swift; sourceTree = "<group>"; };
 		8ECDDCC824E1DCB700AEABBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailView.swift; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				8ECDDCC824E1DCB700AEABBA /* ContentView.swift */,
+				8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
 				8ECDDCC924E1DCB700AEABBA /* ContentView.swift in Sources */,
 				8ECDDCC124E1C74700AEABBA /* ButtonStyle.swift in Sources */,
+				8ECDDCCB24E1DD6200AEABBA /* JobDetailView.swift in Sources */,
 				8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */,
 				2AE8F1F824E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* ViewController.swift in Sources */,
