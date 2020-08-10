@@ -65,6 +65,7 @@ class SignUpViewController: UIViewController, FlexibleSteppedProgressBarDelegate
            if index > maxIndex {
                maxIndex = index
                progressBar.completedTillIndex = maxIndex
+            
 
            }
        }
