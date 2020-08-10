@@ -81,7 +81,7 @@ class SignUpViewController: UIViewController, FlexibleSteppedProgressBarDelegate
                if position == FlexibleSteppedProgressBarTextLocation.top {
                    switch index {
                        
-                   case 0: return "Create Account"
+                   case 0: return "Details"
                    case 1: return "Select Skills"
                    case 2: return "Select Location"
                    case 3: return "Verify Info"
