@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FlexibleSteppedProgressBar/FlexibleSteppedProgressBar.framework
 ${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
 ${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework
 ${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework

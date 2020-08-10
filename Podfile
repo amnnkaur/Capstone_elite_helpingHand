@@ -9,5 +9,5 @@ target 'Capstone_elite_helpingHand' do
 pod 'MaterialComponents'
 pod 'MaterialComponents/Buttons'
 pod 'MaterialComponents/Buttons+Theming'
-
+pod "FlexibleSteppedProgressBar"
 end
