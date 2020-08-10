@@ -32,52 +32,50 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="umg-nG-7Lt">
-                                <rect key="frame" x="145" y="741" width="128" height="94"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilk-Rr-8WJ">
-                                        <rect key="frame" x="31.5" y="0.0" width="65" height="47"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aJw-34-FXv"/>
-                                            <segue destination="VVG-op-wgV" kind="show" id="W95-VK-qZW"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wu-OK-tf8">
-                                        <rect key="frame" x="17.5" y="47" width="93" height="47"/>
-                                        <color key="backgroundColor" red="0.96409026015228427" green="0.34162656713822115" blue="0.1473661118874198" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                        <state key="normal" title="Sign Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="1G8-fD-PGl" kind="show" id="6tt-9M-AD7"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDG-2O-Orn">
-                                <rect key="frame" x="186" y="418" width="160.5" height="62.5"/>
+                                <rect key="frame" x="186" y="418" width="160.5" height="63"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="50"/>
                                 <color key="textColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wu-OK-tf8">
+                                <rect key="frame" x="103" y="783" width="208" height="47"/>
+                                <color key="backgroundColor" red="0.96409026015228427" green="0.34162656713822115" blue="0.1473661118874198" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1G8-fD-PGl" kind="show" id="6tt-9M-AD7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilk-Rr-8WJ">
+                                <rect key="frame" x="103" y="728" width="208" height="47"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aJw-34-FXv"/>
+                                    <segue destination="VVG-op-wgV" kind="show" id="W95-VK-qZW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Ilk-Rr-8WJ" secondAttribute="bottom" constant="87" id="1n1-GC-5ic"/>
+                            <constraint firstItem="Ilk-Rr-8WJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="83" id="26Z-sx-rXH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Wu-OK-tf8" secondAttribute="trailing" constant="83" id="8LQ-9g-ASb"/>
                             <constraint firstItem="NDG-2O-Orn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="166" id="Hpw-zZ-V89"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ilk-Rr-8WJ" secondAttribute="trailing" constant="83" id="IK9-Pd-gDL"/>
                             <constraint firstItem="ky7-Ih-pOS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="41" id="IYj-xs-C2K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NDG-2O-Orn" secondAttribute="trailing" constant="67.5" id="Ifu-cn-VpV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="umg-nG-7Lt" secondAttribute="bottom" constant="27" id="QCn-Mk-ozC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="umg-nG-7Lt" secondAttribute="trailing" constant="141" id="Xb4-Xc-nIe"/>
+                            <constraint firstItem="2Wu-OK-tf8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="83" id="Veh-Lc-1R7"/>
+                            <constraint firstItem="2Wu-OK-tf8" firstAttribute="top" secondItem="Ilk-Rr-8WJ" secondAttribute="bottom" constant="8" id="cNz-pn-amq"/>
                             <constraint firstItem="NDG-2O-Orn" firstAttribute="top" secondItem="ky7-Ih-pOS" secondAttribute="bottom" constant="7.5" id="eVW-5Z-kex"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ky7-Ih-pOS" secondAttribute="trailing" constant="141" id="kZv-DQ-4Qg"/>
-                            <constraint firstItem="umg-nG-7Lt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="125" id="mlM-Qc-3Rt"/>
                             <constraint firstItem="ky7-Ih-pOS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="301" id="wLb-Kt-Lfa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -89,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127.53623188405798" y="111.83035714285714"/>
+            <point key="canvasLocation" x="127.2" y="111.0944527736132"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="axt-XC-DO2">
