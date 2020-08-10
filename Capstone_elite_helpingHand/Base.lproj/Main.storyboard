@@ -121,6 +121,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="lQb-qq-1WI" kind="show" destinationCreationSelector="loginToTaskHostVC:" id="PaE-vr-3jh"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGi-iV-iJx">
                                 <rect key="frame" x="28" y="171" width="361" height="34"/>
@@ -170,6 +173,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsk-Wp-gOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="-128.18590704647679"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="54o-bz-omu">
+            <objects>
+                <hostingController id="lQb-qq-1WI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ldo-zi-o65"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cd-c1-6wD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680" y="-129"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="QV6-mD-iiy">
