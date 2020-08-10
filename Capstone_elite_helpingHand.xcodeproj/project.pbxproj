@@ -19,6 +19,9 @@
 		2AE8F1F824E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1F724E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift */; };
 		2AE8F1FA24E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1F924E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift */; };
 		3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */; };
+		8ECDDCC124E1C74700AEABBA /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC024E1C74700AEABBA /* ButtonStyle.swift */; };
+		8ECDDCC324E1C75500AEABBA /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */; };
+		8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		2AE8F1F924E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleSteppedProgressBarTextLocation.swift; sourceTree = "<group>"; };
 		3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.debug.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.debug.xcconfig"; sourceTree = "<group>"; };
 		485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.release.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.release.xcconfig"; sourceTree = "<group>"; };
+		8ECDDCC024E1C74700AEABBA /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
+		8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstraints.swift; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +87,8 @@
 		2AE8F1D824E08C100003B085 /* Capstone_elite_helpingHand */ = {
 			isa = PBXGroup;
 			children = (
+				8ECDDCC424E1C80B00AEABBA /* Constraints */,
+				8ECDDCBF24E1C72000AEABBA /* CustomStyles */,
 				2AE8F1ED24E08C5D0003B085 /* backg.jpg */,
 				2AE8F1D924E08C100003B085 /* AppDelegate.swift */,
 				2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */,
@@ -104,6 +112,23 @@
 				485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8ECDDCBF24E1C72000AEABBA /* CustomStyles */ = {
+			isa = PBXGroup;
+			children = (
+				8ECDDCC024E1C74700AEABBA /* ButtonStyle.swift */,
+				8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */,
+			);
+			path = CustomStyles;
+			sourceTree = "<group>";
+		};
+		8ECDDCC424E1C80B00AEABBA /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */,
+			);
+			path = Constraints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,10 +248,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
+				8ECDDCC124E1C74700AEABBA /* ButtonStyle.swift in Sources */,
+				8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */,
 				2AE8F1F824E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* ViewController.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
+				8ECDDCC324E1C75500AEABBA /* TextFieldStyle.swift in Sources */,
 				2AE8F1F224E0E5EB0003B085 /* SignUpViewController.swift in Sources */,
 				2AE8F1FA24E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift in Sources */,
 			);

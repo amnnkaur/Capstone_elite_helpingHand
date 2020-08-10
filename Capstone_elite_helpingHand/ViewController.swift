@@ -21,9 +21,9 @@ class ViewController: UIViewController {
     }
 
     func initials(){
-        loginBtn.layer.borderWidth = 1.0
-        loginBtn.layer.cornerRadius = 8.0
-        loginBtn.layer.borderColor = UIColor.darkGray.cgColor
+//        loginBtn.layer.borderWidth = 1.0
+//        loginBtn.layer.cornerRadius = 8.0
+//        loginBtn.layer.borderColor = UIColor.darkGray.cgColor
         
         signUpBtn.layer.borderWidth = 1.0
         signUpBtn.layer.cornerRadius = 8.0
