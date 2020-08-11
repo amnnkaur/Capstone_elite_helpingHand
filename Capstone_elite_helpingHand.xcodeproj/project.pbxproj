@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A9DC38624E21B4700F84405 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38524E21B4700F84405 /* PageViewController.swift */; };
 		2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38724E21C6400F84405 /* Color+Extension.swift */; };
 		2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1D924E08C100003B085 /* AppDelegate.swift */; };
 		2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */; };
@@ -24,14 +23,9 @@
 		8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */; };
 		8ECDDCD424E1DE9A00AEABBA /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCD324E1DE9A00AEABBA /* CustomShape.swift */; };
 		8ECDDCD724E1DEC700AEABBA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCD624E1DEC700AEABBA /* NetworkManager.swift */; };
-		8ECDDCE124E2F9E000AEABBA /* SignUpFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCE024E2F9E000AEABBA /* SignUpFormView.swift */; };
-		8ECDDCE324E2FA8A00AEABBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCE224E2FA8A00AEABBA /* RegisterView.swift */; };
-		8ECDDCE524E2FAE500AEABBA /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCE424E2FAE500AEABBA /* ModelView.swift */; };
-		8ECDDCE724E2FB1F00AEABBA /* PersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCE624E2FB1F00AEABBA /* PersonalInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A9DC38524E21B4700F84405 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		2A9DC38724E21C6400F84405 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		2AE8F1D624E08C100003B085 /* Capstone_elite_helpingHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone_elite_helpingHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE8F1D924E08C100003B085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,10 +45,6 @@
 		8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8ECDDCD324E1DE9A00AEABBA /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		8ECDDCD624E1DEC700AEABBA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		8ECDDCE024E2F9E000AEABBA /* SignUpFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormView.swift; sourceTree = "<group>"; };
-		8ECDDCE224E2FA8A00AEABBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		8ECDDCE424E2FAE500AEABBA /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
-		8ECDDCE624E2FB1F00AEABBA /* PersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoView.swift; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,7 +73,6 @@
 			children = (
 				2AE8F1DD24E08C100003B085 /* RootViewController.swift */,
 				2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */,
-				2A9DC38524E21B4700F84405 /* PageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -148,10 +137,6 @@
 			children = (
 				8ECDDCC824E1DCB700AEABBA /* JobListView.swift */,
 				8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */,
-				8ECDDCE024E2F9E000AEABBA /* SignUpFormView.swift */,
-				8ECDDCE224E2FA8A00AEABBA /* RegisterView.swift */,
-				8ECDDCE424E2FAE500AEABBA /* ModelView.swift */,
-				8ECDDCE624E2FB1F00AEABBA /* PersonalInfoView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -290,18 +275,13 @@
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
 				8ECDDCC924E1DCB700AEABBA /* JobListView.swift in Sources */,
 				8ECDDCCB24E1DD6200AEABBA /* JobDetailView.swift in Sources */,
-				8ECDDCE324E2FA8A00AEABBA /* RegisterView.swift in Sources */,
 				8ECDDCD724E1DEC700AEABBA /* NetworkManager.swift in Sources */,
-				8ECDDCE124E2F9E000AEABBA /* SignUpFormView.swift in Sources */,
 				8ECDDCD424E1DE9A00AEABBA /* CustomShape.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* RootViewController.swift in Sources */,
 				2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */,
-				8ECDDCE524E2FAE500AEABBA /* ModelView.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
-				8ECDDCE724E2FB1F00AEABBA /* PersonalInfoView.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
-				2A9DC38624E21B4700F84405 /* PageViewController.swift in Sources */,
 				8ECDDCCE24E1DE2800AEABBA /* JobResults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

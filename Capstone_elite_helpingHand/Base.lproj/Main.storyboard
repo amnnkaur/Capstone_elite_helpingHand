@@ -46,9 +46,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="SYO-pu-4wd" kind="show" destinationCreationSelector="signUpAction:" id="mfy-Yw-7OQ"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilk-Rr-8WJ">
                                 <rect key="frame" x="103" y="728" width="208" height="47"/>
@@ -183,16 +180,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cd-c1-6wD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1680" y="-129"/>
-        </scene>
-        <!--Hosting Controller-->
-        <scene sceneID="PRP-eo-9Jj">
-            <objects>
-                <hostingController id="SYO-pu-4wd" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="81d-TL-hJQ"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gkw-AF-pau" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="886" y="577"/>
         </scene>
     </scenes>
     <resources>

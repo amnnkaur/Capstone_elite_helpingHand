@@ -35,10 +35,6 @@ class RootViewController: UIViewController {
         
     }
     
-    @IBSegueAction func signUpAction(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: SignUpFormView())
-    }
-    
     
 }
 
