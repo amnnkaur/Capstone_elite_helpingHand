@@ -42,7 +42,6 @@ class LoginViewController: UIViewController {
                  if err != nil{
                      
                     print(err!.localizedDescription)
-//                     self.alert.toggle()
                      return
                  }
                  

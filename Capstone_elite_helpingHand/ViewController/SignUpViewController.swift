@@ -196,24 +196,28 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         
         if(self.errorLabel.text?.isEmpty != true || fName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true
             || contact?.isEmpty == true){
-            displayAlertForTextFields(title: "Error!", message: "Fill out mandatory fields")
+            displayAlertForTextFields(title: "Error!", message: "Fill out mandatory fields", flag: 0)
         }else{
             register(email: email!, password: psswrd!)
             let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
         guard let key = self.ref.child("users").childByAutoId().key else {return}
          let childUpdates = ["/users/\(key)": insert]
          self.ref.updateChildValues(childUpdates)
-            displayAlertForTextFields(title: "Success!!", message: "User successfully registered")
+            displayAlertForTextFields(title: "Success!!", message: "User successfully registered", flag: 1)
            
             
         }
     }
     
-    func displayAlertForTextFields(title: String, message: String){
+    func displayAlertForTextFields(title: String, message: String, flag: Int){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if(flag == 0){
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        }else if (flag == 1){
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
             self.dismiss(animated: true, completion: nil)
         }))
+        }
         self.present(alert, animated: true)
     }
 }
