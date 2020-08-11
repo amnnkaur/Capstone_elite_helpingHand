@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import MaterialComponents.MaterialButtons
 import MaterialComponents.MaterialButtons_Theming
 
@@ -36,6 +37,9 @@ class ViewController: UIViewController {
         
     }
     
+    @IBSegueAction func signUpAction(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: SignUpContentView())
+    }
     
 }
 

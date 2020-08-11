@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A9DC38324E21A1000F84405 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38224E21A1000F84405 /* SignUpView.swift */; };
+		2A9DC38624E21B4700F84405 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38524E21B4700F84405 /* PageViewController.swift */; };
+		2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38724E21C6400F84405 /* Color+Extension.swift */; };
+		2A9DC38A24E21DCA00F84405 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38924E21DCA00F84405 /* Page.swift */; };
+		2A9DC38C24E21DF800F84405 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38B24E21DF800F84405 /* PageView.swift */; };
+		2A9DC38E24E21FDD00F84405 /* SignUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38D24E21FDD00F84405 /* SignUpContentView.swift */; };
+		2A9DC39024E2248200F84405 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38F24E2248200F84405 /* UIApplication+Extension.swift */; };
 		2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1D924E08C100003B085 /* AppDelegate.swift */; };
 		2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */; };
 		2AE8F1DE24E08C100003B085 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1DD24E08C100003B085 /* ViewController.swift */; };
@@ -15,13 +22,7 @@
 		2AE8F1E624E08C110003B085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1E424E08C110003B085 /* LaunchScreen.storyboard */; };
 		2AE8F1EE24E08C5D0003B085 /* backg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1ED24E08C5D0003B085 /* backg.jpg */; };
 		2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */; };
-		2AE8F1F224E0E5EB0003B085 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1F124E0E5EB0003B085 /* SignUpViewController.swift */; };
-		2AE8F1F824E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1F724E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift */; };
-		2AE8F1FA24E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1F924E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift */; };
 		3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */; };
-		8ECDDCC124E1C74700AEABBA /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC024E1C74700AEABBA /* ButtonStyle.swift */; };
-		8ECDDCC324E1C75500AEABBA /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */; };
-		8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */; };
 		8ECDDCC924E1DCB700AEABBA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCC824E1DCB700AEABBA /* ContentView.swift */; };
 		8ECDDCCB24E1DD6200AEABBA /* JobDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */; };
 		8ECDDCCE24E1DE2800AEABBA /* JobResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCCD24E1DE2800AEABBA /* JobResults.swift */; };
@@ -31,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A9DC38224E21A1000F84405 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		2A9DC38524E21B4700F84405 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		2A9DC38724E21C6400F84405 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		2A9DC38924E21DCA00F84405 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		2A9DC38B24E21DF800F84405 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		2A9DC38D24E21FDD00F84405 /* SignUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContentView.swift; sourceTree = "<group>"; };
+		2A9DC38F24E2248200F84405 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		2AE8F1D624E08C100003B085 /* Capstone_elite_helpingHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone_elite_helpingHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE8F1D924E08C100003B085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,14 +49,8 @@
 		2AE8F1E724E08C110003B085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AE8F1ED24E08C5D0003B085 /* backg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backg.jpg; sourceTree = "<group>"; };
 		2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2AE8F1F124E0E5EB0003B085 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		2AE8F1F724E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleSteppedProgressBarDelegate.swift; sourceTree = "<group>"; };
-		2AE8F1F924E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleSteppedProgressBarTextLocation.swift; sourceTree = "<group>"; };
 		3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.debug.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.debug.xcconfig"; sourceTree = "<group>"; };
 		485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.release.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.release.xcconfig"; sourceTree = "<group>"; };
-		8ECDDCC024E1C74700AEABBA /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
-		8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
-		8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstraints.swift; sourceTree = "<group>"; };
 		8ECDDCC824E1DCB700AEABBA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailView.swift; sourceTree = "<group>"; };
 		8ECDDCCD24E1DE2800AEABBA /* JobResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobResults.swift; sourceTree = "<group>"; };
@@ -78,6 +80,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2A9DC38424E21B0D00F84405 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2AE8F1DD24E08C100003B085 /* ViewController.swift */,
+				2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */,
+				2A9DC38524E21B4700F84405 /* PageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2A9DC39124E2261900F84405 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2AE8F1ED24E08C5D0003B085 /* backg.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		2AE8F1CD24E08C100003B085 = {
 			isa = PBXGroup;
 			children = (
@@ -99,25 +119,19 @@
 		2AE8F1D824E08C100003B085 /* Capstone_elite_helpingHand */ = {
 			isa = PBXGroup;
 			children = (
+				2A9DC39124E2261900F84405 /* Images */,
+				2A9DC38424E21B0D00F84405 /* ViewController */,
 				8ECDDCD524E1DEB700AEABBA /* Network */,
 				8ECDDCD224E1DE8300AEABBA /* Layout */,
 				8ECDDCCF24E1DE3C00AEABBA /* Extension */,
 				8ECDDCCC24E1DE0A00AEABBA /* Model */,
 				8ECDDCC724E1DC7800AEABBA /* SwiftUI */,
-				8ECDDCC424E1C80B00AEABBA /* Constraints */,
-				8ECDDCBF24E1C72000AEABBA /* CustomStyles */,
-				2AE8F1ED24E08C5D0003B085 /* backg.jpg */,
 				2AE8F1D924E08C100003B085 /* AppDelegate.swift */,
 				2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */,
-				2AE8F1DD24E08C100003B085 /* ViewController.swift */,
 				2AE8F1DF24E08C100003B085 /* Main.storyboard */,
 				2AE8F1E224E08C110003B085 /* Assets.xcassets */,
 				2AE8F1E424E08C110003B085 /* LaunchScreen.storyboard */,
 				2AE8F1E724E08C110003B085 /* Info.plist */,
-				2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */,
-				2AE8F1F124E0E5EB0003B085 /* SignUpViewController.swift */,
-				2AE8F1F724E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift */,
-				2AE8F1F924E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift */,
 			);
 			path = Capstone_elite_helpingHand;
 			sourceTree = "<group>";
@@ -131,28 +145,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8ECDDCBF24E1C72000AEABBA /* CustomStyles */ = {
-			isa = PBXGroup;
-			children = (
-				8ECDDCC024E1C74700AEABBA /* ButtonStyle.swift */,
-				8ECDDCC224E1C75500AEABBA /* TextFieldStyle.swift */,
-			);
-			path = CustomStyles;
-			sourceTree = "<group>";
-		};
-		8ECDDCC424E1C80B00AEABBA /* Constraints */ = {
-			isa = PBXGroup;
-			children = (
-				8ECDDCC524E1C82100AEABBA /* StyleConstraints.swift */,
-			);
-			path = Constraints;
-			sourceTree = "<group>";
-		};
 		8ECDDCC724E1DC7800AEABBA /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
 				8ECDDCC824E1DCB700AEABBA /* ContentView.swift */,
 				8ECDDCCA24E1DD6200AEABBA /* JobDetailView.swift */,
+				2A9DC38224E21A1000F84405 /* SignUpView.swift */,
+				2A9DC38B24E21DF800F84405 /* PageView.swift */,
+				2A9DC38D24E21FDD00F84405 /* SignUpContentView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -161,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8ECDDCCD24E1DE2800AEABBA /* JobResults.swift */,
+				2A9DC38924E21DCA00F84405 /* Page.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */,
+				2A9DC38724E21C6400F84405 /* Color+Extension.swift */,
+				2A9DC38F24E2248200F84405 /* UIApplication+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -307,19 +310,20 @@
 			files = (
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
 				8ECDDCC924E1DCB700AEABBA /* ContentView.swift in Sources */,
-				8ECDDCC124E1C74700AEABBA /* ButtonStyle.swift in Sources */,
 				8ECDDCCB24E1DD6200AEABBA /* JobDetailView.swift in Sources */,
 				8ECDDCD724E1DEC700AEABBA /* NetworkManager.swift in Sources */,
-				8ECDDCC624E1C82100AEABBA /* StyleConstraints.swift in Sources */,
+				2A9DC39024E2248200F84405 /* UIApplication+Extension.swift in Sources */,
 				8ECDDCD424E1DE9A00AEABBA /* CustomShape.swift in Sources */,
-				2AE8F1F824E0F2650003B085 /* FlexibleSteppedProgressBarDelegate.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* ViewController.swift in Sources */,
+				2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
-				8ECDDCC324E1C75500AEABBA /* TextFieldStyle.swift in Sources */,
-				2AE8F1F224E0E5EB0003B085 /* SignUpViewController.swift in Sources */,
-				2AE8F1FA24E0F29F0003B085 /* FlexibleSteppedProgressBarTextLocation.swift in Sources */,
+				2A9DC38C24E21DF800F84405 /* PageView.swift in Sources */,
+				2A9DC38324E21A1000F84405 /* SignUpView.swift in Sources */,
+				2A9DC38A24E21DCA00F84405 /* Page.swift in Sources */,
+				2A9DC38E24E21FDD00F84405 /* SignUpContentView.swift in Sources */,
+				2A9DC38624E21B4700F84405 /* PageViewController.swift in Sources */,
 				8ECDDCCE24E1DE2800AEABBA /* JobResults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
