@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource  {
   
@@ -49,6 +50,10 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         }
     }
 
+    //MARK:- Firebase variables
+//    var ref: DatabaseReference!
+    var ref = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,14 +112,17 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let lName = self.lastName.text
         let email = self.emailAddress.text
         let psswrd = self.password.text
-        let confirmPsswrd = self.confirmPassword.text
+        _ = self.confirmPassword.text
         let contact = self.contactNumber.text
         let street = self.streetAddress.text
         let cityValue = self.city.text
         let stateValue = self.state.text
         let postalCode = self.postalAddress.text
+    
+       let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
         
-        print(fName + "," + lName + "," + email + "," + psswrd + "," + confirmPsswrd + "," + contact + "," + street + "," + cityValue + "," + stateValue + "," + postalCode)
-        
+        guard let key = self.ref.child("users").childByAutoId().key else {return}
+         let childUpdates = ["/users/\(key)": insert]
+         self.ref.updateChildValues(childUpdates)
     }
 }

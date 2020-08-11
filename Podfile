@@ -6,5 +6,9 @@ target 'Capstone_elite_helpingHand' do
   use_frameworks!
 
   # Pods for Capstone_elite_helpingHand
-
+pod 'FirebaseCore'
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Database'
 end
