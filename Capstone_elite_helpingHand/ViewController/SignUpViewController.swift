@@ -159,7 +159,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         
     }
     
-    func register(email: String, password: String){
+    func register(email: String, password: String, credentials: [String: String?]){
              
              if email != ""{
                  
@@ -169,11 +169,13 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
                          
                          if err != nil{
                              
-                             print(err!.localizedDescription)
-                             return
+                            print(err!.localizedDescription)
+                            self.displayAlertForTextFields(title: "Error!", message: "\(err!.localizedDescription)", flag: 0)
+                            return
                          }
                          
-                         print("success")
+                        print("success")
+                        self.saveToFirebase(insert: credentials)
                      }
                  }
             
@@ -198,15 +200,17 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
             || contact?.isEmpty == true){
             displayAlertForTextFields(title: "Error!", message: "Fill out mandatory fields", flag: 0)
         }else{
-            register(email: email!, password: psswrd!)
-            let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
-        guard let key = self.ref.child("users").childByAutoId().key else {return}
-         let childUpdates = ["/users/\(key)": insert]
-         self.ref.updateChildValues(childUpdates)
-            displayAlertForTextFields(title: "Success!!", message: "User successfully registered", flag: 1)
-           
-            
+             let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
+            register(email: email!, password: psswrd!, credentials: insert)
         }
+    }
+    
+    func saveToFirebase(insert: [String: String?]){
+        guard let key = self.ref.child("users").childByAutoId().key else {return}
+        let childUpdates = ["/users/\(key)": insert]
+        self.ref.updateChildValues(childUpdates)
+           displayAlertForTextFields(title: "Success!!", message: "User successfully registered", flag: 1)
+          
     }
     
     func displayAlertForTextFields(title: String, message: String, flag: Int){
