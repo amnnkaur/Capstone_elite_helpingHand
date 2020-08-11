@@ -235,6 +235,7 @@
                     <navigationItem key="navigationItem" id="Vcl-Ib-ktD"/>
                     <connections>
                         <outlet property="city" destination="G8s-pp-GIk" id="R5R-dt-rqR"/>
+                        <outlet property="state" destination="6Lc-VT-2VV" id="7em-SS-caY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plo-Yx-iQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
