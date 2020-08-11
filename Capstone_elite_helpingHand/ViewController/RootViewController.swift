@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-class ViewController: UIViewController {
+class RootViewController: UIViewController {
 
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
@@ -36,8 +36,9 @@ class ViewController: UIViewController {
     }
     
     @IBSegueAction func signUpAction(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: SignUpContentView())
+        return UIHostingController(coder: coder, rootView: SignUpFormView())
     }
+    
     
 }
 

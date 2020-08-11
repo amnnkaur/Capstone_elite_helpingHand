@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct JobListView: View {
     var body: some View {
 //        TabView {
             NavigationView {
@@ -41,9 +41,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct JobListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        JobListView()
     }
 }
 

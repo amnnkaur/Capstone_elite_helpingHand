@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rwX-BU-xc0" kind="show" destinationCreationSelector="signUpAction:" id="Que-fe-tcB"/>
+                                    <segue destination="SYO-pu-4wd" kind="show" destinationCreationSelector="signUpAction:" id="mfy-Yw-7OQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilk-Rr-8WJ">
@@ -88,16 +88,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="127.2" y="111.0944527736132"/>
-        </scene>
-        <!--Hosting Controller-->
-        <scene sceneID="C4o-s1-FX7">
-            <objects>
-                <hostingController id="rwX-BU-xc0" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="uRo-y9-FKy"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vs6-dF-mnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="923" y="574"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="axt-XC-DO2">
@@ -193,6 +183,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cd-c1-6wD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1680" y="-129"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="PRP-eo-9Jj">
+            <objects>
+                <hostingController id="SYO-pu-4wd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="81d-TL-hJQ"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gkw-AF-pau" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886" y="577"/>
         </scene>
     </scenes>
     <resources>

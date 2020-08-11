@@ -29,6 +29,6 @@ class LoginViewController: UIViewController {
     */
 
     @IBSegueAction func loginToTaskHostVC(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: ContentView())
+        return UIHostingController(coder: coder, rootView: JobListView())
     }
 }
