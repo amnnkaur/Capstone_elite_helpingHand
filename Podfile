@@ -6,8 +6,5 @@ target 'Capstone_elite_helpingHand' do
   use_frameworks!
 
   # Pods for Capstone_elite_helpingHand
-pod 'MaterialComponents'
-pod 'MaterialComponents/Buttons'
-pod 'MaterialComponents/Buttons+Theming'
-pod "FlexibleSteppedProgressBar"
+
 end

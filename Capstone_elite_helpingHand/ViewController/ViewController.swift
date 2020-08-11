@@ -8,8 +8,6 @@
 
 import UIKit
 import SwiftUI
-import MaterialComponents.MaterialButtons
-import MaterialComponents.MaterialButtons_Theming
 
 class ViewController: UIViewController {
 

@@ -203,7 +203,6 @@
 				2AE8F1D224E08C100003B085 /* Sources */,
 				2AE8F1D324E08C100003B085 /* Frameworks */,
 				2AE8F1D424E08C100003B085 /* Resources */,
-				1C330E6D621D810FD6F5AC8A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,23 +261,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C330E6D621D810FD6F5AC8A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		85806541B54C5CB9303C1E4E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
