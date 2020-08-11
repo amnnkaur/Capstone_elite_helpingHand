@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var contactNumber: UITextField!
     @IBOutlet weak var streetAddress: UITextField!
     @IBOutlet weak var postalAddress: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var state: UITextField!
@@ -70,8 +71,59 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         state.inputView = statePicker
         city.inputView = cityPicker
         
+        initials()
     
     }
+    
+    func initials(){
+        errorLabel.text = "All fields are mandatory"
+        firstName.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        emailAddress.addTarget(self, action: #selector(checkEmailAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        password.addTarget(self, action: #selector(checkPasswordAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        confirmPassword.addTarget(self, action: #selector(checkConfirmPasswordAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        contactNumber.addTarget(self, action: #selector(checkContactNumberAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func checkAndDisplayError(textfield: UITextField){
+        if(textfield.text?.count ?? 0<3){
+            errorLabel.text = "First Name is mandtory"
+        }else{
+            errorLabel.text = ""
+        }
+    }
+    
+    @objc func checkEmailAndDisplayError(textfield: UITextField){
+        if(textfield.text?.isEmail() == false){
+            errorLabel.text = "Invalid email address"
+        }else{
+            errorLabel.text = ""
+        }
+    }
+    
+    @objc func checkPasswordAndDisplayError(textfield: UITextField){
+        if(textfield.text?.isPassword() == false){
+                  errorLabel.text = "Must contain: 1 uppercase, 1 digit, 1 lowercase, 1 symbol and min 8 characters"
+              }else{
+                  errorLabel.text = ""
+              }
+          }
+    
+    @objc func checkConfirmPasswordAndDisplayError(textfield: UITextField){
+        if(self.password.text != textfield.text){
+               errorLabel.text = "Password doesn't match"
+           }else{
+               errorLabel.text = ""
+           }
+       }
+    @objc func checkContactNumberAndDisplayError(textfield: UITextField){
+        if(textfield.text?.isNumber() == false){
+                  errorLabel.text = "Format: xxx-xxx-xxxx"
+              }else{
+                  errorLabel.text = ""
+              }
+          }
+    
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
           return 1
@@ -118,14 +170,10 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
                          if err != nil{
                              
                              print(err!.localizedDescription)
-//                             self.alert.toggle()
                              return
                          }
                          
                          print("success")
-                         
-//                         UserDefaults.standard.set(true, forKey: "status")
-//                         NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                      }
                  }
             
@@ -139,20 +187,34 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let lName = self.lastName.text
         let email = self.emailAddress.text
         let psswrd = self.password.text
-        _ = self.confirmPassword.text
+        let confirmPsswrd = self.confirmPassword.text
         let contact = self.contactNumber.text
         let street = self.streetAddress.text
         let cityValue = self.city.text
         let stateValue = self.state.text
         let postalCode = self.postalAddress.text
         
-        register(email: email!, password: psswrd!)
-    
-       let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
-        
+        if(self.errorLabel.text?.isEmpty != true || fName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true
+            || contact?.isEmpty == true){
+            displayAlertForTextFields(title: "Error!", message: "Fill out mandatory fields")
+        }else{
+            register(email: email!, password: psswrd!)
+            let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
         guard let key = self.ref.child("users").childByAutoId().key else {return}
          let childUpdates = ["/users/\(key)": insert]
          self.ref.updateChildValues(childUpdates)
-        dismiss(animated: true, completion: nil)
+            displayAlertForTextFields(title: "Success!!", message: "User successfully registered")
+           
+            
+        }
+    }
+    
+    func displayAlertForTextFields(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true)
     }
 }
+
