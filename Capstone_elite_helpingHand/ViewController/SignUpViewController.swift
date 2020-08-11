@@ -106,6 +106,33 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
             }
         
     }
+    
+    func register(email: String, password: String){
+             
+             if email != ""{
+                 
+                 if password != ""{
+                     
+                     Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
+                         
+                         if err != nil{
+                             
+                             print(err!.localizedDescription)
+//                             self.alert.toggle()
+                             return
+                         }
+                         
+                         print("success")
+                         
+//                         UserDefaults.standard.set(true, forKey: "status")
+//                         NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                     }
+                 }
+            
+             }
+         
+     }
+     
 
     @IBAction func signUpTofirebase(_ sender: UIButton) {
         let fName = self.firstName.text
@@ -118,11 +145,14 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let cityValue = self.city.text
         let stateValue = self.state.text
         let postalCode = self.postalAddress.text
+        
+        register(email: email!, password: psswrd!)
     
        let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
         
         guard let key = self.ref.child("users").childByAutoId().key else {return}
          let childUpdates = ["/users/\(key)": insert]
          self.ref.updateChildValues(childUpdates)
+        dismiss(animated: true, completion: nil)
     }
 }

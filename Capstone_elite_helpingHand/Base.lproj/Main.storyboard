@@ -286,7 +286,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lQb-qq-1WI" kind="show" destinationCreationSelector="loginToTaskHostVC:" id="PaE-vr-3jh"/>
+                                    <action selector="loginAction:" destination="VVG-op-wgV" eventType="touchUpInside" id="vou-7U-a4L"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PGi-iV-iJx">
@@ -333,6 +333,10 @@
                         <viewLayoutGuide key="safeArea" id="yvV-bP-cpB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bam-vQ-gWb"/>
+                    <connections>
+                        <outlet property="passwordField" destination="pRR-df-8iO" id="F8H-PS-ZzE"/>
+                        <outlet property="userNameField" destination="PGi-iV-iJx" id="3PI-oG-71Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsk-Wp-gOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

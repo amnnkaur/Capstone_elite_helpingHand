@@ -8,9 +8,12 @@
 
 import UIKit
 import SwiftUI
+import Firebase
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var userNameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +30,38 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func verify(){
+        let userName = self.userNameField.text!
+        let password = self.passwordField.text!
+         
+        if userName != "" && password != ""{
+             
+             Auth.auth().signIn(withEmail: userName, password: password) { (res, err) in
+                 
+                 if err != nil{
+                     
+                    print(err!.localizedDescription)
+//                     self.alert.toggle()
+                     return
+                 }
+                 
+                 print("success")
+//                 UserDefaults.standard.set(true, forKey: "status")
+//                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+             }
+         }
+         else{
+             
+//             self.error = "Please fill all the contents properly"
+//             self.alert.toggle()
+         }
+     }
+    
+    @IBAction func loginAction(_ sender: UIButton) {
+        verify()
+    }
+    
     @IBSegueAction func loginToTaskHostVC(_ coder: NSCoder) -> UIViewController? {
         return UIHostingController(coder: coder, rootView: JobListView())
     }
