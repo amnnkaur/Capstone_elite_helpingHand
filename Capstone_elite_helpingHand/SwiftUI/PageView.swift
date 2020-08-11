@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PageView: View {
-    
+     @State var name: [String] = [""]
     var page = Page.getAll.first!
     
     let txtFields = [TextField(Page.getAll.first!.placeholder[0], text: Binding<String>.constant("")),
@@ -25,7 +25,7 @@ struct PageView: View {
                     
                     Text(page.heading).font(.title).bold().layoutPriority(1).multilineTextAlignment(.center)
                 
-                    ForEach((0...page.noOfFields), id: \.self){ txtField in TextField(self.page.placeholder[txtField], text: Binding<String>.constant(""))
+                    ForEach((0...page.noOfFields), id: \.self){ txtField in TextField(self.page.placeholder[txtField], text: self.$name[0])
                     }
                     
                 }.padding()
