@@ -129,12 +129,12 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kgu-3G-O3n">
                                         <rect key="frame" x="8" y="189" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cZ-Iq-2FR">
                                         <rect key="frame" x="8" y="251" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact No." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J1q-sV-TsC">
                                         <rect key="frame" x="8" y="310" width="398" height="34"/>
@@ -177,6 +177,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signUpTofirebase:" destination="hcS-BA-drm" eventType="touchUpInside" id="WCO-Do-4AK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -235,7 +238,15 @@
                     <navigationItem key="navigationItem" id="Vcl-Ib-ktD"/>
                     <connections>
                         <outlet property="city" destination="G8s-pp-GIk" id="R5R-dt-rqR"/>
+                        <outlet property="confirmPassword" destination="3cZ-Iq-2FR" id="L8x-l2-zoB"/>
+                        <outlet property="contactNumber" destination="J1q-sV-TsC" id="jp5-Et-ePV"/>
+                        <outlet property="emailAddress" destination="UAM-Cw-2IX" id="1xC-93-TBf"/>
+                        <outlet property="firstName" destination="4Ig-Sw-jSv" id="Oyz-yx-2S2"/>
+                        <outlet property="lastName" destination="LBg-2q-nJf" id="sCr-Xv-ikQ"/>
+                        <outlet property="password" destination="Kgu-3G-O3n" id="ZBp-l1-wbc"/>
+                        <outlet property="postalAddress" destination="XeG-ab-vlf" id="hvr-1E-jHA"/>
                         <outlet property="state" destination="6Lc-VT-2VV" id="7em-SS-caY"/>
+                        <outlet property="streetAddress" destination="N54-pS-DCR" id="dLr-mf-XNc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plo-Yx-iQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

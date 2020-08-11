@@ -10,7 +10,15 @@ import UIKit
 
 class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource  {
   
- 
+    @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var emailAddress: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
+    @IBOutlet weak var contactNumber: UITextField!
+    @IBOutlet weak var streetAddress: UITextField!
+    @IBOutlet weak var postalAddress: UITextField!
+    
     @IBOutlet weak var city: UITextField!
     @IBOutlet weak var state: UITextField!
     var cityPicker = UIPickerView()
@@ -94,4 +102,19 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         
     }
 
+    @IBAction func signUpTofirebase(_ sender: UIButton) {
+        let fName = self.firstName.text
+        let lName = self.lastName.text
+        let email = self.emailAddress.text
+        let psswrd = self.password.text
+        let confirmPsswrd = self.confirmPassword.text
+        let contact = self.contactNumber.text
+        let street = self.streetAddress.text
+        let cityValue = self.city.text
+        let stateValue = self.state.text
+        let postalCode = self.postalAddress.text
+        
+        print(fName + "," + lName + "," + email + "," + psswrd + "," + confirmPsswrd + "," + contact + "," + street + "," + cityValue + "," + stateValue + "," + postalCode)
+        
+    }
 }
