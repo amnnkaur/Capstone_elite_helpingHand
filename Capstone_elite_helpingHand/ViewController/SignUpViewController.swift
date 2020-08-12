@@ -198,7 +198,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let postalCode = self.postalAddress.text
         
         if(self.errorLabel.text?.isEmpty != true || fName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true
-            || contact?.isEmpty == true){
+            || contact?.isEmpty == true || postalCode?.isEmpty ==  true){
             displayAlertForTextFields(title: "Error!", message: "Fill out mandatory fields", flag: 0)
         }else{
              let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
@@ -210,6 +210,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         guard let key = self.ref.child("users").childByAutoId().key else {return}
         let childUpdates = ["/users/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
+        DataStorage.getInstance().addUser(user: User(id: "1", firstName: insert["firstName"]! ?? "", lastName: insert["lastName"]! ?? "", mobileNumber: insert["contact"]! ?? "", emailId: insert["email"]! ?? "", password: insert["password"]! ?? "", state: insert["state"]! ?? "", street: insert["street"]! ?? "", postal: insert["postal"]! ?? "", city: insert["city"]! ?? ""))
            displayAlertForTextFields(title: "Success!!", message: "User successfully registered", flag: 1)
           
     }
