@@ -43,10 +43,12 @@ class LoginViewController: UIViewController {
                  if err != nil{
                      
                     print(err!.localizedDescription)
+                    self.displayAlert(title: "Error!", message: "\(err!.localizedDescription)")
                      return
                  }
                  
                  print("success")
+                self.displayAlert(title: "Success", message: "You are successfully logged in")
 //                 UserDefaults.standard.set(true, forKey: "status")
 //                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
              }
@@ -60,6 +62,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginAction(_ sender: UIButton) {
         verify()
+    }
+    
+    func displayAlert(title: String, message: String){
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @IBSegueAction func loginToTaskHostVC(_ coder: NSCoder) -> UIViewController? {
