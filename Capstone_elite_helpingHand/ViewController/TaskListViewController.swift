@@ -24,6 +24,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     var userName: String?
     var ref = Database.database().reference()
      var userList: [User] = []
+    var taskList: [Task] = []
     
     //MARK: View did load()
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
         userName = defaults.string(forKey: "userName") ?? "noUserFound"
         userList = DataStorage.getInstance().getAllUsers()
+        taskList = DataStorage.getInstance().getAllTasks()
         for item in userList{
             if item.emailId == userName{
                 self.headerLabel.text = " Welcome, \(item.firstName.capitalizingFirstLetter())"
@@ -68,7 +70,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return taskList.count
         
     }
             
@@ -102,6 +104,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         //        let task = self.tasks![indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell") as! TaskTableViewCell
                 
+                let task = taskList[indexPath.row]
+                
                 cell.layer.shadowOffset = CGSize(width: 0, height: 2)
                 cell.layer.shadowColor = UIColor.black.cgColor
                 cell.layer.shadowRadius = 5
@@ -111,15 +115,10 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.layer.masksToBounds = true;
                 cell.clipsToBounds = false;
                 
-                cell.postedBy.text = "John Doe"
-                cell.jobTitle.text = "Software Engineer"
-                cell.jobDesc.text = "Sftehkaghdga hagkdhjgashgd jgaskjhdgahsd jkgyd"
-                cell.postedDate.text = "Aug 24, 2020"
-                
-                cell.postedBy.text = "John Doe"
-                cell.jobTitle.text = "Software Engineer"
-                cell.jobDesc.text = "Sftehkaghdga hagkdhjgashgd jgaskjhdgahsd jkgyd"
-                cell.postedDate.text = "Aug 24, 2020"
+                cell.postedBy.text = task.taskTime
+                cell.jobTitle.text = task.taskTitle
+                cell.jobDesc.text = task.taskDesc
+                cell.postedDate.text = task.taskPostingDate
                 
                 return cell
             }

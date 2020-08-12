@@ -10,16 +10,16 @@ import Foundation
 
 class Task {
 
-var taskID : Int
+var taskID : String
 var taskTitle : String
 var taskDesc : String
 var taskPostingDate : String
 var tasktype : String
 var taskLocation : String
-var taskPay : Double
-var taskTime : Int
+var taskPay : String
+var taskTime : String
     
-    init(taskID: Int, taskTitle: String, taskDesc: String, taskPostingDate: String, tasktype: String, taskLocation: String, taskPay: Double, taskTime: Int  ) {
+    init(taskID: String, taskTitle: String, taskDesc: String, taskPostingDate: String, tasktype: String, taskLocation: String, taskPay: String, taskTime: String  ) {
         self.taskID = taskID
         self.taskTitle = taskTitle
         self.taskDesc = taskDesc
