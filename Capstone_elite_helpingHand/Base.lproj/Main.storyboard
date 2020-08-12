@@ -403,20 +403,10 @@
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="-128.18590704647679"/>
         </scene>
-        <!--Hosting Controller-->
-        <scene sceneID="54o-bz-omu">
-            <objects>
-                <hostingController id="lQb-qq-1WI" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ldo-zi-o65"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3cd-c1-6wD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2414" y="-129"/>
-        </scene>
         <!--Task List View Controller-->
         <scene sceneID="nWV-q6-I1u">
             <objects>
-                <viewController id="UwO-CY-lIf" customClass="TaskListViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UwO-CY-lIf" customClass="TaskListViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2nK-gM-kLm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
