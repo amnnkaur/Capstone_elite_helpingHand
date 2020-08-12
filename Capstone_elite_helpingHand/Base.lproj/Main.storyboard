@@ -485,16 +485,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="182"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Tasks.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zI7-wt-cIW">
-                                        <rect key="frame" x="8" y="52" width="398" height="34"/>
+                                        <rect key="frame" x="8" y="95.5" width="398" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=" Welcome..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Lj-pW-yvN">
+                                        <rect key="frame" x="8" y="52" width="398" height="32.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="zI7-wt-cIW" firstAttribute="top" secondItem="VLF-9x-N7u" secondAttribute="top" constant="52" id="bX1-G8-nVE"/>
+                                    <constraint firstItem="zI7-wt-cIW" firstAttribute="top" secondItem="1Lj-pW-yvN" secondAttribute="bottom" constant="11" id="L8X-mx-mYO"/>
                                     <constraint firstItem="zI7-wt-cIW" firstAttribute="leading" secondItem="VLF-9x-N7u" secondAttribute="leading" constant="8" id="fko-Ul-80y"/>
                                     <constraint firstAttribute="trailing" secondItem="zI7-wt-cIW" secondAttribute="trailing" constant="8" id="kQU-bQ-O2x"/>
+                                    <constraint firstItem="1Lj-pW-yvN" firstAttribute="top" secondItem="VLF-9x-N7u" secondAttribute="top" constant="52" id="u7d-ja-Z7Z"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -512,6 +519,7 @@
                         <viewLayoutGuide key="safeArea" id="Yq0-1f-8Ql"/>
                     </view>
                     <connections>
+                        <outlet property="headerLabel" destination="1Lj-pW-yvN" id="SrY-sx-lBb"/>
                         <outlet property="jobTableView" destination="kPs-1q-Kph" id="YeJ-h5-NWa"/>
                         <outlet property="searchTxt" destination="zI7-wt-cIW" id="i6g-4R-PMv"/>
                         <outlet property="srchView" destination="VLF-9x-N7u" id="SS3-6q-YyH"/>
@@ -519,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2j-k2-2g4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="-129"/>
+            <point key="canvasLocation" x="1673.913043478261" y="-129.24107142857142"/>
         </scene>
     </scenes>
     <resources>

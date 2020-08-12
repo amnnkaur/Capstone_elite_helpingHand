@@ -54,6 +54,9 @@ class LoginViewController: UIViewController {
 //                    let VC = sb.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController
 //                    let navRootView = UINavigationController(rootViewController: VC)
 //                    self.present(navRootView, animated: true, completion: nil)
+                    
+                    let defaults = UserDefaults.standard
+                    defaults.set(userName, forKey: "userName")
 //
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController

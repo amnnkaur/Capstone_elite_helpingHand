@@ -7,41 +7,64 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
    
      var tasks : [Task]?
     @IBOutlet weak var jobTableView: UITableView!
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var srchView: UIView!
     var image = UIImage(named: "searchicon.png")
     
     @IBOutlet weak var searchTxt: UITextField!
+    
+    let defaults = UserDefaults.standard
+    var userName: String?
+    var ref = Database.database().reference()
+     var userList: [User] = []
+    
+    //MARK: View did load()
     override func viewDidLoad() {
-      
-    jobTableView.delegate = self
-    jobTableView.dataSource = self
-                
-    let leftImageView = UIImageView()
-    leftImageView.image = image
-    let leftView = UIView()
-    leftView.addSubview(leftImageView)
+        super.viewDidLoad()
+        initials()
 
-    searchTxt.leftView = leftView
-                
-    leftView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-    leftImageView.frame = CGRect(x: 10, y: 10, width: 20, height: 20)
-    searchTxt.leftViewMode = .always
-    searchTxt.leftView = leftView
-                
-    let gradientLayer = CAGradientLayer()
+    }
+    
+    func initials(){
+    
+        userName = defaults.string(forKey: "userName") ?? "noUserFound"
+        userList = DataStorage.getInstance().getAllUsers()
+        for item in userList{
+            if item.emailId == userName{
+                self.headerLabel.text = " Welcome, \(item.firstName.capitalizingFirstLetter())"
+            }
+        }
+    
+             
+           jobTableView.delegate = self
+           jobTableView.dataSource = self
+                       
+           let leftImageView = UIImageView()
+           leftImageView.image = image
+           let leftView = UIView()
+           leftView.addSubview(leftImageView)
 
-    gradientLayer.frame = srchView.bounds
-    gradientLayer.colors = [UIColor.red.cgColor, UIColor.orange.cgColor]
-    gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
-    gradientLayer.opacity = 0.7
-    self.srchView.layer.insertSublayer(gradientLayer, at: 0)
+           searchTxt.leftView = leftView
+                       
+           leftView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+           leftImageView.frame = CGRect(x: 10, y: 10, width: 20, height: 20)
+           searchTxt.leftViewMode = .always
+           searchTxt.leftView = leftView
+                       
+           let gradientLayer = CAGradientLayer()
 
+           gradientLayer.frame = srchView.bounds
+           gradientLayer.colors = [UIColor.red.cgColor, UIColor.orange.cgColor]
+           gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
+           gradientLayer.opacity = 0.7
+           self.srchView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
