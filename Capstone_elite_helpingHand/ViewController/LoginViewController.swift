@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
                     defaults.set(userName, forKey: "userName")
 //
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "appTabBar") as! UITabBarController
 //                    UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController!.present(viewController, animated: true, completion: nil)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
