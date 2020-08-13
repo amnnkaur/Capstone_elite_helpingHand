@@ -263,7 +263,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="error" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dh-Ci-wqJ">
-                                        <rect key="frame" x="8" y="382" width="398" height="30"/>
+                                        <rect key="frame" x="8" y="381" width="398" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Rid-jo-T2B"/>
                                         </constraints>
@@ -272,7 +272,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.85000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsm-hh-cj6">
-                                        <rect key="frame" x="40" y="420" width="334" height="38"/>
+                                        <rect key="frame" x="40" y="419" width="334" height="38"/>
                                         <color key="backgroundColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
                                         <state key="normal" title="Sign Up">
@@ -292,7 +292,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State/Province" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-VT-2VV">
-                                        <rect key="frame" x="40" y="340" width="94.5" height="34"/>
+                                        <rect key="frame" x="40" y="339" width="94.5" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="vh6-0b-z9d"/>
                                         </constraints>
@@ -376,6 +376,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plo-Yx-iQP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="879.20000000000005" y="538.38080959520244"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="fug-0M-17b">
+            <objects>
+                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F7m-qS-H4H" customClass="ChatViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3zZ-h4-sYX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Hy4-Ll-Pto"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="anR-aY-wCi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Wf-LP-vTQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2612" y="-129"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="axt-XC-DO2">
@@ -559,6 +575,14 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvA-Ow-d27">
+                                        <rect key="frame" x="252" y="100" width="134" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Message"/>
+                                        <connections>
+                                            <segue destination="F7m-qS-H4H" kind="show" id="WDH-KI-U3E"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>

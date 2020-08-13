@@ -65,4 +65,21 @@ class DataStorage{
             }
         })
     }
+    
+    func loadTasks(){
+      /*  let taskRefer = self.ref.child("tasks")
+              taskRefer.observeSingleEvent(of: .value, with: {(snapshot)
+                  in
+                  if let taskDict = snapshot.value as? [String: [String: String]]{
+                      for value in taskDict.values{
+                          self.taskList.append(Task(taskID: "2", taskTitle: value["taskName"] ?? "", taskDesc: value["taskDescription"] ?? "", taskPostingDate: value["date"] ?? "", tasktype: value["type"] ?? "", taskLocation: "L6X4N3", taskPay: value["amount"] ?? "", taskTime: value["contact"] ?? ""))
+                      }
+                  }
+              }) */
+        let taskrefer = self.ref.child("tasks")
+        taskrefer.observe(DataEventType.childAdded) { (snapshot) in
+            print("child added: \(snapshot.childrenCount)")
+            
+        }
+    }
 }

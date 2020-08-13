@@ -22,6 +22,9 @@
 		2AE8F1EE24E08C5D0003B085 /* backg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1ED24E08C5D0003B085 /* backg.jpg */; };
 		2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */; };
 		3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */; };
+		8E2A628224E5A04E0080274D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628124E5A04E0080274D /* ChatViewController.swift */; };
+		8E2A628424E5A0B70080274D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628324E5A0B70080274D /* Chat.swift */; };
+		8E2A628624E5A0C80080274D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628524E5A0C80080274D /* Message.swift */; };
 		8E5A678424E3230B00CA329F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A678324E3230B00CA329F /* GoogleService-Info.plist */; };
 		8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678624E3779E00CA329F /* NewTaskViewController.swift */; };
 		8E5A678A24E4581400CA329F /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678924E4581400CA329F /* DataStorage.swift */; };
@@ -48,6 +51,9 @@
 		2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.debug.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.debug.xcconfig"; sourceTree = "<group>"; };
 		485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.release.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.release.xcconfig"; sourceTree = "<group>"; };
+		8E2A628124E5A04E0080274D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8E2A628324E5A0B70080274D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		8E2A628524E5A0C80080274D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8E5A678324E3230B00CA329F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E5A678624E3779E00CA329F /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		8E5A678924E4581400CA329F /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 				8E5A678624E3779E00CA329F /* NewTaskViewController.swift */,
 				2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */,
 				2A56FE1D24E39A85005F6CD9 /* TaskTableViewCell.swift */,
+				8E2A628124E5A04E0080274D /* ChatViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -157,6 +164,8 @@
 			children = (
 				2A56FE1924E39972005F6CD9 /* Task.swift */,
 				8E5A678B24E4586F00CA329F /* User.swift */,
+				8E2A628324E5A0B70080274D /* Chat.swift */,
+				8E2A628524E5A0C80080274D /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +191,7 @@
 				2AE8F1D324E08C100003B085 /* Frameworks */,
 				2AE8F1D424E08C100003B085 /* Resources */,
 				05828D90EF9861F1A6D735A2 /* [CP] Embed Pods Frameworks */,
+				8933AE0138C1CDBCA5CA5FDF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,6 +291,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8933AE0138C1CDBCA5CA5FDF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -298,8 +325,11 @@
 				2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */,
 				2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */,
 				2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */,
+				8E2A628224E5A04E0080274D /* ChatViewController.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
+				8E2A628624E5A0C80080274D /* Message.swift in Sources */,
+				8E2A628424E5A0B70080274D /* Chat.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

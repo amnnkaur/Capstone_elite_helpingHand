@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
@@ -34,7 +35,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func initials(){
-    
+        print("Current user: \(Auth.auth().currentUser?.email)")
         userName = defaults.string(forKey: "userName") ?? "noUserFound"
         userList = DataStorage.getInstance().getAllUsers()
         taskList = DataStorage.getInstance().getAllTasks()

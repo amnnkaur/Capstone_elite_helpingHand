@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import UserNotifications
 
 class RootViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initials()
+        notificationsCall()
     }
 
     func initials(){
@@ -30,11 +32,78 @@ class RootViewController: UIViewController {
     }
     
     
+       
+        //MARK: Notification centre
+     func notificationsCall() {
+            // fire test notification
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { success, error in
+            if success {
+                // schedule
+                NotificationCenter.default.addObserver(self, selector: #selector(self.scheduleNotifications), name: UIApplication.willResignActiveNotification, object: nil)
+            }
+            else if error != nil {
+                print("error occurred")
+                }
+            })
+        }
+        
+
+            @objc func scheduleNotifications() {
+                
+                print("on resign")
+//                DataStorage.getInstance().loadTasks()
+                
+//                var tasks: [Task]
+//                tasks = DataStorage.getInstance().getAllTasks()
+//                var firstCount: Int
+//                firstCount = tasks.count
+//                print("First Count: \(firstCount)")
+//                tasks.removeAll()
+//                DataStorage.getInstance().loadTasks()
+//                tasks = DataStorage.getInstance().getAllTasks()
+//                var secondCount: Int
+//                secondCount = tasks.count
+//                 print("Second Count: \(secondCount)")
+//                if(secondCount > firstCount){
+//                    let formatter = DateFormatter()
+//                        formatter.dateStyle = .medium
+//                        formatter.timeStyle = .short
+//
+//                        let content = UNMutableNotificationContent()
+//                            content.title = "New Task"
+//                            content.sound = .default
+//                            content.body = "Description"
+//
+//                            var dateComponents = DateComponents()
+//                            dateComponents.hour = 10
+//                            dateComponents.minute = 08
+//
+//                    //  let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+//                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//                        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+//                            if error != nil {
+//                                print("Error while generating notification: \(error?.localizedDescription)")
+//                                    }
+//                                })
+//                }
+//                Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+//                    sleep(10)
+//                    self.scheduleNotifications()
+              
+            }
+
+    @objc func fireTimer() {
+        print("Timer fired!")
+    }
+           
+
+    
+    
     @IBAction func loginAction(_ sender: UIButton) {
         
         
     }
-    
-    
+     
 }
 
