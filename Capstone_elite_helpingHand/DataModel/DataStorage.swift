@@ -69,7 +69,7 @@ class DataStorage{
             in
             if let taskDict = snapshot.value as? [String: [String: String]]{
                 for value in taskDict.values{
-                    self.taskList.append(Task(taskID: "2", taskTitle: value["taskName"] ?? "", taskDesc: value["taskDescription"] ?? "", taskPostingDate: value["date"] ?? "", tasktype: value["type"] ?? "", taskLocation: "L6X4N3", taskPay: value["amount"] ?? "", taskTime: value["contact"] ?? ""))
+                    self.taskList.append(Task(taskID: value["taskID"] ?? "", taskTitle: value["taskName"] ?? "", taskDesc: value["taskDescription"] ?? "", taskPostingDate: value["date"] ?? "", tasktype: value["type"] ?? "", taskLocation: "L6X4N3", taskPay: value["amount"] ?? "", taskTime: value["contact"] ?? "", taskEmail: value["taskEmail"] ?? ""))
                 }
             }
         })

@@ -18,8 +18,10 @@ var tasktype : String
 var taskLocation : String
 var taskPay : String
 var taskTime : String
+var taskEmail: String
     
-    init(taskID: String, taskTitle: String, taskDesc: String, taskPostingDate: String, tasktype: String, taskLocation: String, taskPay: String, taskTime: String  ) {
+    init(taskID: String, taskTitle: String, taskDesc: String, taskPostingDate: String, tasktype: String, taskLocation: String, taskPay: String, taskTime: String,
+         taskEmail: String) {
         self.taskID = taskID
         self.taskTitle = taskTitle
         self.taskDesc = taskDesc
@@ -28,6 +30,7 @@ var taskTime : String
         self.taskLocation = taskLocation
         self.taskPay = taskPay
         self.taskTime = taskTime
+        self.taskEmail = taskEmail
     }
 
 }

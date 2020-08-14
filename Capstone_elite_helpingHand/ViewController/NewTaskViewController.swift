@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class NewTaskViewController: UIViewController {
 
@@ -37,7 +38,8 @@ class NewTaskViewController: UIViewController {
     */
 
     @IBAction func addToFirebase(_ sender: Any) {
-        let insert = ["taskName": taskNameField.text, "taskDescription":taskDescField.text, "contact": contactField.text, "date": dateField.text, "type": typeField.text, "amount": amountField.text]
+        let tskName = taskNameField.text
+        let insert = ["taskName": tskName, "taskDescription":taskDescField.text ?? "", "contact": contactField.text ?? "", "date": dateField.text ?? "", "type": typeField.text ?? "", "amount": amountField.text ?? "", "taskID": Auth.auth().currentUser?.uid ?? "no uid found" , "taskEmail": Auth.auth().currentUser?.email ?? "no email found"]
         guard let key = self.ref.child("tasks").childByAutoId().key else {return}
         let childUpdates = ["/tasks/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
