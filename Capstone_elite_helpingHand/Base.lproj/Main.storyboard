@@ -642,21 +642,56 @@
             </objects>
             <point key="canvasLocation" x="3492.753623188406" y="-130.58035714285714"/>
         </scene>
-        <!--Chat-->
-        <scene sceneID="TKL-uz-K6z">
+        <!--Messages-->
+        <scene sceneID="uhK-mi-BtH">
             <objects>
-                <viewController id="pDK-AO-csa" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yoM-e1-t59">
+                <tableViewController storyboardIdentifier="messagesTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2SF-Ox-jg5" customClass="MessagesTableViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="McG-IJ-YRM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="hhY-IY-oRt"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" id="xm7-wj-rCf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eMt-Vv-cfb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messagesCell" textLabel="Tme-wU-h8o" detailTextLabel="krl-UI-ORn" style="IBUITableViewCellStyleSubtitle" id="bIP-Px-urI">
+                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bIP-Px-urI" id="xBq-19-WeY">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tme-wU-h8o">
+                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="krl-UI-ORn">
+                                            <rect key="frame" x="20" y="31.5" width="33" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2SF-Ox-jg5" id="TpG-TN-Rnw"/>
+                            <outlet property="delegate" destination="2SF-Ox-jg5" id="NFo-Ta-gzk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Messages" id="Xbm-Tk-9gA">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="goforward" catalog="system" id="q3I-5L-qaK">
+                            <connections>
+                                <action selector="reloadTable:" destination="2SF-Ox-jg5" id="je7-vx-zL9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ztd-G7-Euq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3515.9420289855075" y="571.875"/>
+            <point key="canvasLocation" x="4684" y="572"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="esa-ly-cHS">
@@ -670,7 +705,7 @@
                     <connections>
                         <segue destination="UwO-CY-lIf" kind="relationship" relationship="viewControllers" id="0qb-nf-Tcm"/>
                         <segue destination="2Ad-3z-FNy" kind="relationship" relationship="viewControllers" id="8aX-oE-2U9"/>
-                        <segue destination="pDK-AO-csa" kind="relationship" relationship="viewControllers" id="Wsl-jF-iwb"/>
+                        <segue destination="TLk-W7-XjY" kind="relationship" relationship="viewControllers" id="Wsl-jF-iwb"/>
                         <segue destination="AbZ-hr-o8Q" kind="relationship" relationship="viewControllers" id="bX4-qP-lBq"/>
                     </connections>
                 </tabBarController>
@@ -678,9 +713,32 @@
             </objects>
             <point key="canvasLocation" x="2582.608695652174" y="983.70535714285711"/>
         </scene>
+        <!--Messages-->
+        <scene sceneID="v13-Zj-VaN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TLk-W7-XjY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messages" image="message" catalog="system" id="xm7-wj-rCf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eaS-Sb-WYZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SbH-X8-hKo">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="2SF-Ox-jg5" kind="relationship" relationship="rootViewController" id="bKm-4t-Db1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q7X-SB-aAa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3515.9420289855075" y="571.875"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backg.jpg" width="1920" height="1080"/>
+        <image name="goforward" catalog="system" width="121" height="128"/>
         <image name="home" width="22" height="25"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>

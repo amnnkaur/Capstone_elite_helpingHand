@@ -12,7 +12,8 @@ import FirebaseDatabase
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
    
-     var tasks : [Task]?
+     var tasks : [Task] = []
+    var savedTask: [Task] = []
     @IBOutlet weak var jobTableView: UITableView!
     
     @IBOutlet weak var headerLabel: UILabel!
@@ -128,18 +129,25 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                      contextMenuConfigurationForRowAt indexPath: IndexPath,
                      point: CGPoint) -> UIContextMenuConfiguration? {
             
-                    let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"),
-                       attributes: .destructive) { _ in
-                                     }
+                    let message = UIAction(title: "Ignite this", image: UIImage(systemName: "message"),
+                                           attributes: .init()) { _ in
+                        DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: "self.taskList[indexPath.row].taskUID", taskTitle: self.taskList[indexPath.row].taskTitle, taskPostingDate: self.taskList[indexPath.row].taskPostingDate, taskEmail: "self.taskList[indexPath.row].taskEmail", userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+                        let insert = ["taskTitle": self.taskList[indexPath.row].taskTitle, "taskUID":"self.taskList[indexPath.row].taskUID", "taskEmail": "self.taskList[indexPath.row].taskEmail", "date": self.taskList[indexPath.row].taskPostingDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
+                          guard let key = self.ref.child("messages").childByAutoId().key else {return}
+                          let childUpdates = ["/messages/\(key)": insert]
+                          self.ref.updateChildValues(childUpdates)
                 
-                    let save = UIAction(title: "Save", image: UIImage(systemName: "trash"),
-                                    attributes: .init()) { _ in
-                              }
+                }
+                
+//                    let save = UIAction(title: "Save", image: UIImage(systemName: "trash"),
+//                                    attributes: .init()) { _ in
+//                              }
                 
                      return UIContextMenuConfiguration(identifier: nil,
                        previewProvider: nil) { _ in
-                       UIMenu(title: "Actions", children: [ delete, save])
+                       UIMenu(title: "Actions", children: [ message])
                      }
                    }
 
+    
         }

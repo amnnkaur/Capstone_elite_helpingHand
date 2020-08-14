@@ -25,6 +25,8 @@
 		8E2A628224E5A04E0080274D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628124E5A04E0080274D /* ChatViewController.swift */; };
 		8E2A628424E5A0B70080274D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628324E5A0B70080274D /* Chat.swift */; };
 		8E2A628624E5A0C80080274D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628524E5A0C80080274D /* Message.swift */; };
+		8E2A628E24E700270080274D /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628D24E700270080274D /* MessagesTableViewController.swift */; };
+		8E2A629024E71FF60080274D /* CustomerMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628F24E71FF60080274D /* CustomerMessages.swift */; };
 		8E5A678424E3230B00CA329F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A678324E3230B00CA329F /* GoogleService-Info.plist */; };
 		8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678624E3779E00CA329F /* NewTaskViewController.swift */; };
 		8E5A678A24E4581400CA329F /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678924E4581400CA329F /* DataStorage.swift */; };
@@ -54,6 +56,8 @@
 		8E2A628124E5A04E0080274D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8E2A628324E5A0B70080274D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		8E2A628524E5A0C80080274D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		8E2A628D24E700270080274D /* MessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
+		8E2A628F24E71FF60080274D /* CustomerMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerMessages.swift; sourceTree = "<group>"; };
 		8E5A678324E3230B00CA329F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E5A678624E3779E00CA329F /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		8E5A678924E4581400CA329F /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */,
 				2A56FE1D24E39A85005F6CD9 /* TaskTableViewCell.swift */,
 				8E2A628124E5A04E0080274D /* ChatViewController.swift */,
+				8E2A628D24E700270080274D /* MessagesTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				8E5A678B24E4586F00CA329F /* User.swift */,
 				8E2A628324E5A0B70080274D /* Chat.swift */,
 				8E2A628524E5A0C80080274D /* Message.swift */,
+				8E2A628F24E71FF60080274D /* CustomerMessages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E5A678C24E4586F00CA329F /* User.swift in Sources */,
+				8E2A628E24E700270080274D /* MessagesTableViewController.swift in Sources */,
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* RootViewController.swift in Sources */,
 				8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */,
@@ -329,6 +336,7 @@
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
 				8E2A628624E5A0C80080274D /* Message.swift in Sources */,
+				8E2A629024E71FF60080274D /* CustomerMessages.swift in Sources */,
 				8E2A628424E5A0B70080274D /* Chat.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
 			);

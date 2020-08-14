@@ -15,6 +15,7 @@ class DataStorage{
     private static let instance = DataStorage()
     private lazy var userList: [User] = []
     private lazy var taskList: [Task] = []
+    private lazy var taskMessageList: [CustomerMessages] = []
     private init (){}
     
     static func getInstance() -> DataStorage{
@@ -31,6 +32,10 @@ class DataStorage{
         self.taskList.append(task)
     }
     
+    func addTaskMessage(customerMessage: CustomerMessages){
+        self.taskMessageList.append(customerMessage)
+    }
+    
     //MARK: get list
     //user
     func getAllUsers() -> [User]{
@@ -40,6 +45,10 @@ class DataStorage{
     //task
     func getAllTasks() -> [Task] {
         return self.taskList
+    }
+    
+    func getAllMessages() -> [CustomerMessages]{
+        return self.taskMessageList
     }
     
     // Getting data from Firebase
@@ -64,6 +73,16 @@ class DataStorage{
                 }
             }
         })
+        
+        let messageRefer = self.ref.child("messages")
+              messageRefer.observeSingleEvent(of: .value, with: {(snapshot)
+                  in
+                  if let messageDict = snapshot.value as? [String: [String: String]]{
+                      for value in messageDict.values{
+                          self.taskMessageList.append(CustomerMessages(taskUID: value["taskUID"] ?? "", taskTitle: value["taskTitle"] ?? "", taskPostingDate: value["date"] ?? "", taskEmail: value["taskEmail"] ?? "", userUID: value["userUID"] ?? "" , userEmail: value["userEmail"] ?? ""))
+                      }
+                  }
+              })
     }
     
     func loadTasks(){
