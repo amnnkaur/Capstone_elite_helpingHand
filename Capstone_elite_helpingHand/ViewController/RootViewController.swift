@@ -29,9 +29,9 @@ class RootViewController: UIViewController, ATCWalkthroughViewControllerDelegate
     }
 
     func initials(){
-        let walkthroughVC = self.walkthroughVC()
-        walkthroughVC.delegate = self
-        self.addChildViewControllerWithView(walkthroughVC)
+//        let walkthroughVC = self.walkthroughVC()
+//        walkthroughVC.delegate = self
+//        self.addChildViewControllerWithView(walkthroughVC)
         loginBtn.layer.borderWidth = 1.0
         loginBtn.layer.cornerRadius = 8.0
         loginBtn.layer.borderColor = UIColor.darkGray.cgColor
@@ -125,7 +125,6 @@ class RootViewController: UIViewController, ATCWalkthroughViewControllerDelegate
     
     
     @IBAction func loginAction(_ sender: UIButton) {
-        
         
     }
      
