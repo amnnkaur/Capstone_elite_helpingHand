@@ -20,8 +20,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     
     var user2Name: String?
     var user2ImgUrl: String?
-    var user2UID: String = "ezFU1N9D4dhWob5RgMvhdEHhmhH2"
-    
+    var user2UID: String = ""
+//    ezFU1N9D4dhWob5RgMvhdEHhmhH2
     private var docReference: DocumentReference?
     
     var messages: [Message] = []
@@ -30,7 +30,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
         super.viewDidLoad()
         
         self.title = user2Name ?? "Chat"
-
+print("uid : \(user2UID)")
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = .blue

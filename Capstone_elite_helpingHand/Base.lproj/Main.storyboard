@@ -399,7 +399,7 @@
             <objects>
                 <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F7m-qS-H4H" customClass="ChatViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3zZ-h4-sYX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hy4-Ll-Pto"/>
@@ -408,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wf-LP-vTQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4431.884057971015" y="-129.24107142857142"/>
+            <point key="canvasLocation" x="5681" y="572"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="axt-XC-DO2">
@@ -592,25 +592,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvA-Ow-d27">
-                                        <rect key="frame" x="252" y="100" width="134" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="134" id="H2B-pb-xBl"/>
-                                            <constraint firstAttribute="height" constant="21" id="jJM-Kx-xYz"/>
-                                        </constraints>
-                                        <state key="normal" title="Message"/>
-                                        <connections>
-                                            <segue destination="F7m-qS-H4H" kind="show" id="WDH-KI-U3E"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="trailing" secondItem="VLF-9x-N7u" secondAttribute="trailingMargin" id="18m-Hx-pur"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="top" secondItem="VLF-9x-N7u" secondAttribute="top" constant="88" id="1D2-jT-IeF"/>
-                                    <constraint firstAttribute="trailing" secondItem="wvA-Ow-d27" secondAttribute="trailing" constant="28" id="3Ho-wp-DK4"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="leading" secondItem="VLF-9x-N7u" secondAttribute="leadingMargin" id="AeM-Mc-5yQ"/>
-                                    <constraint firstItem="1Lj-pW-yvN" firstAttribute="bottom" secondItem="wvA-Ow-d27" secondAttribute="bottom" id="OPY-D0-QCF"/>
                                     <constraint firstAttribute="bottom" secondItem="zI7-wt-cIW" secondAttribute="bottom" constant="19" id="eKM-sq-P0I"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="leading" secondItem="zI7-wt-cIW" secondAttribute="leading" id="f4J-Qv-DaS"/>
                                     <constraint firstItem="zI7-wt-cIW" firstAttribute="top" secondItem="1Lj-pW-yvN" secondAttribute="bottom" constant="17" id="fJJ-ee-YI5"/>
@@ -699,6 +686,7 @@
                 <tabBarController storyboardIdentifier="appTabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6QT-RW-Pzd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZwB-CF-Tg3">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

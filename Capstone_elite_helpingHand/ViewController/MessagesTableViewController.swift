@@ -119,4 +119,13 @@ class MessagesTableViewController: UITableViewController {
     }
     */
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = self.filteredMessages[indexPath.row]
+        
+        if let viewController = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController {
+            viewController.user2Name = task.taskTitle + " || " + task.taskEmail
+            viewController.user2UID = task.taskUID
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }

@@ -131,8 +131,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             
                     let message = UIAction(title: "Ignite this", image: UIImage(systemName: "message"),
                                            attributes: .init()) { _ in
-                        DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: "self.taskList[indexPath.row].taskUID", taskTitle: self.taskList[indexPath.row].taskTitle, taskPostingDate: self.taskList[indexPath.row].taskPostingDate, taskEmail: "self.taskList[indexPath.row].taskEmail", userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
-                        let insert = ["taskTitle": self.taskList[indexPath.row].taskTitle, "taskUID":"self.taskList[indexPath.row].taskUID", "taskEmail": "self.taskList[indexPath.row].taskEmail", "date": self.taskList[indexPath.row].taskPostingDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
+                                            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.taskList[indexPath.row].taskID, taskTitle: self.taskList[indexPath.row].taskTitle, taskPostingDate: self.taskList[indexPath.row].taskPostingDate, taskEmail: self.taskList[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+                        let insert = ["taskTitle": self.taskList[indexPath.row].taskTitle, "taskUID":self.taskList[indexPath.row].taskID, "taskEmail": self.taskList[indexPath.row].taskEmail, "date": self.taskList[indexPath.row].taskPostingDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
                           guard let key = self.ref.child("messages").childByAutoId().key else {return}
                           let childUpdates = ["/messages/\(key)": insert]
                           self.ref.updateChildValues(childUpdates)
