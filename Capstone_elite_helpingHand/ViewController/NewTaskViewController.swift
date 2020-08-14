@@ -18,12 +18,15 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var typeField: UITextField!
     @IBOutlet weak var amountField: UITextField!
-    
+    var taskID: String = ""
+    var taskEmail: String = ""
      var ref = Database.database().reference()
     override func viewDidLoad() {
          super.viewDidLoad()
 
          // Do any additional setup after loading the view.
+        self.taskID = Auth.auth().currentUser?.uid ?? "no uid found"
+        self.taskEmail = Auth.auth().currentUser?.email ?? "no email found"
      }
     
 
@@ -38,8 +41,7 @@ class NewTaskViewController: UIViewController {
     */
 
     @IBAction func addToFirebase(_ sender: Any) {
-        let tskName = taskNameField.text
-        let insert = ["taskName": tskName, "taskDescription":taskDescField.text ?? "", "contact": contactField.text ?? "", "date": dateField.text ?? "", "type": typeField.text ?? "", "amount": amountField.text ?? "", "taskID": Auth.auth().currentUser?.uid ?? "no uid found" , "taskEmail": Auth.auth().currentUser?.email ?? "no email found"]
+        let insert = ["taskName": taskNameField.text ?? "", "taskDescription":taskDescField.text ?? "", "contact": contactField.text ?? "", "date": dateField.text ?? "", "type": typeField.text ?? "", "amount": amountField.text ?? "", "taskID": self.taskID, "taskEmail": self.taskEmail]
         guard let key = self.ref.child("tasks").childByAutoId().key else {return}
         let childUpdates = ["/tasks/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
