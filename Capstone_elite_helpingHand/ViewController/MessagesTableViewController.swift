@@ -125,11 +125,13 @@ class MessagesTableViewController: UITableViewController {
         if let viewController = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController {
             if (task.taskEmail != Auth.auth().currentUser!.email){
                 viewController.user2Name = task.taskTitle + " || " + task.taskEmail
+                viewController.user2UID = task.taskUID
             }
             else{
                 viewController.user2Name = task.taskTitle + " || " + task.userEmail
+                viewController.user2UID = task.userUID
             }
-            viewController.user2UID = task.taskUID
+            
             navigationController?.pushViewController(viewController, animated: true)
         }
     }
