@@ -12,8 +12,9 @@ import FirebaseDatabase
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
    
-     var tasks : [Task] = []
-    var savedTask: [Task] = []
+//     var tasks : [Task] = []
+//    var savedTask: [Task] = []
+    var filteredTasks: [Task] = []
     @IBOutlet weak var jobTableView: UITableView!
     
     @IBOutlet weak var headerLabel: UILabel!
@@ -36,6 +37,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func initials(){
+        
         print("Current user: \(Auth.auth().currentUser?.email)")
         userName = defaults.string(forKey: "userName") ?? "noUserFound"
         userList = DataStorage.getInstance().getAllUsers()
@@ -46,6 +48,11 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     
+        for item in taskList{
+                  if item.taskEmail != Auth.auth().currentUser!.email{
+                      self.filteredTasks.append(item)
+                }
+        }
              
            jobTableView.delegate = self
            jobTableView.dataSource = self
@@ -71,8 +78,20 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
            self.srchView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        taskList.removeAll()
+         filteredTasks.removeAll()
+    taskList = DataStorage.getInstance().getAllTasks()
+       for item in taskList{
+                  if item.taskEmail != Auth.auth().currentUser!.email{
+                      self.filteredTasks.append(item)
+                }
+        }
+         self.jobTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
+        return self.filteredTasks.count
         
     }
             
@@ -106,7 +125,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         //        let task = self.tasks![indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell") as! TaskTableViewCell
                 
-                let task = taskList[indexPath.row]
+                let task = self.filteredTasks[indexPath.row]
+                
                 
                 cell.layer.shadowOffset = CGSize(width: 0, height: 2)
                 cell.layer.shadowColor = UIColor.black.cgColor
@@ -131,8 +151,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             
                     let message = UIAction(title: "Ignite this", image: UIImage(systemName: "message"),
                                            attributes: .init()) { _ in
-                                            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.taskList[indexPath.row].taskID, taskTitle: self.taskList[indexPath.row].taskTitle, taskPostingDate: self.taskList[indexPath.row].taskPostingDate, taskEmail: self.taskList[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
-                        let insert = ["taskTitle": self.taskList[indexPath.row].taskTitle, "taskUID":self.taskList[indexPath.row].taskID, "taskEmail": self.taskList[indexPath.row].taskEmail, "date": self.taskList[indexPath.row].taskPostingDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
+                                            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskPostingDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+                        let insert = ["taskTitle": self.filteredTasks[indexPath.row].taskTitle, "taskUID":self.filteredTasks[indexPath.row].taskID, "taskEmail": self.filteredTasks[indexPath.row].taskEmail, "date": self.filteredTasks[indexPath.row].taskPostingDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
                           guard let key = self.ref.child("messages").childByAutoId().key else {return}
                           let childUpdates = ["/messages/\(key)": insert]
                           self.ref.updateChildValues(childUpdates)
