@@ -28,7 +28,7 @@ class MessagesTableViewController: UITableViewController {
     func initials(){
         tasksMessagesList = DataStorage.getInstance().getAllMessages()
         for item in tasksMessagesList{
-            if item.userUID == Auth.auth().currentUser!.uid{
+            if item.userUID == Auth.auth().currentUser!.uid || item.taskEmail == Auth.auth().currentUser!.email{
                 self.filteredMessages.append(item)
                    }
                }
@@ -123,7 +123,12 @@ class MessagesTableViewController: UITableViewController {
         let task = self.filteredMessages[indexPath.row]
         
         if let viewController = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController {
-            viewController.user2Name = task.taskTitle + " || " + task.taskEmail
+            if (task.taskEmail != Auth.auth().currentUser!.email){
+                viewController.user2Name = task.taskTitle + " || " + task.taskEmail
+            }
+            else{
+                viewController.user2Name = task.taskTitle + " || " + task.userEmail
+            }
             viewController.user2UID = task.taskUID
             navigationController?.pushViewController(viewController, animated: true)
         }
