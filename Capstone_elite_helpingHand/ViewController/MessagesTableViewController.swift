@@ -13,6 +13,7 @@ class MessagesTableViewController: UITableViewController {
 
     var tasksMessagesList: [CustomerMessages] = []
     var filteredMessages: [CustomerMessages] = []
+    var userList: [User] = []
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class MessagesTableViewController: UITableViewController {
     }
 
     func initials(){
+        userList = DataStorage.getInstance().getAllUsers()
         tasksMessagesList = DataStorage.getInstance().getAllMessages()
         for item in tasksMessagesList{
             if item.userUID == Auth.auth().currentUser!.uid || item.taskEmail == Auth.auth().currentUser!.email{
@@ -66,9 +68,20 @@ class MessagesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messagesCell", for: indexPath)
 
         let task = self.filteredMessages[indexPath.row]
+        let email: String
+        if (task.taskEmail != Auth.auth().currentUser!.email){
+                       email =  task.taskEmail
+                   }
+                   else{
+                    email = task.userEmail
+                   }
+        for item in userList{
+            if(email == item.emailId){
+                cell.textLabel?.text = item.firstName.capitalizingFirstLetter()
+            }
+        }
         
-        cell.textLabel?.text = task.taskTitle
-        cell.detailTextLabel?.text = task.taskPostingDate
+        cell.detailTextLabel?.text = "Replied for: \(task.taskTitle)"
 
         return cell
     }
