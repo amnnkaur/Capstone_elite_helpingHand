@@ -15,6 +15,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
 //     var tasks : [Task] = []
 //    var savedTask: [Task] = []
     var filteredTasks: [Task] = []
+    var filtered: [Task] = []
     @IBOutlet weak var jobTableView: UITableView!
     
     @IBOutlet weak var headerLabel: UILabel!
@@ -33,8 +34,6 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()
-        
-        
 
     }
     
@@ -78,29 +77,37 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
            gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
            gradientLayer.opacity = 0.7
            self.srchView.layer.insertSublayer(gradientLayer, at: 0)
-        searchTxt.addTarget(self, action: #selector(searchTextChanged(_:)), for: .editingChanged)
-            
+        searchTxt.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
+        filtered = filteredTasks
 
     }
     
-   @objc func searchTextChanged(_ sender: UITextField) {
-        let search = sender.text ?? ""
+  @objc func searchTextChanged(textField: UITextField) {
+    if(textField.text == ""){
+        filtered = filteredTasks
+        self.jobTableView.reloadData()
+    }else{
+        let search = textField.text ?? ""
         filterContentForSearchText(search)
+        
+    }
     }
 
     func filterContentForSearchText(_ searchText: String) {
         print("Filterin with:", searchText)
-//        filtered.removeAll()
-//        filtered = original.filter { thing in
-//            return "\(thing.value.lowercased())".contains(searchText.lowercased())
-//        }
-//        jobTableView.reloadData()
+        filtered.removeAll()
+        filtered = filteredTasks.filter { thing in
+            return "\(thing.taskTitle.lowercased())".contains(searchText.lowercased())
+        }
+        print(filtered.count)
+        print(filteredTasks.count)
+        jobTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         taskList.removeAll()
-         filteredTasks.removeAll()
-    taskList = DataStorage.getInstance().getAllTasks()
+        filteredTasks.removeAll()
+        taskList = DataStorage.getInstance().getAllTasks()
        for item in taskList{
                   if item.taskEmail != Auth.auth().currentUser!.email{
                       self.filteredTasks.append(item)
@@ -110,7 +117,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.filteredTasks.count
+        return self.filtered.count
         
     }
             
@@ -144,7 +151,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         //        let task = self.tasks![indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell") as! TaskTableViewCell
                 
-                let task = self.filteredTasks[indexPath.row]
+                let task = self.filtered[indexPath.row]
                 
                 
                 cell.layer.shadowOffset = CGSize(width: 0, height: 2)
