@@ -492,6 +492,7 @@
                     <navigationItem key="navigationItem" id="Bam-vQ-gWb"/>
                     <connections>
                         <outlet property="passwordField" destination="pRR-df-8iO" id="F8H-PS-ZzE"/>
+                        <outlet property="rememberMe" destination="Wv0-JM-yqR" id="suf-sO-xDg"/>
                         <outlet property="userNameField" destination="PGi-iV-iJx" id="3PI-oG-71Z"/>
                     </connections>
                 </viewController>

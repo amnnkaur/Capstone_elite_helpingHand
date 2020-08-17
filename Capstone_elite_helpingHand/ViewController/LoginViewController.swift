@@ -16,10 +16,37 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var rememberMe: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+         rememberMe.addTarget(self, action: #selector(self.stateChanged), for: .valueChanged)
+                let defaults: UserDefaults? = UserDefaults.standard
+
+        // check if defaults already saved the details
+
+        if (defaults?.bool(forKey: "ISRemember"))! {
+            userNameField.text = defaults?.value(forKey: "SavedUserName") as! String
+            passwordField.text = defaults?.value(forKey: "SavedPassword") as! String
+                    rememberMe.setOn(true, animated: false)
+                }
+                else {
+                    rememberMe.setOn(false, animated: false)
+                }
+            }
+
+    @objc func stateChanged(_ switchState: UISwitch) {
+
+                let defaults: UserDefaults? = UserDefaults.standard
+        if switchState.isOn {
+                    defaults?.set(true, forKey: "ISRemember")
+                    defaults?.set(userNameField.text, forKey: "SavedUserName")
+                    defaults?.set(passwordField.text, forKey: "SavedPassword")
+                }
+                else {
+                    defaults?.set(false, forKey: "ISRemember")
+                    }
     }
     
 
