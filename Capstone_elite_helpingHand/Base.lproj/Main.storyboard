@@ -159,6 +159,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDE-Qy-woa">
+                                <rect key="frame" x="377" y="474" width="17" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="mappin" catalog="system"/>
+                                <connections>
+                                    <segue destination="Cmm-i0-ehP" kind="presentation" id="djK-d5-pvq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ZBD-Zt-J4u"/>
@@ -176,6 +185,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFT-En-lXb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3515.9420289855075" y="1358.7053571428571"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="V11-sh-cZQ">
+            <objects>
+                <viewController storyboardIdentifier="mapVC" id="Cmm-i0-ehP" customClass="MapViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pzz-4x-kBg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ls-X0-ml9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7Ls-X0-ml9" secondAttribute="bottom" id="9u0-Kd-NAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="7Ls-X0-ml9" secondAttribute="trailing" id="Ho6-3r-hdL"/>
+                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="leading" secondItem="Pzz-4x-kBg" secondAttribute="leading" id="q3C-cf-Q2j"/>
+                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="top" secondItem="Pzz-4x-kBg" secondAttribute="top" id="yye-3O-Q4E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XQI-lK-KiS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="T85-WK-xJu"/>
+                    <connections>
+                        <outlet property="mapView" destination="7Ls-X0-ml9" id="P2i-bx-3if"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKi-Zw-vTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4502.898550724638" y="1358.7053571428571"/>
         </scene>
         <!--Profile-->
         <scene sceneID="AEZ-0l-g4w">
@@ -743,6 +782,7 @@
         <image name="backg.jpg" width="1920" height="1080"/>
         <image name="goforward" catalog="system" width="121" height="128"/>
         <image name="home" width="22" height="25"/>
+        <image name="mappin" catalog="system" width="105" height="128"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>

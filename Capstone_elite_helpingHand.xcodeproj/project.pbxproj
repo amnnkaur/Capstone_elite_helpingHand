@@ -13,6 +13,7 @@
 		2A56FE1C24E399E8005F6CD9 /* searchicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A56FE1B24E399E8005F6CD9 /* searchicon.png */; };
 		2A56FE1E24E39A85005F6CD9 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1D24E39A85005F6CD9 /* TaskTableViewCell.swift */; };
 		2A737A4524EAFE2C0058805A /* sort.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A737A4424EAFE2C0058805A /* sort.png */; };
+		2A737A4724EB0DB20058805A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A737A4624EB0DB20058805A /* MapViewController.swift */; };
 		2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38724E21C6400F84405 /* Color+Extension.swift */; };
 		2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1D924E08C100003B085 /* AppDelegate.swift */; };
 		2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */; };
@@ -50,6 +51,7 @@
 		2A56FE1B24E399E8005F6CD9 /* searchicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchicon.png; sourceTree = "<group>"; };
 		2A56FE1D24E39A85005F6CD9 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		2A737A4424EAFE2C0058805A /* sort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort.png; sourceTree = "<group>"; };
+		2A737A4624EB0DB20058805A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2A9DC38724E21C6400F84405 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		2AE8F1D624E08C100003B085 /* Capstone_elite_helpingHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone_elite_helpingHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE8F1D924E08C100003B085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2A56FE1D24E39A85005F6CD9 /* TaskTableViewCell.swift */,
 				8E2A628124E5A04E0080274D /* ChatViewController.swift */,
 				8E2A628D24E700270080274D /* MessagesTableViewController.swift */,
+				2A737A4624EB0DB20058805A /* MapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				2AE8F1DE24E08C100003B085 /* RootViewController.swift in Sources */,
 				8E9526E924E75593007EE895 /* UIViewController.swift in Sources */,
 				8E9526DF24E75548007EE895 /* ATCWalkthroughViewController.swift in Sources */,
+				2A737A4724EB0DB20058805A /* MapViewController.swift in Sources */,
 				8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */,
 				8E5A678A24E4581400CA329F /* DataStorage.swift in Sources */,
 				2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */,
