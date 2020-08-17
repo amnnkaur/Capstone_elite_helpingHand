@@ -16,8 +16,11 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
 //    var savedTask: [Task] = []
     var filteredTasks: [Task] = []
     var filtered: [Task] = []
+    var sortedArray: [Task] = []
+    
     @IBOutlet weak var jobTableView: UITableView!
     
+    @IBOutlet weak var sortBtn: UIButton!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var srchView: UIView!
     var image = UIImage(named: "searchicon.png")
@@ -34,11 +37,12 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()
-
     }
     
     func initials(){
         
+        
+//        sortBtn.backgroundColor = UIColor.white
         print("Current user: \(Auth.auth().currentUser?.email)")
         userName = defaults.string(forKey: "userName") ?? "noUserFound"
         userList = DataStorage.getInstance().getAllUsers()
@@ -115,6 +119,41 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
          self.jobTableView.reloadData()
     }
+    
+    @IBAction func sortByBtn(_ sender: UIButton) {
+        
+        let actionSheet = UIAlertController(title: "Sort By...", message: "", preferredStyle: .actionSheet)
+        let titleAction = UIAlertAction(title: "Title", style: .default) { (action) in
+            // sort by title
+            self.sortByTitle()
+        }
+        let dateAction = UIAlertAction(title: "Date", style: .default) { (action) in
+            //sort by date
+            self.sortByDate()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(titleAction)
+        actionSheet.addAction(dateAction)
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true)
+    }
+    
+    func sortByDate() {
+        sortedArray = filtered.sorted{
+                    $0.taskPostingDate < $1.taskPostingDate}
+        print(sortedArray)
+        filtered = sortedArray
+        self.jobTableView.reloadData()
+       }
+    
+    func sortByTitle() {
+           sortedArray = filtered.sorted{
+                       $0.taskTitle < $1.taskTitle}
+           print(sortedArray)
+           filtered = sortedArray
+           self.jobTableView.reloadData()
+          }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filtered.count

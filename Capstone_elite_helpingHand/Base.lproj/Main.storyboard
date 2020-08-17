@@ -593,15 +593,27 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhH-6G-NYA">
+                                        <rect key="frame" x="382" y="91" width="24" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="arrow.up.arrow.down" catalog="system"/>
+                                        <connections>
+                                            <action selector="sortByBtn:" destination="UwO-CY-lIf" eventType="touchUpInside" id="JZK-qS-894"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="trailing" secondItem="VLF-9x-N7u" secondAttribute="trailingMargin" id="18m-Hx-pur"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="top" secondItem="VLF-9x-N7u" secondAttribute="top" constant="88" id="1D2-jT-IeF"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="leading" secondItem="VLF-9x-N7u" secondAttribute="leadingMargin" id="AeM-Mc-5yQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="JhH-6G-NYA" secondAttribute="trailing" constant="8" id="J9w-nZ-WfA"/>
                                     <constraint firstAttribute="bottom" secondItem="zI7-wt-cIW" secondAttribute="bottom" constant="19" id="eKM-sq-P0I"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="leading" secondItem="zI7-wt-cIW" secondAttribute="leading" id="f4J-Qv-DaS"/>
                                     <constraint firstItem="zI7-wt-cIW" firstAttribute="top" secondItem="1Lj-pW-yvN" secondAttribute="bottom" constant="17" id="fJJ-ee-YI5"/>
+                                    <constraint firstItem="zI7-wt-cIW" firstAttribute="top" secondItem="JhH-6G-NYA" secondAttribute="bottom" constant="14" id="mdB-Gb-hPM"/>
+                                    <constraint firstItem="JhH-6G-NYA" firstAttribute="top" secondItem="VLF-9x-N7u" secondAttribute="top" constant="91" id="uhJ-6u-xm2"/>
                                     <constraint firstItem="1Lj-pW-yvN" firstAttribute="trailing" secondItem="zI7-wt-cIW" secondAttribute="trailing" id="xS4-sU-PWg"/>
                                 </constraints>
                             </view>
@@ -623,6 +635,7 @@
                         <outlet property="headerLabel" destination="1Lj-pW-yvN" id="SrY-sx-lBb"/>
                         <outlet property="jobTableView" destination="kPs-1q-Kph" id="YeJ-h5-NWa"/>
                         <outlet property="searchTxt" destination="zI7-wt-cIW" id="i6g-4R-PMv"/>
+                        <outlet property="sortBtn" destination="JhH-6G-NYA" id="8zK-el-7Ru"/>
                         <outlet property="srchView" destination="VLF-9x-N7u" id="SS3-6q-YyH"/>
                     </connections>
                 </viewController>
@@ -726,6 +739,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.arrow.down" catalog="system" width="128" height="96"/>
         <image name="backg.jpg" width="1920" height="1080"/>
         <image name="goforward" catalog="system" width="121" height="128"/>
         <image name="home" width="22" height="25"/>
