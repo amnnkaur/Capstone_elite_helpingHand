@@ -11,6 +11,11 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class NewTaskViewController: UIViewController {
+    
+    var finalAddress = ""
+    var finalLat = ""
+    var finalLong = ""
+    
 
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var taskDescField: UITextField!
@@ -46,4 +51,23 @@ class NewTaskViewController: UIViewController {
         let childUpdates = ["/tasks/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
     }
+    
+    
+        
+        @IBAction func unwindToTaskVC(_ unwindSegue: UIStoryboardSegue) {
+            
+//            if unwindSegue.identifier == "moveToIdentifier" {
+                let sourceViewController = unwindSegue.source as! MapViewController
+                           // Use data from the view controller which initiated the unwind segue
+                   
+                           self.finalAddress = sourceViewController.finalAddress
+                           self.finalLat = sourceViewController.finalLat
+                           self.finalLong = sourceViewController.finalLong
+
+                           print("TaskVCFianlAddress \(self.finalAddress)")
+            self.contactField.text = self.finalAddress
+//            }
+        }
+
+        
 }

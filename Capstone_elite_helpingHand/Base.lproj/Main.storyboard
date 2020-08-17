@@ -165,7 +165,7 @@
                                 <color key="tintColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="mappin" catalog="system"/>
                                 <connections>
-                                    <segue destination="Cmm-i0-ehP" kind="presentation" id="djK-d5-pvq"/>
+                                    <segue destination="Cmm-i0-ehP" kind="presentation" identifier="movePerformSegue" id="djK-d5-pvq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -210,9 +210,11 @@
                     <navigationItem key="navigationItem" id="T85-WK-xJu"/>
                     <connections>
                         <outlet property="mapView" destination="7Ls-X0-ml9" id="P2i-bx-3if"/>
+                        <segue destination="LuP-Av-fsL" kind="unwind" identifier="moveToIdentifier" unwindAction="unwindToTaskVC:" id="D8g-My-3p3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKi-Zw-vTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="LuP-Av-fsL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4502.898550724638" y="1358.7053571428571"/>
         </scene>

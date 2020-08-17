@@ -53,8 +53,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         if let places = placemarks {
                             for place in places {
                                 annotation.title = place.name
-                                annotation.subtitle = "\(place.locality!) ,  \(place.postalCode!)"
-                                self.finalAddress = place.name ?? "No Location found"
+                                annotation.subtitle = "\(place.locality ?? " ") ,  \(place.postalCode ?? " ")"
+                                self.finalAddress = "\(place.name ?? " "), \(place.subLocality ?? " "), \(place.locality ?? " ") ,\(place.postalCode ?? " ")"
                             }
                         }
                     }
@@ -65,7 +65,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                    }
                }
 
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
                   let userLocation = locations[0]
                   
@@ -118,14 +117,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 if let cntry = placemark.country {
                                         country += cntry
                                     }
-                
-//
-//                let place = Places(placeLat: self.destinationCoordinates.latitude, placeLong:self.destinationCoordinates.longitude, placeName: placeName, city: city, postalCode: postalCode, country: country)
-//
-//              print(placeName ,city, state, postalCode , country, self.destinationCoordinates.latitude, self.destinationCoordinates.longitude)
-//                self.places?.append(place)
-//                self.saveData()
-                self.navigationController?.popToRootViewController(animated: true)
                 }
             
             }
@@ -155,11 +146,15 @@ extension MapViewController {
             "Do you want to use this location?", preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Yes", style:  .default, handler: { (UIAlertAction) in
             self.geocode()
-            self.dismiss(animated: true) {
+        
                 print(self.finalAddress)
                 print(self.finalLat)
                 print(self.finalLong)
-            }
+                
+                self.performSegue(withIdentifier: "moveToIdentifier", sender: self)
+                
+                self.dismiss(animated: true, completion: nil)
+    
             }))
     
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
