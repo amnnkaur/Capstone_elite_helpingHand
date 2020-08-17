@@ -16,6 +16,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var destinationCoordinates : CLLocationCoordinate2D!
     let button = UIButton()
     var finalAddress = ""
+    var finalCity = ""
+    var finalPostalCode = ""
     var finalLat : String = ""
     var finalLong : String = ""
     
@@ -54,7 +56,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                             for place in places {
                                 annotation.title = place.name
                                 annotation.subtitle = "\(place.locality ?? " ") ,  \(place.postalCode ?? " ")"
-                                self.finalAddress = "\(place.name ?? " "), \(place.subLocality ?? " "), \(place.locality ?? " ") ,\(place.postalCode ?? " ")"
+                                self.finalAddress = "\(place.name ?? " "), \(place.subLocality ?? " ")"
+                                self.finalCity = place.locality ?? " "
+                                self.finalPostalCode = place.postalCode ?? " "
                             }
                         }
                     }

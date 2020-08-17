@@ -15,6 +15,8 @@ class NewTaskViewController: UIViewController {
     var finalAddress = ""
     var finalLat = ""
     var finalLong = ""
+    var finalCity = ""
+    var finalPostalCode = ""
     
 
     @IBOutlet weak var taskNameField: UITextField!
@@ -23,6 +25,9 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var typeField: UITextField!
     @IBOutlet weak var amountField: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var cityField: UITextField!
+    @IBOutlet weak var postalCodeField: UITextField!
     var taskID: String = ""
     var taskEmail: String = ""
      var ref = Database.database().reference()
@@ -60,12 +65,17 @@ class NewTaskViewController: UIViewController {
                 let sourceViewController = unwindSegue.source as! MapViewController
                            // Use data from the view controller which initiated the unwind segue
                    
-                           self.finalAddress = sourceViewController.finalAddress
-                           self.finalLat = sourceViewController.finalLat
-                           self.finalLong = sourceViewController.finalLong
+            self.finalAddress = sourceViewController.finalAddress
+            self.finalCity = sourceViewController.finalCity
+            self.finalPostalCode = sourceViewController.finalPostalCode
+            
+            self.finalLat = sourceViewController.finalLat
+            self.finalLong = sourceViewController.finalLong
 
-                           print("TaskVCFianlAddress \(self.finalAddress)")
-            self.contactField.text = self.finalAddress
+            print("TaskVCFianlAddress \(self.finalAddress)")
+            self.addressField.text = self.finalAddress
+            self.cityField.text = self.finalCity
+            self.postalCodeField.text = self.finalPostalCode
 //            }
         }
 
