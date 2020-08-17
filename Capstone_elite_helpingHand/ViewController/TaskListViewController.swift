@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
 //     var tasks : [Task] = []
 //    var savedTask: [Task] = []
@@ -33,6 +33,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()
+        
+        
 
     }
     
@@ -76,6 +78,23 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
            gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
            gradientLayer.opacity = 0.7
            self.srchView.layer.insertSublayer(gradientLayer, at: 0)
+        searchTxt.addTarget(self, action: #selector(searchTextChanged(_:)), for: .editingChanged)
+            
+
+    }
+    
+   @objc func searchTextChanged(_ sender: UITextField) {
+        let search = sender.text ?? ""
+        filterContentForSearchText(search)
+    }
+
+    func filterContentForSearchText(_ searchText: String) {
+        print("Filterin with:", searchText)
+//        filtered.removeAll()
+//        filtered = original.filter { thing in
+//            return "\(thing.value.lowercased())".contains(searchText.lowercased())
+//        }
+//        jobTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
