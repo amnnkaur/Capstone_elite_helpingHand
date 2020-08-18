@@ -58,8 +58,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aJw-34-FXv"/>
-                                    <segue destination="VVG-op-wgV" kind="show" id="W95-VK-qZW"/>
+                                    <segue destination="VVG-op-wgV" kind="show" id="dvm-Ly-jQe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,7 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="loginBtn" destination="Ilk-Rr-8WJ" id="6pv-sO-Faw"/>
+                        <outlet property="loginBtn" destination="Ilk-Rr-8WJ" id="2gG-bH-jfz"/>
                         <outlet property="signUpBtn" destination="2Wu-OK-tf8" id="COL-s6-Vo4"/>
                     </connections>
                 </viewController>
@@ -261,11 +260,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ls-X0-ml9">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ls-X0-ml9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </mapView>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Alh-6u-8Tk">
-                                <rect key="frame" x="300" y="753" width="94" height="32"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="-100" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Alh-6u-8Tk">
+                                <rect key="frame" x="300" y="776" width="94" height="32"/>
                                 <connections>
                                     <action selector="zoomStepperChanged:" destination="Cmm-i0-ehP" eventType="valueChanged" id="lbn-wg-S51"/>
                                 </connections>
@@ -273,12 +272,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Alh-6u-8Tk" firstAttribute="trailing" secondItem="Pzz-4x-kBg" secondAttribute="trailingMargin" id="8my-Wx-bqS"/>
-                            <constraint firstAttribute="bottom" secondItem="7Ls-X0-ml9" secondAttribute="bottom" id="9u0-Kd-NAJ"/>
-                            <constraint firstAttribute="trailing" secondItem="7Ls-X0-ml9" secondAttribute="trailing" id="Ho6-3r-hdL"/>
-                            <constraint firstItem="Alh-6u-8Tk" firstAttribute="top" secondItem="Pzz-4x-kBg" secondAttribute="topMargin" constant="753" id="TuC-CM-Rce"/>
-                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="leading" secondItem="Pzz-4x-kBg" secondAttribute="leading" id="q3C-cf-Q2j"/>
-                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="top" secondItem="Pzz-4x-kBg" secondAttribute="top" id="yye-3O-Q4E"/>
+                            <constraint firstItem="Alh-6u-8Tk" firstAttribute="bottom" secondItem="XQI-lK-KiS" secondAttribute="bottom" id="4hK-XR-VhE"/>
+                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="top" secondItem="XQI-lK-KiS" secondAttribute="top" id="6AV-Eb-r0C"/>
+                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="centerY" secondItem="Pzz-4x-kBg" secondAttribute="centerY" id="F87-te-s5h"/>
+                            <constraint firstItem="Alh-6u-8Tk" firstAttribute="trailing" secondItem="Pzz-4x-kBg" secondAttribute="trailingMargin" id="Iq8-9q-4hL"/>
+                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="centerX" secondItem="Pzz-4x-kBg" secondAttribute="centerX" id="yBC-Aq-Lsf"/>
+                            <constraint firstItem="7Ls-X0-ml9" firstAttribute="leading" secondItem="XQI-lK-KiS" secondAttribute="leading" id="zvV-xZ-g6q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XQI-lK-KiS"/>
                     </view>
@@ -292,7 +291,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKi-Zw-vTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="LuP-Av-fsL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4502.898550724638" y="1358.7053571428571"/>
+            <point key="canvasLocation" x="4501.449275362319" y="1357.3660714285713"/>
         </scene>
         <!--Profile-->
         <scene sceneID="AEZ-0l-g4w">

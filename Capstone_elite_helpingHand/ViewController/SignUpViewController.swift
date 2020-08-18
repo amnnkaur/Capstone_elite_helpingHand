@@ -52,6 +52,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         }
     }
 
+    var keyboardFlag: Bool = false
     //MARK:- Firebase variables
 //    var ref: DatabaseReference!
     var ref = Database.database().reference()
@@ -77,12 +78,16 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     }
     
     func initials(){
+        self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         errorLabel.text = "All fields are mandatory"
         firstName.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
         emailAddress.addTarget(self, action: #selector(checkEmailAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
         password.addTarget(self, action: #selector(checkPasswordAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
         confirmPassword.addTarget(self, action: #selector(checkConfirmPasswordAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
         contactNumber.addTarget(self, action: #selector(checkContactNumberAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        
     }
     
     @objc func checkAndDisplayError(textfield: UITextField){
@@ -124,6 +129,20 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
               }
           }
     
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        if !self.keyboardFlag{
+            self.view.frame.origin.y -= 110
+            self.keyboardFlag = true
+        }
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+        if self.keyboardFlag{
+            self.view.frame.origin.y += 110
+            self.keyboardFlag = false
+        }
+    }
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -198,8 +217,8 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let postalCode = self.postalAddress.text
         
         if(self.errorLabel.text?.isEmpty != true || fName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true
-            || contact?.isEmpty == true || postalCode?.isEmpty ==  true){
-            displayAlertForTextFields(title: "Error!", message: "Fill out mandatory fields", flag: 0)
+            || contact?.isEmpty == true || postalCode?.isEmpty ==  true || psswrd?.isPassword() == false){
+            displayAlertForTextFields(title: "Error!", message: "Provide data in accurate format", flag: 0)
         }else{
              let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
             register(email: email!, password: psswrd!, credentials: insert)
@@ -228,3 +247,20 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     }
 }
 
+extension SignUpViewController {
+    
+    //MARK: hide keyboard by swiping down
+    func hideKeyboardWhenTappedAround() {
+        let swipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
+        swipe.direction = .up
+        self.view.addGestureRecognizer(swipe)
+
+
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+  
+}

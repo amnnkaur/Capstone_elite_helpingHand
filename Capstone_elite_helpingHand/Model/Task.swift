@@ -10,27 +10,35 @@ import Foundation
 
 class Task {
 
-var taskID : String
-var taskTitle : String
-var taskDesc : String
-var taskPostingDate : String
-var tasktype : String
-var taskLocation : String
-var taskPay : String
-var taskTime : String
-var taskEmail: String
+    var taskID : String
+    var taskTitle : String
+    var taskDesc : String
+    var taskDueDate : String
+    var tasktype : String
+    var taskAddress : String
+    var taskPay : String
+    var taskEmail: String
+    var taskLat: String
+    var taskLong: String
+    var taskContact: String
+    var taskCity: String
+    var taskPostalCode: String
     
-    init(taskID: String, taskTitle: String, taskDesc: String, taskPostingDate: String, tasktype: String, taskLocation: String, taskPay: String, taskTime: String,
-         taskEmail: String) {
+    init(taskID: String, taskTitle: String, taskDesc: String, taskDueDate: String, tasktype: String, taskAddress: String, taskPay: String,
+         taskEmail: String, taskLat: String, taskLong: String, taskContact: String, taskCity: String, taskPostalCode: String) {
         self.taskID = taskID
         self.taskTitle = taskTitle
         self.taskDesc = taskDesc
-        self.taskPostingDate = taskPostingDate
+        self.taskDueDate = taskDueDate
         self.tasktype = tasktype
-        self.taskLocation = taskLocation
+        self.taskAddress = taskAddress
         self.taskPay = taskPay
-        self.taskTime = taskTime
         self.taskEmail = taskEmail
+        self.taskLat = taskLat
+        self.taskLong = taskLong
+        self.taskContact = taskContact
+        self.taskCity = taskCity
+        self.taskPostalCode = taskPostalCode
     }
 
 }

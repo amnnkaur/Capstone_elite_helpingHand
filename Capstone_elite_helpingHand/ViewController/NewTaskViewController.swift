@@ -47,6 +47,9 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         createDatePicker()
         createJobPicker()
         createAmountPicker()
+        
+        self.hideKeyboardWhenTappedAround()
+        
      }
    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -191,6 +194,22 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             self.postalCodeField.text = self.finalPostalCode
 //            }
         }
+}
 
-        
+extension NewTaskViewController {
+    
+    //MARK: hide keyboard by swiping down
+    func hideKeyboardWhenTappedAround() {
+        let swipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(NewTaskViewController.dismissKeyboard))
+        swipe.direction = .down
+        self.view.addGestureRecognizer(swipe)
+
+
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+  
 }

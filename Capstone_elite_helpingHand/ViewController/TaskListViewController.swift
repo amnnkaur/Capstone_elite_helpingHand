@@ -9,14 +9,15 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import CoreLocation
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
-//     var tasks : [Task] = []
-//    var savedTask: [Task] = []
+
     var filteredTasks: [Task] = []
     var filtered: [Task] = []
     var sortedArray: [Task] = []
+    
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var jobTableView: UITableView!
     
@@ -40,9 +41,6 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func initials(){
-        
-        
-//        sortBtn.backgroundColor = UIColor.white
         print("Current user: \(Auth.auth().currentUser?.email)")
         userName = defaults.string(forKey: "userName") ?? "noUserFound"
         userList = DataStorage.getInstance().getAllUsers()
@@ -83,7 +81,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
            self.srchView.layer.insertSublayer(gradientLayer, at: 0)
         searchTxt.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         filtered = filteredTasks
-
+        
     }
     
   @objc func searchTextChanged(textField: UITextField) {
@@ -98,7 +96,6 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     func filterContentForSearchText(_ searchText: String) {
-        print("Filterin with:", searchText)
         filtered.removeAll()
         filtered = filteredTasks.filter { thing in
             return "\(thing.taskTitle.lowercased())".contains(searchText.lowercased())
@@ -114,7 +111,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         taskList = DataStorage.getInstance().getAllTasks()
        for item in taskList{
                   if item.taskEmail != Auth.auth().currentUser!.email{
-                      self.filteredTasks.append(item)
+                        self.filteredTasks.append(item)
                 }
         }
          self.jobTableView.reloadData()
@@ -140,7 +137,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func sortByDate() {
         sortedArray = filtered.sorted{
-                    $0.taskPostingDate < $1.taskPostingDate}
+                    $0.taskDueDate < $1.taskDueDate}
         print(sortedArray)
         filtered = sortedArray
         self.jobTableView.reloadData()
@@ -202,10 +199,10 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.layer.masksToBounds = true;
                 cell.clipsToBounds = false;
                 
-                cell.postedBy.text = task.taskTime
+                cell.postedBy.text = task.taskEmail
                 cell.jobTitle.text = task.taskTitle
                 cell.jobDesc.text = task.taskDesc
-                cell.postedDate.text = task.taskPostingDate
+                cell.postedDate.text = task.taskDueDate
                 
                 return cell
             }
@@ -216,23 +213,37 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             
                     let message = UIAction(title: "Ignite this", image: UIImage(systemName: "message"),
                                            attributes: .init()) { _ in
-                                            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskPostingDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
-                        let insert = ["taskTitle": self.filteredTasks[indexPath.row].taskTitle, "taskUID":self.filteredTasks[indexPath.row].taskID, "taskEmail": self.filteredTasks[indexPath.row].taskEmail, "date": self.filteredTasks[indexPath.row].taskPostingDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
+                                            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskDueDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+                        let insert = ["taskTitle": self.filteredTasks[indexPath.row].taskTitle, "taskUID":self.filteredTasks[indexPath.row].taskID, "taskEmail": self.filteredTasks[indexPath.row].taskEmail, "date": self.filteredTasks[indexPath.row].taskDueDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
                           guard let key = self.ref.child("messages").childByAutoId().key else {return}
                           let childUpdates = ["/messages/\(key)": insert]
                           self.ref.updateChildValues(childUpdates)
                 
                 }
-                
-//                    let save = UIAction(title: "Save", image: UIImage(systemName: "trash"),
-//                                    attributes: .init()) { _ in
-//                              }
-                
-                     return UIContextMenuConfiguration(identifier: nil,
-                       previewProvider: nil) { _ in
+                return UIContextMenuConfiguration(identifier: nil,
+                    previewProvider: nil) { _ in
                        UIMenu(title: "Actions", children: [ message])
-                     }
-                   }
-
-    
+            }
         }
+
+    func distanceBetween(latitude: Double, longitude: Double) -> Bool {
+
+        let taskLocation: CLLocation = CLLocation(latitude: latitude,
+                                                       longitude: longitude)
+
+        let usersCurrentLocation: CLLocation = CLLocation(latitude: 43.697890, longitude: -79.791500)
+
+        var inOrOut: Bool
+                                                              
+        let distanceInMeters: CLLocationDistance = usersCurrentLocation.distance(from: taskLocation)
+
+        if distanceInMeters < 7000 {
+
+            inOrOut = true
+        } else {
+
+           inOrOut = false
+        }
+        return inOrOut
+    }
+}
