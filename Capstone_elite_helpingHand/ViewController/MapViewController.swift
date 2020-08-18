@@ -20,7 +20,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var finalPostalCode = ""
     var finalLat : String = ""
     var finalLong : String = ""
-    
+    @IBOutlet weak var zoomStepper: UIStepper!
+     var stepperComparingValue = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                       mapView.addGestureRecognizer(tap)
 
     }
+    
+    @IBAction func zoomStepperChanged(_ sender: UIStepper) {
+        
+        let stepperValue = zoomStepper.value
+        if(stepperValue > self.stepperComparingValue){
+
+            var region: MKCoordinateRegion = mapView.region
+            region.span.latitudeDelta /= 2.0
+            region.span.longitudeDelta /= 2.0
+            mapView.setRegion(region, animated: true)
+            self.stepperComparingValue = stepperValue
+        }else if(stepperValue < self.stepperComparingValue){
+
+            var region: MKCoordinateRegion = mapView.region
+              region.span.latitudeDelta = min(region.span.latitudeDelta * 2.0, 180.0)
+              region.span.longitudeDelta = min(region.span.longitudeDelta * 2.0, 180.0)
+              mapView.setRegion(region, animated: true)
+            self.stepperComparingValue = stepperValue
+        }
+    }
+    
     
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
                 

@@ -264,11 +264,19 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ls-X0-ml9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </mapView>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Alh-6u-8Tk">
+                                <rect key="frame" x="300" y="753" width="94" height="32"/>
+                                <connections>
+                                    <action selector="zoomStepperChanged:" destination="Cmm-i0-ehP" eventType="valueChanged" id="lbn-wg-S51"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Alh-6u-8Tk" firstAttribute="trailing" secondItem="Pzz-4x-kBg" secondAttribute="trailingMargin" id="8my-Wx-bqS"/>
                             <constraint firstAttribute="bottom" secondItem="7Ls-X0-ml9" secondAttribute="bottom" id="9u0-Kd-NAJ"/>
                             <constraint firstAttribute="trailing" secondItem="7Ls-X0-ml9" secondAttribute="trailing" id="Ho6-3r-hdL"/>
+                            <constraint firstItem="Alh-6u-8Tk" firstAttribute="top" secondItem="Pzz-4x-kBg" secondAttribute="topMargin" constant="753" id="TuC-CM-Rce"/>
                             <constraint firstItem="7Ls-X0-ml9" firstAttribute="leading" secondItem="Pzz-4x-kBg" secondAttribute="leading" id="q3C-cf-Q2j"/>
                             <constraint firstItem="7Ls-X0-ml9" firstAttribute="top" secondItem="Pzz-4x-kBg" secondAttribute="top" id="yye-3O-Q4E"/>
                         </constraints>
@@ -277,6 +285,7 @@
                     <navigationItem key="navigationItem" id="T85-WK-xJu"/>
                     <connections>
                         <outlet property="mapView" destination="7Ls-X0-ml9" id="P2i-bx-3if"/>
+                        <outlet property="zoomStepper" destination="Alh-6u-8Tk" id="9nN-Ak-hge"/>
                         <segue destination="LuP-Av-fsL" kind="unwind" identifier="moveToIdentifier" unwindAction="unwindToTaskVC:" id="D8g-My-3p3"/>
                     </connections>
                 </viewController>
