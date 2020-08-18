@@ -239,7 +239,7 @@
                     <tabBarItem key="tabBarItem" title="New" image="plus" catalog="system" id="W1p-5X-Q9A"/>
                     <connections>
                         <outlet property="addressField" destination="wwQ-sW-23c" id="xV6-hZ-2fn"/>
-                        <outlet property="amountField" destination="wwQ-sW-23c" id="FHH-gS-Whd"/>
+                        <outlet property="amountField" destination="NZd-RT-sDa" id="NmE-hu-lob"/>
                         <outlet property="cityField" destination="L2f-bI-lE3" id="Q43-vD-mYl"/>
                         <outlet property="contactField" destination="9ee-ZX-ZVT" id="0vE-yf-flH"/>
                         <outlet property="dateField" destination="GJm-i6-6Km" id="14P-do-7di"/>

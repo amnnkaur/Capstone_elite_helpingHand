@@ -19,6 +19,8 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var finalPostalCode = ""
     let datePicker:UIDatePicker = UIDatePicker()
     var jobTypePicker = UIPickerView()
+    var amountPicker = UIPickerView()
+    var amountArray = Array(0...100)
     
     let jobTypeArray = ["Furniture assembly", "Minor home repair", "Hauling", "Car washing", "Heavy lifting", "Yard work", "General cleaning", "Plumbing", "Mounting", "Installations", "Electrical help", "Carpentry help", "Other"]
 
@@ -31,6 +33,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var addressField: UITextField!
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var postalCodeField: UITextField!
+    
     var taskID: String = ""
     var taskEmail: String = ""
      var ref = Database.database().reference()
@@ -45,10 +48,22 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         jobTypePicker.delegate = self
         jobTypePicker.dataSource = self
         typeField.inputView = jobTypePicker
+        jobTypePicker.tag = 0
+        amountPicker.delegate = self
+        amountPicker.dataSource = self
+        amountField.inputView = amountPicker
+        amountPicker.tag = 1
+       
      }
    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        typeField.text = jobTypeArray[row]
+        
+        if pickerView.tag == 0 {
+               return typeField.text = jobTypeArray[row]
+        }
+         else if pickerView.tag == 1 {
+               return amountField.text = "$ \(amountArray[row])/hr"
+           }
     }
         
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,12 +71,26 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
        }
        
        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return jobTypeArray.count
+        
+         if pickerView.tag == 0 {
+               return jobTypeArray.count
+         }
+         else if pickerView.tag == 1{
+               return amountArray.count
+        }
+        return 0
        }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-       let row = jobTypeArray[row]
-       return row
+        
+        if pickerView.tag == 0 {
+            return jobTypeArray[row]
+        }
+        else if pickerView.tag == 1{
+            return "$ \(amountArray[row])/hr"
+        }
+
+        return " "
     }
     /*
     // MARK: - Navigation
