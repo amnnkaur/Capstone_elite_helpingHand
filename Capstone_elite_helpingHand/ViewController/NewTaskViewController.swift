@@ -128,8 +128,20 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
         
 
-    @IBAction func addToFirebase(_ sender: Any) {
-        let insert = ["taskName": taskNameField.text ?? "", "taskDescription":taskDescField.text ?? "", "contact": contactField.text ?? "", "date": dateField.text ?? "", "type": typeField.text ?? "", "amount": amountField.text ?? "", "taskID": self.taskID, "taskEmail": self.taskEmail]
+    @IBAction func addToFirebase(_ sender: Any)
+    {
+        let taskName = taskNameField.text ?? ""
+        let taskDesc = taskDescField.text ?? ""
+        let contact = contactField.text ?? ""
+        let date = dateField.text ?? ""
+        let type = typeField.text ?? ""
+        let amount = amountField.text ?? ""
+        let address = addressField.text ?? ""
+        let city = cityField.text ?? ""
+        let postalCode = postalCodeField.text ?? ""
+       
+        
+        let insert = ["taskName": taskName , "taskDescription":taskDesc, "contact": contact, "date": date, "type": type, "amount": amount, "taskID": self.taskID, "taskEmail": self.taskEmail, "address": address, "city": city, "postalCode": postalCode, "taskLat": self.finalLat, "taskLong": self.finalLong]
         guard let key = self.ref.child("tasks").childByAutoId().key else {return}
         let childUpdates = ["/tasks/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
