@@ -36,7 +36,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     var taskID: String = ""
     var taskEmail: String = ""
-     var ref = Database.database().reference()
+    var ref = Database.database().reference()
     override func viewDidLoad() {
          super.viewDidLoad()
 
@@ -45,21 +45,14 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.taskEmail = Auth.auth().currentUser?.email ?? "no email found"
         
         createDatePicker()
-        jobTypePicker.delegate = self
-        jobTypePicker.dataSource = self
-        typeField.inputView = jobTypePicker
-        jobTypePicker.tag = 0
-        amountPicker.delegate = self
-        amountPicker.dataSource = self
-        amountField.inputView = amountPicker
-        amountPicker.tag = 1
-       
+        createJobPicker()
+        createAmountPicker()
      }
    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView.tag == 0 {
-               return typeField.text = jobTypeArray[row]
+            return typeField.text = jobTypeArray[row]
         }
          else if pickerView.tag == 1 {
                return amountField.text = "$ \(amountArray[row])/hr"
@@ -92,19 +85,48 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
         return " "
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func createJobPicker(){
+        jobTypePicker.delegate = self
+        jobTypePicker.dataSource = self
+        typeField.inputView = jobTypePicker
+        jobTypePicker.tag = 0
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+                   
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(jobDonePressed))
+        toolbar.setItems([doneBtn], animated: true)
+                   
+        typeField.inputAccessoryView = toolbar
     }
-    */
+    
+    @objc func jobDonePressed() {
+        self.typeField.endEditing(true)
+        }
+    
+    func createAmountPicker(){
+        amountPicker.delegate = self
+        amountPicker.dataSource = self
+        amountField.inputView = amountPicker
+        amountPicker.tag = 1
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+                   
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(amountDonePressed))
+        toolbar.setItems([doneBtn], animated: true)
+                   
+        amountField.inputAccessoryView = toolbar
+    }
+    
+    @objc func amountDonePressed() {
+        self.amountField.endEditing(true)
+        }
     
     func createDatePicker(){
             
-          datePicker.datePickerMode = UIDatePicker.Mode.date
+            datePicker.datePickerMode = UIDatePicker.Mode.date
 
             let toolbar = UIToolbar()
             toolbar.sizeToFit()
@@ -126,6 +148,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     //        self.datePicker.endEditing(true)
             self.dateField.endEditing(true)
         }
+    
         
 
     @IBAction func addToFirebase(_ sender: Any)
