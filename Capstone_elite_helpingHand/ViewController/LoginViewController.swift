@@ -17,9 +17,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var rememberMe: UISwitch!
+    let getLocation = GetLocation()
+    var taskList: [Task] = []
+    var userLatitude: Double = 0.0
+    var userLongitude: Double = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
-
+initials()
         // Do any additional setup after loading the view.
          rememberMe.addTarget(self, action: #selector(self.stateChanged), for: .valueChanged)
                 let defaults: UserDefaults? = UserDefaults.standard
@@ -34,8 +38,38 @@ class LoginViewController: UIViewController {
                 else {
                     rememberMe.setOn(false, animated: false)
                 }
-            }
+    }
 
+    func initials() {
+         taskList = DataStorage.getInstance().getAllTasks()
+        getLocation.run {
+                  if let location = $0 {
+                      self.userLatitude = location.coordinate.latitude
+                      self.userLongitude = location.coordinate.longitude
+                      self.filterTaskArrayOverGeolocation()
+                  } else {
+                      print("Get Location failed \(self.getLocation.didFailWithError)")
+                  }
+              }
+    }
+    
+    
+    func filterTaskArrayOverGeolocation() {
+        var filteredTaskList: [Task] = []
+        for item in taskList{
+            if (getLocation.distanceBetween(userlatitude: self.userLatitude, userlongitude: self.userLongitude, taskLatitude: (item.taskLat as NSString).doubleValue, tasklongitude: (item.taskLong as NSString).doubleValue)){
+                    filteredTaskList.append(item)
+            }
+        }
+        
+        DataStorage.getInstance().removeAllTasks()
+        for item in filteredTaskList{
+            DataStorage.getInstance().addTask(task: item)
+        }
+        
+        filteredTaskList.removeAll()
+    }
+    
     @objc func stateChanged(_ switchState: UISwitch) {
 
                 let defaults: UserDefaults? = UserDefaults.standard

@@ -225,25 +225,4 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                        UIMenu(title: "Actions", children: [ message])
             }
         }
-
-    func distanceBetween(latitude: Double, longitude: Double) -> Bool {
-
-        let taskLocation: CLLocation = CLLocation(latitude: latitude,
-                                                       longitude: longitude)
-
-        let usersCurrentLocation: CLLocation = CLLocation(latitude: 43.697890, longitude: -79.791500)
-
-        var inOrOut: Bool
-                                                              
-        let distanceInMeters: CLLocationDistance = usersCurrentLocation.distance(from: taskLocation)
-
-        if distanceInMeters < 7000 {
-
-            inOrOut = true
-        } else {
-
-           inOrOut = false
-        }
-        return inOrOut
-    }
 }

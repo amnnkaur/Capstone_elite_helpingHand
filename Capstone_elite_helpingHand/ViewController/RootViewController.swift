@@ -9,13 +9,11 @@
 import UIKit
 import SwiftUI
 import UserNotifications
-import CoreLocation
 
-class RootViewController: UIViewController, CLLocationManagerDelegate {
+class RootViewController: UIViewController {
 
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
-    var locationManager: CLLocationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +23,7 @@ class RootViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func initials(){
+       
         loginBtn.layer.borderWidth = 1.0
         loginBtn.layer.cornerRadius = 8.0
         loginBtn.layer.borderColor = UIColor.darkGray.cgColor
@@ -32,6 +31,7 @@ class RootViewController: UIViewController, CLLocationManagerDelegate {
         signUpBtn.layer.borderWidth = 1.0
         signUpBtn.layer.cornerRadius = 8.0
         signUpBtn.layer.borderColor = UIColor.darkGray.cgColor
+
     }
         //MARK: Notification centre
      func notificationsCall() {
