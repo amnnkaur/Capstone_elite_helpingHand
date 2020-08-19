@@ -10,7 +10,7 @@ import UIKit
 
 class TaskDetailViewController: UIViewController {
     
-    var task: [Task] = []
+    var task: Task = Task(taskID: "", taskTitle: "", taskDesc: "", taskDueDate: "", tasktype: "", taskAddress: "", taskPay: "", taskEmail: "", taskLat: "", taskLong: "", taskContact: "", taskCity: "", taskPostalCode: "")
 
     @IBOutlet weak var favBtn: UIButton!
     @IBOutlet weak var taskDetailView: UIView!
@@ -30,21 +30,35 @@ class TaskDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-    gradientLayer.frame = taskDetailView.bounds
-    gradientLayer.colors = [UIColor.red.cgColor,UIColor.orange.cgColor]
-    gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
-    gradientLayer.opacity = 0.7
-    self.taskDetailView.layer.insertSublayer(gradientLayer, at: 0)
-
-    favBtn.layer.cornerRadius = 20
-    favBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    
-        msgBtn.contentVerticalAlignment = .fill
-        msgBtn.contentHorizontalAlignment = .fill
+        initials()
         
     }
     
+    func initials() {
+        gradientLayer.frame = taskDetailView.bounds
+        gradientLayer.colors = [UIColor.red.cgColor,UIColor.orange.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
+        gradientLayer.opacity = 0.7
+        self.taskDetailView.layer.insertSublayer(gradientLayer, at: 0)
 
+        favBtn.layer.cornerRadius = 20
+        favBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+            msgBtn.contentVerticalAlignment = .fill
+            msgBtn.contentHorizontalAlignment = .fill
+        
+        labelValues()
+    }
+
+    func labelValues() {
+        self.taskTitle.text = task.taskTitle
+        self.taskDesc.text = task.taskDesc
+        self.address.text = "\(task.taskAddress), \(task.taskCity), \(task.taskPostalCode)"
+        self.contact.text = task.taskContact
+        self.date.text = task.taskDueDate
+        self.amount.text? = "Amount: \(task.taskPay)"
+    }
+    
     /*
     // MARK: - Navigation
 

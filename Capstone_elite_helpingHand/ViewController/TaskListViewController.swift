@@ -189,7 +189,9 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 let task = self.filtered[indexPath.row]
                 
-                
+                let backgroundColorView = UIView()
+                backgroundColorView.backgroundColor = UIColor.clear
+                cell.selectedBackgroundView = backgroundColorView
                 cell.layer.shadowOffset = CGSize(width: 0, height: 2)
                 cell.layer.shadowColor = UIColor.black.cgColor
                 cell.layer.shadowRadius = 5
@@ -207,7 +209,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 return cell
             }
             
-            func tableView(_ tableView: UITableView,
+    func tableView(_ tableView: UITableView,
                      contextMenuConfigurationForRowAt indexPath: IndexPath,
                      point: CGPoint) -> UIContextMenuConfiguration? {
             
@@ -227,11 +229,13 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let task = self.filtered[indexPath.row]
+        let task = self.filtered[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let viewController = storyboard.instantiateViewController(identifier: "TaskDetailVC") as! TaskDetailViewController 
-        
-            navigationController?.pushViewController(viewController, animated: true)
+        let viewController = storyboard.instantiateViewController(identifier: "TaskDetailVC") as! TaskDetailViewController
+        viewController.task = task
+        print("cityyyy: \(viewController.task.taskCity)")
+//            navigationController?.pushViewController(viewController, animated: true)
+        present(viewController, animated: true, completion: nil)
     
     }
 }

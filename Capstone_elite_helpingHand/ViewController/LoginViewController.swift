@@ -112,18 +112,17 @@ initials()
                  print("success")
 //                self.displayAlert(title: "Success", message: "You are successfully logged in")
                 self.dismiss(animated: true) {
-//                    let sb = UIStoryboard(name: "Main", bundle: nil)
-//                    let VC = sb.instantiateViewController(withIdentifier: "TaskListViewController") as! TaskListViewController
-//                    let navRootView = UINavigationController(rootViewController: VC)
-//                    self.present(navRootView, animated: true, completion: nil)
-                    
                     let defaults = UserDefaults.standard
                     defaults.set(userName, forKey: "userName")
 //
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "appTabBar") as! UITabBarController
 //                    UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController!.present(viewController, animated: true, completion: nil)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                         UIApplication.shared.keyWindow?.rootViewController = viewController
+                    }
+                   
                 }
        
 //                 UserDefaults.standard.set(true, forKey: "status")
