@@ -46,7 +46,7 @@ initials()
                   if let location = $0 {
                       self.userLatitude = location.coordinate.latitude
                       self.userLongitude = location.coordinate.longitude
-                      self.filterTaskArrayOverGeolocation()
+//                      self.filterTaskArrayOverGeolocation()
                   } else {
                       print("Get Location failed \(self.getLocation.didFailWithError)")
                   }

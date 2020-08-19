@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A1AF49124EDAD2400C466C9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */; };
 		2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */; };
 		2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */; };
 		2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1924E39972005F6CD9 /* Task.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		2A56FE1924E39972005F6CD9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				8E2A628124E5A04E0080274D /* ChatViewController.swift */,
 				8E2A628D24E700270080274D /* MessagesTableViewController.swift */,
 				2A737A4624EB0DB20058805A /* MapViewController.swift */,
+				2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A1AF49124EDAD2400C466C9 /* TaskDetailViewController.swift in Sources */,
 				8E5A678C24E4586F00CA329F /* User.swift in Sources */,
 				8E2A628E24E700270080274D /* MessagesTableViewController.swift in Sources */,
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,

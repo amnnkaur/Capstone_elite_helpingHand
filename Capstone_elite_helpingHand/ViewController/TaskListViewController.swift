@@ -225,4 +225,13 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                        UIMenu(title: "Actions", children: [ message])
             }
         }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let task = self.filtered[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(identifier: "TaskDetailVC") as! TaskDetailViewController 
+        
+            navigationController?.pushViewController(viewController, animated: true)
+    
+    }
 }
