@@ -16,7 +16,6 @@ class RootViewController: UIViewController {
     @IBOutlet weak var signUpBtn: UIButton!
     
     @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
-    var flag: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,10 +100,6 @@ class RootViewController: UIViewController {
     @IBAction func unwindToRootVC(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source as! LoginViewController
         // Use data from the view controller which initiated the unwind segue
-        
-        self.flag = sourceViewController.flag
-        print(flag)
-        
         self.loginActivityIndicator.startAnimating()
     }
 

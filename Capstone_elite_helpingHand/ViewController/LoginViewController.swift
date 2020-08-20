@@ -22,8 +22,7 @@ class LoginViewController: UIViewController {
     var userList: [User] = []
     var userLatitude: Double = 0.0
     var userLongitude: Double = 0.0
-    var flag: Bool = true
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()

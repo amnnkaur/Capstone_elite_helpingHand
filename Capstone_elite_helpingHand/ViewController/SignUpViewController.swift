@@ -216,10 +216,24 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let radiusValue = self.radiusField.text
         let postalCode = self.postalAddress.text
         
-        if(self.errorLabel.text?.isEmpty != true || fName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true
-            || contact?.isEmpty == true || postalCode?.isEmpty ==  true || psswrd?.isPassword() == false){
-            displayAlertForTextFields(title: "Error!", message: "Provide data in accurate format", flag: 0)
-        }else{
+        if(self.errorLabel.text?.isEmpty != true){
+         displayAlertForTextFields(title: "Error", message: "Provide data in accurate format", flag: 0)
+        }
+        else if(fName?.isEmpty == true || lName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true || contact?.isEmpty == true || postalCode?.isEmpty ==  true || radiusValue?.isEmpty == true){
+            displayAlertForTextFields(title: "Empty fields", message: "Required fields should be filled", flag: 0)
+        }
+        else if(email?.isEmail() == false){
+            displayAlertForTextFields(title: "Email", message: "Invalid email address", flag: 0)
+        }else if(psswrd?.isPassword() == false || confirmPsswrd?.isPassword() == false){
+            displayAlertForTextFields(title: "Password", message: "Must contain: 1 uppercase, 1 digit, 1 lowercase, 1 symbol and min 8 characters", flag: 0)
+        }
+        else if(confirmPsswrd != psswrd){
+            displayAlertForTextFields(title: "Confirm Password", message: "Password doesn't match", flag: 0)
+        }
+        else if(contact?.isNumber() == false){
+            displayAlertForTextFields(title: "Contact", message: "Contact number should be in this format: xxx-xxx-xxxx", flag: 0)
+        }
+        else{
              let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"radius": radiusValue,"postal": postalCode]
             register(email: email!, password: psswrd!, credentials: insert)
         }
