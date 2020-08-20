@@ -13,6 +13,9 @@ import CoreLocation
 
 class TaskListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    let transiton = SlideInTransition()
+    var topView: UIView?
+    
     var filteredTasks: [Task] = []
     var filtered: [Task] = []
     var sortedArray: [Task] = []
@@ -31,7 +34,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     let defaults = UserDefaults.standard
     var userName: String?
     var ref = Database.database().reference()
-     var userList: [User] = []
+    var userList: [User] = []
     var taskList: [Task] = []
     
     //MARK: View did load()
@@ -94,7 +97,34 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     }
+    
+    @IBAction func didTapBtn(_ sender: UIButton) {
+        guard let menuViewController = storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController else { return }
+               menuViewController.didTapMenuType = { menuType in
+                   self.transitionToNew(menuType)
+               }
+               menuViewController.modalPresentationStyle = .overCurrentContext
+               menuViewController.transitioningDelegate = self
+               present(menuViewController, animated: true)
+    }
+    
+    func transitionToNew(_ menuType: MenuType) {
+        let title = String(describing: menuType).capitalized
+        self.title = title
 
+        topView?.removeFromSuperview()
+        switch menuType {
+        case .myTasks:
+            break
+        case .toDoTasks:
+            break
+        case .logout:
+           break
+        default:
+            break
+        }
+    }
+    
     func filterContentForSearchText(_ searchText: String) {
         filtered.removeAll()
         filtered = filteredTasks.filter { thing in
@@ -237,5 +267,17 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
 //            navigationController?.pushViewController(viewController, animated: true)
         present(viewController, animated: true, completion: nil)
     
+    }
+}
+extension TaskListViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transiton.isPresenting = true
+        return transiton
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transiton.isPresenting = false
+        return transiton
     }
 }

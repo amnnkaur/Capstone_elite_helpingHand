@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2A1AF49124EDAD2400C466C9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */; };
+		2A1AF4B524EE0C4500C466C9 /* slideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */; };
+		2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */; };
 		2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */; };
 		2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */; };
 		2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1924E39972005F6CD9 /* Task.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideInTransition.swift; sourceTree = "<group>"; };
+		2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		2A56FE1924E39972005F6CD9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				8E2A628D24E700270080274D /* MessagesTableViewController.swift */,
 				2A737A4624EB0DB20058805A /* MapViewController.swift */,
 				2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */,
+				2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */,
+				2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -353,8 +359,10 @@
 				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
 				8E2A628624E5A0C80080274D /* Message.swift in Sources */,
 				8E2A629024E71FF60080274D /* CustomerMessages.swift in Sources */,
+				2A1AF4B524EE0C4500C466C9 /* slideInTransition.swift in Sources */,
 				8E2A628424E5A0B70080274D /* Chat.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
+				2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
