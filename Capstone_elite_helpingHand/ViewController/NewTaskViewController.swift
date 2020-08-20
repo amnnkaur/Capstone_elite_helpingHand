@@ -166,6 +166,7 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let city = cityField.text ?? ""
         let postalCode = postalCodeField.text ?? ""
        
+        DataStorage.getInstance().addUserTask(userTask: Task(taskID: self.taskID, taskTitle: taskName, taskDesc: taskDesc, taskDueDate: date, tasktype: type, taskAddress: address, taskPay: amount, taskEmail: self.taskEmail, taskLat: self.finalLat, taskLong: self.finalLong, taskContact: contact, taskCity: city, taskPostalCode: postalCode))
         
         let insert = ["taskName": taskName , "taskDescription":taskDesc, "contact": contact, "date": date, "type": type, "amount": amount, "taskID": self.taskID, "taskEmail": self.taskEmail, "address": address, "city": city, "postalCode": postalCode, "taskLat": self.finalLat, "taskLong": self.finalLong]
         guard let key = self.ref.child("tasks").childByAutoId().key else {return}

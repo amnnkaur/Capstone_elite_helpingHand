@@ -31,7 +31,7 @@ class MyTaskTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection
                                    section: Int) -> String? {
-          return "Tasks posted by you are"
+          return "Tasks posted by you:"
        }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
