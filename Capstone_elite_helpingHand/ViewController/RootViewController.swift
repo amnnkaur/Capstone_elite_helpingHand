@@ -15,6 +15,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
     
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
     var flag: Bool = false
     
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class RootViewController: UIViewController {
 
     func initials(){
        
+        loginActivityIndicator.stopAnimating()
+        loginActivityIndicator.hidesWhenStopped = true
         loginBtn.layer.borderWidth = 1.0
         loginBtn.layer.cornerRadius = 8.0
         loginBtn.layer.borderColor = UIColor.darkGray.cgColor
@@ -102,6 +105,7 @@ class RootViewController: UIViewController {
         self.flag = sourceViewController.flag
         print(flag)
         
+        self.loginActivityIndicator.startAnimating()
     }
 
 }

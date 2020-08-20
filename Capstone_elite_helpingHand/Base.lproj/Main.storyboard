@@ -61,6 +61,11 @@
                                     <segue destination="VVG-op-wgV" kind="show" id="dvm-Ly-jQe"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-KY-3yu">
+                                <rect key="frame" x="155" y="455" width="104" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -80,13 +85,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loginActivityIndicator" destination="K1F-KY-3yu" id="bjl-vo-EcQ"/>
                         <outlet property="loginBtn" destination="Ilk-Rr-8WJ" id="2gG-bH-jfz"/>
                         <outlet property="signUpBtn" destination="2Wu-OK-tf8" id="COL-s6-Vo4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127.2" y="111.0944527736132"/>
+            <point key="canvasLocation" x="126.08695652173914" y="110.49107142857143"/>
         </scene>
         <!--New-->
         <scene sceneID="kh0-WI-IJ0">
