@@ -64,6 +64,9 @@ class DataStorage{
         self.taskList.removeAll()
     }
     
+    func removeAllUserTask() {
+        self.userTaskList.removeAll()
+    }
     // Getting data from Firebase
     
     func loadData() {

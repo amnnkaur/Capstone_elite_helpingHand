@@ -137,6 +137,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = viewController
                 do {
                     try Auth.auth().signOut()
+                    DataStorage.getInstance().removeAllUserTask()
                 } catch let error {
                     // handle error here
                 print("Error trying to sign out of Firebase: \(error.localizedDescription)")
