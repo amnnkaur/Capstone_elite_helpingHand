@@ -115,7 +115,9 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         topView?.removeFromSuperview()
         switch menuType {
         case .myTasks:
-            break
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let myTaskVC = storyBoard.instantiateViewController(withIdentifier: "MyTasksVC") as! MyTaskTableViewController
+                    self.present(myTaskVC, animated: true, completion: nil)
         case .toDoTasks:
             break
         case .logout:

@@ -10,6 +10,7 @@
 		2A1AF49124EDAD2400C466C9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */; };
 		2A1AF4B524EE0C4500C466C9 /* slideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */; };
 		2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */; };
+		2A1AF4B924EF108F00C466C9 /* MyTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */; };
 		2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */; };
 		2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */; };
 		2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1924E39972005F6CD9 /* Task.swift */; };
@@ -44,6 +45,7 @@
 		2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideInTransition.swift; sourceTree = "<group>"; };
 		2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTaskTableViewController.swift; sourceTree = "<group>"; };
 		2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		2A56FE1924E39972005F6CD9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				2A1AF49024EDAD2400C466C9 /* TaskDetailViewController.swift */,
 				2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */,
 				2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */,
+				2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				2A1AF49124EDAD2400C466C9 /* TaskDetailViewController.swift in Sources */,
 				8E5A678C24E4586F00CA329F /* User.swift in Sources */,
+				2A1AF4B924EF108F00C466C9 /* MyTaskTableViewController.swift in Sources */,
 				8E2A628E24E700270080274D /* MessagesTableViewController.swift in Sources */,
 				2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */,
 				2AE8F1DE24E08C100003B085 /* RootViewController.swift in Sources */,

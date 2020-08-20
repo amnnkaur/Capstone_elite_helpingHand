@@ -118,7 +118,7 @@ class LoginViewController: UIViewController {
                     let defaults = UserDefaults.standard
                     defaults.set(userName, forKey: "userName")
 
-                    self.filterAccordingSpecificUser(userName: userName)
+//                    self.filterAccordingSpecificUser(userName: userName)
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "appTabBar") as! UITabBarController

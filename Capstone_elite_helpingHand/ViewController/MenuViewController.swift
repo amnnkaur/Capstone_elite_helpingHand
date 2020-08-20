@@ -10,8 +10,8 @@ import UIKit
 
 enum MenuType: Int {
     case home
-    case myTasks
     case toDoTasks
+    case myTasks
     case logout
 }
 
