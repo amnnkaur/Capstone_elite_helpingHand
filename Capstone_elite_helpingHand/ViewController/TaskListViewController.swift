@@ -138,6 +138,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 do {
                     try Auth.auth().signOut()
                     DataStorage.getInstance().removeAllUserTask()
+                    DataStorage.getInstance().removeAllData()
+                    DataStorage.getInstance().loadData()
                 } catch let error {
                     // handle error here
                 print("Error trying to sign out of Firebase: \(error.localizedDescription)")
