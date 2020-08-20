@@ -19,13 +19,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var rememberMe: UISwitch!
     let getLocation = GetLocation()
     var taskList: [Task] = []
+    var userList: [User] = []
     var userLatitude: Double = 0.0
     var userLongitude: Double = 0.0
     var flag: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-initials()
+        initials()
         // Do any additional setup after loading the view.
          rememberMe.addTarget(self, action: #selector(self.stateChanged), for: .valueChanged)
                 let defaults: UserDefaults? = UserDefaults.standard
@@ -43,12 +44,13 @@ initials()
     }
 
     func initials() {
-         taskList = DataStorage.getInstance().getAllTasks()
+        userList = DataStorage.getInstance().getAllUsers()
+        taskList = DataStorage.getInstance().getAllTasks()
         getLocation.run {
                   if let location = $0 {
                       self.userLatitude = location.coordinate.latitude
                       self.userLongitude = location.coordinate.longitude
-                      self.filterTaskArrayOverGeolocation()
+                     
                   } else {
                       print("Get Location failed \(self.getLocation.didFailWithError)")
                   }
@@ -56,10 +58,10 @@ initials()
     }
     
     
-    func filterTaskArrayOverGeolocation() {
+    func filterTaskArrayOverGeolocation(radius: Int) {
         var filteredTaskList: [Task] = []
         for item in taskList{
-            if (getLocation.distanceBetween(userlatitude: self.userLatitude, userlongitude: self.userLongitude, taskLatitude: (item.taskLat as NSString).doubleValue, tasklongitude: (item.taskLong as NSString).doubleValue)){
+            if (getLocation.distanceBetween(userlatitude: self.userLatitude, userlongitude: self.userLongitude, taskLatitude: (item.taskLat as NSString).doubleValue, tasklongitude: (item.taskLong as NSString).doubleValue, radius: radius)){
                     filteredTaskList.append(item)
             }
         }
@@ -110,32 +112,28 @@ initials()
                     self.displayAlert(title: "Error!", message: "\(err!.localizedDescription)")
                      return
                  }
-                 
+                 else{
                  print("success")
-//                self.displayAlert(title: "Success", message: "You are successfully logged in")
-                self.dismiss(animated: true) {
+                    self.performSegue(withIdentifier: "rootIdentifier", sender: self)
                     let defaults = UserDefaults.standard
                     defaults.set(userName, forKey: "userName")
-//
+
+                    self.filterAccordingSpecificUser(userName: userName)
+                    
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "appTabBar") as! UITabBarController
 //                    UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController!.present(viewController, animated: true, completion: nil)
-                    
+                   
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                           UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = viewController
-                    }
-                   
                 }
-       
-//                 UserDefaults.standard.set(true, forKey: "status")
-//                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-             }
-         }
-     }
+            }
+        }
+    }
+}
     
     @IBAction func loginAction(_ sender: UIButton) {
         verify()
-        self.performSegue(withIdentifier: "rootIdentifier", sender: self)
     }
     
     func displayAlert(title: String, message: String){
@@ -144,4 +142,16 @@ initials()
         self.present(alert, animated: true)
     }
     
+    func filterAccordingSpecificUser(userName: String){
+        var radius: String
+        for item in self.userList{
+                  if item.emailId == userName{
+                    radius = item.radius
+                    radius = radius.replacingOccurrences(of: "km", with: "")
+                    self.filterTaskArrayOverGeolocation(radius: (radius as NSString).integerValue)
+            }
+           
+        
+    }
+    }
 }

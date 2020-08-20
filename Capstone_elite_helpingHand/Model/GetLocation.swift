@@ -41,7 +41,7 @@ public class GetLocation: NSObject, CLLocationManagerDelegate {
         manager.stopUpdatingLocation()
     }
     
-    public func distanceBetween(userlatitude: Double, userlongitude: Double, taskLatitude: Double, tasklongitude: Double) -> Bool {
+    public func distanceBetween(userlatitude: Double, userlongitude: Double, taskLatitude: Double, tasklongitude: Double, radius: Int) -> Bool {
 
         let taskLocation: CLLocation = CLLocation(latitude: taskLatitude,
                                                        longitude: tasklongitude)
@@ -51,8 +51,12 @@ public class GetLocation: NSObject, CLLocationManagerDelegate {
         var inOrOut: Bool
                                                               
         let distanceInMeters: CLLocationDistance = usersCurrentLocation.distance(from: taskLocation)
+        
+        var distance: Double
+        
+        distance = Double(radius * 1000)
 
-        if distanceInMeters < 7000 {
+        if distanceInMeters < distance {
 
             inOrOut = true
         } else {
