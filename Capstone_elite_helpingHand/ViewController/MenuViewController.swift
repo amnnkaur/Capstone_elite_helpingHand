@@ -24,6 +24,7 @@ class MenuViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     var didTapMenuType: ((MenuType) -> Void)?
 
@@ -46,6 +47,16 @@ class MenuViewController: UITableViewController {
                 self.nameLabel.text = "\(item.firstName.capitalizingFirstLetter()) \(item.lastName.capitalizingFirstLetter())"
                 self.addressLabel.text = item.street
                 self.cityLabel.text = "\(item.city), \(item.postal)"
+                
+//                imageView.setImage(string:item.firstName.prefix(1), color: UIColor.orange, circular: false, stroke: false)
+    
+                
+                let image = UIImage(named: String(item.firstName.prefix(1)))
+                imageView = UIImageView(image: image)
+//                imageView.frame = CGRect(x: 0,y: 0,width: 100,height: 200)
+
+//                self.menuView.addSubview(imageView)
+            
             }
         }
 
