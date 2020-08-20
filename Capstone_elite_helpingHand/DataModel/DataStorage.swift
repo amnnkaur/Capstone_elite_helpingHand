@@ -63,7 +63,7 @@ class DataStorage{
             in
             if let userDict = snapshot.value as? [String: [String: String]]{
                 for value in userDict.values{
-                        self.userList.append(User(id: "1", firstName: value["firstName"] ?? "", lastName: value["lastName"] ?? "", mobileNumber: value["contact"] ?? "", emailId: value["email"] ?? "", password: value["password"] ?? "", state: value["state"] ?? "", street: value["street"] ?? "", postal: value["postal"] ?? "", city: value["city"] ?? ""))
+                    self.userList.append(User(id: "1", firstName: value["firstName"] ?? "", lastName: value["lastName"] ?? "", mobileNumber: value["contact"] ?? "", emailId: value["email"] ?? "", password: value["password"] ?? "", radius: value["radius"] ?? "", street: value["street"] ?? "", postal: value["postal"] ?? "", city: value["city"] ?? ""))
                 }
             }
         })

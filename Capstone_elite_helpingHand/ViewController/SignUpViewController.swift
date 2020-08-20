@@ -23,12 +23,12 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var city: UITextField!
-    @IBOutlet weak var state: UITextField!
+    @IBOutlet weak var radiusField: UITextField!
     var cityPicker = UIPickerView()
     var statePicker = UIPickerView()
     private var _currentSelection: Int = 0
     
-    let stateArray = ["Ontario", "Alberta", "British Columbia", "Manitoba"]
+    let radiusArray = ["1km", "2km", "3km", "4km", "5km", "6km", "7km", "8km", "9km", "10km"]
     
     
     let cityArrayON = [["Brampton", "Toronto", "Mississauga", "Ottawa", "Hamilton", "Kitchener", "Vaughan", "Windsor", "Markham", "London"],
@@ -36,21 +36,21 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
                        ["Abbotsford", "Burnaby", "Vancouver", "Surrey","Richmond", "Kimberley" ,"Duncan"],
                        ["Brandon", "Winnipeg", "Thompson", "Winkler"]]
     
-    var currentSelection: Int {
-        get {
-            return _currentSelection
-        }
-        set {
-            _currentSelection = newValue
-            cityPicker .reloadAllComponents()
-            statePicker .reloadAllComponents()
-
-            state.text = stateArray[_currentSelection]
-            city.text = cityArrayON[_currentSelection][0]
-
-        
-        }
-    }
+//    var currentSelection: Int {
+//        get {
+//            return _currentSelection
+//        }
+//        set {
+//            _currentSelection = newValue
+//            cityPicker.reloadAllComponents()
+//            statePicker.reloadAllComponents()
+//
+//            radiusField.text = radiusArray[_currentSelection]
+//            city.text = cityArrayON[_currentSelection][0]
+//
+//
+//        }
+//    }
 
     var keyboardFlag: Bool = false
     //MARK:- Firebase variables
@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentSelection = 0;
+//        currentSelection = 0;
 
         statePicker.delegate = self
         statePicker.dataSource = self
@@ -70,7 +70,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         cityPicker.dataSource = self
         cityPicker.tag = 1
         
-        state.inputView = statePicker
+        radiusField.inputView = statePicker
         city.inputView = cityPicker
         
         initials()
@@ -151,29 +151,29 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
       
       func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
          if pickerView.tag == 0 {
-               return stateArray.count
+               return radiusArray.count
            } else {
-               return cityArrayON[currentSelection].count
+               return cityArrayON.count
            }
       }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        if pickerView.tag == 0 {
-           return stateArray[row]
+           return radiusArray[row]
        } else {
-           return cityArrayON[currentSelection][row]
+           return cityArrayON[0][row]
        }
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0 {
-                currentSelection = row
+//                currentSelection = row
 
-               state.text = stateArray[row]
-                state.resignFirstResponder()
+               radiusField.text = radiusArray[row]
+                radiusField.resignFirstResponder()
             
             } else if pickerView.tag == 1 {
-                city.text = cityArrayON[currentSelection][row]
+                city.text = cityArrayON[0][row]
                 city.resignFirstResponder()
             }
         
@@ -213,14 +213,14 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         let contact = self.contactNumber.text
         let street = self.streetAddress.text
         let cityValue = self.city.text
-        let stateValue = self.state.text
+        let radiusValue = self.radiusField.text
         let postalCode = self.postalAddress.text
         
         if(self.errorLabel.text?.isEmpty != true || fName?.isEmpty == true || email?.isEmpty == true || psswrd?.isEmpty == true || confirmPsswrd?.isEmpty == true
             || contact?.isEmpty == true || postalCode?.isEmpty ==  true || psswrd?.isPassword() == false){
             displayAlertForTextFields(title: "Error!", message: "Provide data in accurate format", flag: 0)
         }else{
-             let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"state": stateValue,"postal": postalCode]
+             let insert = ["firstName": fName, "lastName":lName, "email": email, "password": psswrd, "contact": contact, "street": street, "city": cityValue,"radius": radiusValue,"postal": postalCode]
             register(email: email!, password: psswrd!, credentials: insert)
         }
     }
@@ -229,7 +229,7 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         guard let key = self.ref.child("users").childByAutoId().key else {return}
         let childUpdates = ["/users/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
-        DataStorage.getInstance().addUser(user: User(id: "1", firstName: insert["firstName"]! ?? "", lastName: insert["lastName"]! ?? "", mobileNumber: insert["contact"]! ?? "", emailId: insert["email"]! ?? "", password: insert["password"]! ?? "", state: insert["state"]! ?? "", street: insert["street"]! ?? "", postal: insert["postal"]! ?? "", city: insert["city"]! ?? ""))
+        DataStorage.getInstance().addUser(user: User(id: "1", firstName: insert["firstName"]! ?? "", lastName: insert["lastName"]! ?? "", mobileNumber: insert["contact"]! ?? "", emailId: insert["email"]! ?? "", password: insert["password"]! ?? "", radius: insert["radius"]! ?? "", street: insert["street"]! ?? "", postal: insert["postal"]! ?? "", city: insert["city"]! ?? ""))
            displayAlertForTextFields(title: "Success!!", message: "User successfully registered", flag: 1)
           
     }

@@ -16,17 +16,17 @@ class User{
     var emailId : String
     var password: String
     var street : String
-    var state : String
+    var radius : String
     var postal : String
     
-    init(id: String, firstName : String, lastName : String, mobileNumber : String, emailId : String, password: String, state : String, street : String, postal: String, city : String) {
+    init(id: String, firstName : String, lastName : String, mobileNumber : String, emailId : String, password: String, radius : String, street : String, postal: String, city : String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.mobileNumber = mobileNumber
         self.emailId = emailId
         self.password = password
-        self.state = state
+        self.radius = radius
         self.street = street
         self.postal = postal
         self.city = city

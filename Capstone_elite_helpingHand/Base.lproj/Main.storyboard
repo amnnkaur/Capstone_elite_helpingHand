@@ -539,8 +539,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State/Province" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-VT-2VV">
-                                        <rect key="frame" x="40" y="339" width="94.5" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Radius of work" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lc-VT-2VV">
+                                        <rect key="frame" x="40" y="339" width="95.5" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="vh6-0b-z9d"/>
                                         </constraints>
@@ -617,7 +617,7 @@
                         <outlet property="lastName" destination="LBg-2q-nJf" id="sCr-Xv-ikQ"/>
                         <outlet property="password" destination="Kgu-3G-O3n" id="ZBp-l1-wbc"/>
                         <outlet property="postalAddress" destination="XeG-ab-vlf" id="hvr-1E-jHA"/>
-                        <outlet property="state" destination="6Lc-VT-2VV" id="7em-SS-caY"/>
+                        <outlet property="radiusField" destination="6Lc-VT-2VV" id="7em-SS-caY"/>
                         <outlet property="streetAddress" destination="N54-pS-DCR" id="dLr-mf-XNc"/>
                     </connections>
                 </viewController>
