@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     var taskList: [Task] = []
     var userLatitude: Double = 0.0
     var userLongitude: Double = 0.0
+    var flag: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 initials()
@@ -46,7 +48,7 @@ initials()
                   if let location = $0 {
                       self.userLatitude = location.coordinate.latitude
                       self.userLongitude = location.coordinate.longitude
-//                      self.filterTaskArrayOverGeolocation()
+                      self.filterTaskArrayOverGeolocation()
                   } else {
                       print("Get Location failed \(self.getLocation.didFailWithError)")
                   }
@@ -133,6 +135,7 @@ initials()
     
     @IBAction func loginAction(_ sender: UIButton) {
         verify()
+        self.performSegue(withIdentifier: "rootIdentifier", sender: self)
     }
     
     func displayAlert(title: String, message: String){

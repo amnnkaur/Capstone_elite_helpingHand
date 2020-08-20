@@ -15,6 +15,8 @@ class RootViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
     
+    var flag: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -92,6 +94,15 @@ class RootViewController: UIViewController {
 //                    self.scheduleNotifications()
               
         }
+    
+    @IBAction func unwindToRootVC(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source as! LoginViewController
+        // Use data from the view controller which initiated the unwind segue
+        
+        self.flag = sourceViewController.flag
+        print(flag)
+        
+    }
 
 }
 

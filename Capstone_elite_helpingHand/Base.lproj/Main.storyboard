@@ -719,9 +719,11 @@
                         <outlet property="passwordField" destination="pRR-df-8iO" id="F8H-PS-ZzE"/>
                         <outlet property="rememberMe" destination="Wv0-JM-yqR" id="suf-sO-xDg"/>
                         <outlet property="userNameField" destination="PGi-iV-iJx" id="3PI-oG-71Z"/>
+                        <segue destination="1wo-UK-4FN" kind="unwind" identifier="rootIdentifier" unwindAction="unwindToRootVC:" id="oAA-rM-J87"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsk-Wp-gOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1wo-UK-4FN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="-128.18590704647679"/>
         </scene>
