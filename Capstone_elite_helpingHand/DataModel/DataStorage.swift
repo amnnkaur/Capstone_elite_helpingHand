@@ -15,6 +15,7 @@ class DataStorage{
     private static let instance = DataStorage()
     private lazy var userList: [User] = []
     private lazy var taskList: [Task] = []
+    private lazy var userTaskList: [Task] = []
     private lazy var taskMessageList: [CustomerMessages] = []
     private init (){}
     
@@ -36,6 +37,10 @@ class DataStorage{
         self.taskMessageList.append(customerMessage)
     }
     
+    func addUserTask(userTask: Task){
+        self.userTaskList.append(userTask)
+    }
+    
     //MARK: get list
     //user
     func getAllUsers() -> [User]{
@@ -51,6 +56,10 @@ class DataStorage{
         return self.taskMessageList
     }
     
+    func getAllUserTask() -> [Task] {
+        return self.userTaskList
+    }
+    
     func removeAllTasks() {
         self.taskList.removeAll()
     }
@@ -63,7 +72,7 @@ class DataStorage{
             in
             if let userDict = snapshot.value as? [String: [String: String]]{
                 for value in userDict.values{
-                    self.userList.append(User(id: "1", firstName: value["firstName"] ?? "", lastName: value["lastName"] ?? "", mobileNumber: value["contact"] ?? "", emailId: value["email"] ?? "", password: value["password"] ?? "", radius: value["radius"] ?? "", street: value["street"] ?? "", postal: value["postal"] ?? "", city: value["city"] ?? ""))
+                    self.userList.append(User(id: "1", firstName: value["firstName"] ?? "", lastName: value["lastName"] ?? "", mobileNumber: value["contact"] ?? "", emailId: value["email"] ?? "", password: value["password"] ?? "", radius: value["radius"] ?? "0km", street: value["street"] ?? "", postal: value["postal"] ?? "", city: value["city"] ?? ""))
                 }
             }
         })
@@ -84,8 +93,22 @@ class DataStorage{
                   if let messageDict = snapshot.value as? [String: [String: String]]{
                       for value in messageDict.values{
                           self.taskMessageList.append(CustomerMessages(taskUID: value["taskUID"] ?? "", taskTitle: value["taskTitle"] ?? "", taskPostingDate: value["date"] ?? "", taskEmail: value["taskEmail"] ?? "", userUID: value["userUID"] ?? "" , userEmail: value["userEmail"] ?? ""))
-                      }
-                  }
-              })
+                }
+            }
+        })
+    }
+    
+    func loadUserList(userName: String){
+        let userTaskRefer = self.ref.child("tasks")
+             userTaskRefer.observeSingleEvent(of: .value, with: {(snapshot)
+                 in
+                 if let userTaskDict = snapshot.value as? [String: [String: String]]{
+                     for value in userTaskDict.values{
+                        if(value["taskEmail"] == userName){
+                         self.userTaskList.append(Task(taskID: value["taskID"] ?? "", taskTitle: value["taskName"] ?? "", taskDesc: value["taskDescription"] ?? "", taskDueDate: value["date"] ?? "", tasktype: value["type"] ?? "", taskAddress: value["address"] ?? "", taskPay: value["amount"] ?? "", taskEmail: value["taskEmail"] ?? "", taskLat: value["taskLat"] ?? "0.0", taskLong: value["taskLong"] ?? "0.0", taskContact: value["contact"] ?? "", taskCity: value["city"] ?? "", taskPostalCode: value["postalCode"] ?? ""))
+                    }
+                }
+            }
+        })
     }
 }

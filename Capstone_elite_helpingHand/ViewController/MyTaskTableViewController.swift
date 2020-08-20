@@ -11,8 +11,7 @@ import FirebaseAuth
 
 class MyTaskTableViewController: UITableViewController {
     
-    var tasks: [Task] = []
-    var taskList: [Task] = []
+    var userTasks: [Task] = []
     @IBOutlet weak var postedBy: UILabel!
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var jobDesc: UILabel!
@@ -20,16 +19,7 @@ class MyTaskTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskList = DataStorage.getInstance().getAllTasks()
-
-        for item in taskList{
-            if item.taskEmail == Auth.auth().currentUser?.email! {
-                tasks.append(item)
-            }
-        }
-        
-        
-        
+        userTasks = DataStorage.getInstance().getAllUserTask()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,14 +41,14 @@ class MyTaskTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.tasks.count
+        return self.userTasks.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: "myTaskCell") as! TaskTableViewCell
         
-        let task = self.tasks[indexPath.row]
+        let task = self.userTasks[indexPath.row]
         
         let backgroundColorView = UIView()
         backgroundColorView.backgroundColor = UIColor.clear
