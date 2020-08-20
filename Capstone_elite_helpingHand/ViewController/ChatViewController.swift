@@ -178,7 +178,7 @@ print("uid : \(user2UID)")
     // MARK: - MessagesDataSource
     func currentSender() -> SenderType {
         
-        return Sender(id: Auth.auth().currentUser!.uid, displayName: Auth.auth().currentUser?.displayName ?? "Name not found")
+        return Sender(id: Auth.auth().currentUser?.uid ?? "No uid found", displayName: Auth.auth().currentUser?.displayName ?? "Name not found")
         
     }
     
