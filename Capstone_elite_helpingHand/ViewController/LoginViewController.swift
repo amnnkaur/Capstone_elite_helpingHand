@@ -122,7 +122,7 @@ initials()
 //                    UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController!.present(viewController, animated: true, completion: nil)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                         UIApplication.shared.keyWindow?.rootViewController = viewController
+                          UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = viewController
                     }
                    
                 }

@@ -119,6 +119,17 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         case .toDoTasks:
             break
         case .logout:
+              let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+              let viewController = mainStoryboard.instantiateViewController(withIdentifier: "rootVC") as! RootViewController
+              UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = viewController
+             do {
+                  try Auth.auth().signOut()
+              } catch let error {
+                  // handle error here
+                  print("Error trying to sign out of Firebase: \(error.localizedDescription)")
+              }
+//              UIApplication.shared.keyWindow?.rootViewController = viewController
+                              
            break
         default:
             break
