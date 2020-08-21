@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jLR-5L-5xH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -84,6 +84,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="mMg-lu-MD2"/>
                     <connections>
                         <outlet property="loginActivityIndicator" destination="K1F-KY-3yu" id="bjl-vo-EcQ"/>
                         <outlet property="loginBtn" destination="Ilk-Rr-8WJ" id="2gG-bH-jfz"/>
@@ -887,7 +888,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yq0-1f-8Ql"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="8hB-QH-d55"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="8hB-QH-d55"/>
                     <connections>
                         <outlet property="headerLabel" destination="1Lj-pW-yvN" id="SrY-sx-lBb"/>
                         <outlet property="jobTableView" destination="kPs-1q-Kph" id="YeJ-h5-NWa"/>
@@ -1301,8 +1302,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="siQ-C9-sLz">
-                                                    <rect key="frame" x="16" y="34" width="24" height="24"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="siQ-C9-sLz">
+                                                    <rect key="frame" x="16" y="33.5" width="24" height="23.5"/>
                                                     <color key="tintColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="nu8-uG-b1w"/>
@@ -1652,6 +1653,73 @@
             </objects>
             <point key="canvasLocation" x="6341" y="-847"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="qdz-S1-RvD">
+            <objects>
+                <viewController id="jLR-5L-5xH" customClass="OnboardingViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FnY-kc-nuw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofM-RV-zHH">
+                                <rect key="frame" x="20" y="823" width="374" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="AkU-DT-bAJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                <state key="normal" title="Get Started">
+                                    <color key="titleColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getStartedBtn:" destination="jLR-5L-5xH" eventType="touchUpInside" id="qPw-KQ-owc"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="ceZ-kB-nks">
+                                <rect key="frame" x="166" y="778" width="83" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="JbX-Na-LKK"/>
+                                    <constraint firstAttribute="height" constant="37" id="QA9-dm-WkI"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.96409026019999999" green="0.3416265671" blue="0.14736611190000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="pageChanged:" destination="jLR-5L-5xH" eventType="valueChanged" id="Ygj-kK-WpY"/>
+                                </connections>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L4F-Ey-FzI">
+                                <rect key="frame" x="0.0" y="34" width="414" height="745"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="745" id="Q5Z-L6-V3W"/>
+                                    <constraint firstAttribute="width" constant="414" id="rZT-6X-Z1g"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Opm-9m-b9p"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="yUg-XO-756"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L4F-Ey-FzI" firstAttribute="leading" secondItem="3g8-yi-G3w" secondAttribute="leading" id="AAW-oy-dHj"/>
+                            <constraint firstItem="ofM-RV-zHH" firstAttribute="leading" secondItem="FnY-kc-nuw" secondAttribute="leadingMargin" id="K0u-uf-yq2"/>
+                            <constraint firstItem="ofM-RV-zHH" firstAttribute="top" secondItem="ceZ-kB-nks" secondAttribute="bottom" constant="8" id="Nk8-mN-7rI"/>
+                            <constraint firstItem="ofM-RV-zHH" firstAttribute="bottom" secondItem="3g8-yi-G3w" secondAttribute="bottom" id="O5V-b5-X45"/>
+                            <constraint firstItem="L4F-Ey-FzI" firstAttribute="top" secondItem="FnY-kc-nuw" secondAttribute="top" constant="34" id="U76-Ya-eAd"/>
+                            <constraint firstItem="ceZ-kB-nks" firstAttribute="leading" secondItem="FnY-kc-nuw" secondAttribute="leadingMargin" constant="146" id="Y8I-he-Gvf"/>
+                            <constraint firstItem="ofM-RV-zHH" firstAttribute="trailing" secondItem="FnY-kc-nuw" secondAttribute="trailingMargin" id="fv8-kA-2JQ"/>
+                            <constraint firstItem="L4F-Ey-FzI" firstAttribute="trailing" secondItem="3g8-yi-G3w" secondAttribute="trailing" id="md3-Sz-GJB"/>
+                            <constraint firstItem="ofM-RV-zHH" firstAttribute="top" secondItem="L4F-Ey-FzI" secondAttribute="bottom" constant="44" id="yLe-5n-mVo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3g8-yi-G3w"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnGetStarted" destination="ofM-RV-zHH" id="Sg9-y3-Ll5"/>
+                        <outlet property="pageControl" destination="ceZ-kB-nks" id="zaK-66-1XV"/>
+                        <outlet property="scrollView" destination="L4F-Ey-FzI" id="fL4-33-fFr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z32-pl-HWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="110"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.right.circle.fill" catalog="system" width="128" height="121"/>
@@ -1661,7 +1729,7 @@
         <image name="doc.circle" catalog="system" width="128" height="121"/>
         <image name="goforward" catalog="system" width="121" height="128"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="home" width="22" height="25"/>
+        <image name="house" catalog="system" width="128" height="110"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="location.fill" catalog="system" width="128" height="115"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
