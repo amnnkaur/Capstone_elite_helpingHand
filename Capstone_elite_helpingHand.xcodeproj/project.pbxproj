@@ -40,6 +40,7 @@
 		8E5A678C24E4586F00CA329F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678B24E4586F00CA329F /* User.swift */; };
 		8E9526F024ECA33D007EE895 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9526EF24ECA33D007EE895 /* GetLocation.swift */; };
 		8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */; };
+		8ECF9F0024F00992000C7C13 /* MyTaskRepliesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF9EFF24F00992000C7C13 /* MyTaskRepliesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		8E5A678B24E4586F00CA329F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8E9526EF24ECA33D007EE895 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
 		8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		8ECF9EFF24F00992000C7C13 /* MyTaskRepliesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTaskRepliesTableViewController.swift; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */,
 				2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */,
 				2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */,
+				8ECF9EFF24F00992000C7C13 /* MyTaskRepliesTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				8E2A628424E5A0B70080274D /* Chat.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
 				2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */,
+				8ECF9F0024F00992000C7C13 /* MyTaskRepliesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
