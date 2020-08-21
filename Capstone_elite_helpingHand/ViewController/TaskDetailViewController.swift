@@ -9,11 +9,13 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import MapKit
 
-class TaskDetailViewController: UIViewController {
+class TaskDetailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var task: Task = Task(taskID: "", taskTitle: "", taskDesc: "", taskDueDate: "", tasktype: "", taskAddress: "", taskPay: "", taskEmail: "", taskLat: "", taskLong: "", taskContact: "", taskCity: "", taskPostalCode: "")
 
+    @IBOutlet weak var detailMapView: MKMapView!
     @IBOutlet weak var favBtn: UIButton!
     @IBOutlet weak var taskDetailView: UIView!
     @IBOutlet weak var addressView: UIView!
@@ -27,7 +29,9 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var amount: UILabel!
     let gradientLayer = CAGradientLayer()
-     var ref = Database.database().reference()
+    var ref = Database.database().reference()
+    var locationManager = CLLocationManager()
+    var destinationCoordinates : CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,40 @@ class TaskDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         initials()
+        detailMapView.delegate = self
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//       let userLocation = locations[0]
+       
+       let latitude = (task.taskLat as NSString).doubleValue
+       let longitude = (task.taskLong as NSString).doubleValue
+        
+       let latDelta: CLLocationDegrees = 0.05
+       let longDelta: CLLocationDegrees = 0.05
+        
+        // 3 - Creating the span, location coordinate and region
+       let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let customLocation = CLLocationCoordinate2D(latitude: latitude , longitude: longitude)
+       let region = MKCoordinateRegion(center: customLocation, span: span)
+        
+        let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { (placemarks, error) in
+                if let places = placemarks {
+                    for place in places {
+                        annotation.title = place.name
+                        annotation.subtitle = "\(place.locality!) ,  \(place.postalCode!)"
+                    }
+                }
+                self.detailMapView.addAnnotation(annotation)
+            self.detailMapView.setRegion(region, animated: true)
+        }
         
     }
     
@@ -48,8 +86,10 @@ class TaskDetailViewController: UIViewController {
         favBtn.layer.cornerRadius = 20
         favBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
-            msgBtn.contentVerticalAlignment = .fill
-            msgBtn.contentHorizontalAlignment = .fill
+        msgBtn.contentVerticalAlignment = .fill
+        msgBtn.contentHorizontalAlignment = .fill
+        msgBtn.layer.cornerRadius = 20
+        msgBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         labelValues()
     }
@@ -101,4 +141,23 @@ class TaskDetailViewController: UIViewController {
             self.ref.updateChildValues(childUpdates)
     }
     
+}
+
+extension TaskDetailViewController {
+
+   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        if annotation is MKUserLocation {
+            return nil
+        }
+            let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "marker")
+            pinAnnotation.markerTintColor = .systemPink
+            pinAnnotation.glyphTintColor = .white
+            pinAnnotation.canShowCallout = true
+    
+//            button.setImage(UIImage(systemName: "plus"), for: .normal)
+//            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//            pinAnnotation.rightCalloutAccessoryView = button
+            return pinAnnotation
+    }
 }
