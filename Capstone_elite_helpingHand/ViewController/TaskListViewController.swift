@@ -21,7 +21,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     var sortedArray: [Task] = []
     
     let locationManager = CLLocationManager()
-    
+    var radiusInKm: String = ""
     @IBOutlet weak var jobTableView: UITableView!
     
     @IBOutlet weak var sortBtn: UIButton!
@@ -51,6 +51,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         for item in userList{
             if item.emailId == userName{
                 self.headerLabel.text = " Welcome, \(item.firstName.capitalizingFirstLetter())"
+                self.radiusInKm = item.radius
             }
         }
     
@@ -237,7 +238,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
 //            }
         func tableView(_ tableView: UITableView, titleForHeaderInSection
                                       section: Int) -> String? {
-             return "Recent Jobs"
+            return "Recent Jobs (in \(self.radiusInKm))"
           }
             
             func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -46,7 +46,7 @@ class MenuViewController: UITableViewController {
             if item.emailId == userName{
                 self.nameLabel.text = "\(item.firstName.capitalizingFirstLetter()) \(item.lastName.capitalizingFirstLetter())"
                 self.addressLabel.text = item.street
-                self.cityLabel.text = "\(item.city), \(item.postal), \(item.radius)"
+                self.cityLabel.text = "\(item.city), \(item.postal)"
             
                 setDefaultImage(name1:item.firstName.capitalizingFirstLetter(),name2: item.lastName.capitalizingFirstLetter())
             }
