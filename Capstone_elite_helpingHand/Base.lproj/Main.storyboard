@@ -1574,29 +1574,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repliesCell" textLabel="lwX-JR-N3v" detailTextLabel="ogY-Vr-Fc9" style="IBUITableViewCellStyleSubtitle" id="0l9-x4-OBc">
-                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repliesCell" rowHeight="68" id="0l9-x4-OBc" customClass="MessageTableViewCell" customModule="Capstone_elite_helpingHand" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0l9-x4-OBc" id="PpF-a2-jpk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lwX-JR-N3v">
-                                            <rect key="frame" x="20" y="10" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXH-7J-xrh">
+                                            <rect key="frame" x="136" y="11" width="258" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="Mdb-vL-3FU"/>
+                                                <constraint firstAttribute="width" constant="258" id="zWp-eI-6mh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ogY-Vr-Fc9">
-                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hj-oG-Gu1">
+                                            <rect key="frame" x="136" y="37" width="258" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="258" id="HZ1-kq-zvc"/>
+                                                <constraint firstAttribute="height" constant="21" id="SaM-o0-95k"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mb3-U7-tjQ">
+                                            <rect key="frame" x="20" y="4" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="u9x-yq-LrS"/>
+                                                <constraint firstAttribute="width" constant="60" id="wow-pd-TfC"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mb3-U7-tjQ" firstAttribute="top" secondItem="PpF-a2-jpk" secondAttribute="top" constant="4" id="3Xa-Xj-sYU"/>
+                                        <constraint firstItem="aXH-7J-xrh" firstAttribute="top" secondItem="PpF-a2-jpk" secondAttribute="topMargin" id="3tB-gO-0ZM"/>
+                                        <constraint firstItem="aXH-7J-xrh" firstAttribute="leading" secondItem="PpF-a2-jpk" secondAttribute="leadingMargin" constant="116" id="81o-OG-UCt"/>
+                                        <constraint firstItem="5Hj-oG-Gu1" firstAttribute="leading" secondItem="PpF-a2-jpk" secondAttribute="leading" constant="136" id="Ix5-Sh-tTn"/>
+                                        <constraint firstItem="mb3-U7-tjQ" firstAttribute="leading" secondItem="PpF-a2-jpk" secondAttribute="leading" constant="20" id="QWl-HJ-eYr"/>
+                                        <constraint firstAttribute="bottom" secondItem="5Hj-oG-Gu1" secondAttribute="bottom" constant="10" id="Vj3-g8-Lqg"/>
+                                        <constraint firstItem="5Hj-oG-Gu1" firstAttribute="top" secondItem="aXH-7J-xrh" secondAttribute="bottom" constant="8" id="fti-7t-kkI"/>
+                                        <constraint firstAttribute="bottom" secondItem="mb3-U7-tjQ" secondAttribute="bottom" constant="4" id="pXW-BT-5PJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarLabel" destination="mb3-U7-tjQ" id="3hS-rF-t9Y"/>
+                                    <outlet property="repliedForLabel" destination="5Hj-oG-Gu1" id="oDD-HL-duq"/>
+                                    <outlet property="senderLabel" destination="aXH-7J-xrh" id="T1b-4K-Z3j"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1607,7 +1638,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OtN-09-AqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5278" y="-847"/>
+            <point key="canvasLocation" x="5276.811594202899" y="-847.09821428571422"/>
         </scene>
         <!--Fav Tasks Table View Controller-->
         <scene sceneID="Ud6-dw-cN7">

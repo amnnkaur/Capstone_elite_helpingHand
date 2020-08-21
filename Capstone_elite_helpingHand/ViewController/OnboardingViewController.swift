@@ -30,6 +30,8 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.view.layoutIfNeeded()
+//        self.btnGetStarted.applyGradient(colors: [UIColor.red.cgColor, UIColor.orange.cgColor])
+//        self.btnGetStarted.layer.cornerRadius = 10
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -112,4 +114,16 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     }
     */
 
+}
+extension UIButton
+{
+    func applyGradient(colors: [CGColor])
+    {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
+        gradientLayer.frame = self.bounds
+        self.layer.insertSublayer(gradientLayer, at: 0)
+        gradientLayer.opacity = 0.7
+    }
 }
