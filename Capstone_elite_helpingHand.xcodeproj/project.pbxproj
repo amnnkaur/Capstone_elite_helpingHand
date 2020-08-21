@@ -11,6 +11,7 @@
 		2A1AF4B524EE0C4500C466C9 /* slideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */; };
 		2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */; };
 		2A1AF4B924EF108F00C466C9 /* MyTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */; };
+		2A1AF4BB24EF4D7300C466C9 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */; };
 		2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */; };
 		2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */; };
 		2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1924E39972005F6CD9 /* Task.swift */; };
@@ -46,6 +47,7 @@
 		2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideInTransition.swift; sourceTree = "<group>"; };
 		2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTaskTableViewController.swift; sourceTree = "<group>"; };
+		2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		2A56FE1924E39972005F6CD9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				2A1AF4B424EE0C4500C466C9 /* slideInTransition.swift */,
 				2A1AF4B624EE0D8100C466C9 /* MenuViewController.swift */,
 				2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */,
+				2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				8E2A628224E5A04E0080274D /* ChatViewController.swift in Sources */,
 				2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */,
 				8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */,
+				2A1AF4BB24EF4D7300C466C9 /* MessageTableViewCell.swift in Sources */,
 				8E2A628624E5A0C80080274D /* Message.swift in Sources */,
 				8E2A629024E71FF60080274D /* CustomerMessages.swift in Sources */,
 				2A1AF4B524EE0C4500C466C9 /* slideInTransition.swift in Sources */,

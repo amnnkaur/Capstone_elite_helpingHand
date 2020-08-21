@@ -65,7 +65,7 @@ class MessagesTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "messagesCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "messagesCell", for: indexPath) as! MessageTableViewCell
 
         let task = self.filteredMessages[indexPath.row]
         let email: String
@@ -77,15 +77,41 @@ class MessagesTableViewController: UITableViewController {
                    }
         for item in userList{
             if(email == item.emailId){
-                cell.textLabel?.text = item.firstName.capitalizingFirstLetter()
+                cell.senderLabel.text = item.firstName.capitalizingFirstLetter()
             }
         }
+        cell.repliedForLabel.text = "Replied for: \(task.taskTitle)"
         
-        cell.detailTextLabel?.text = "Replied for: \(task.taskTitle)"
+        for item in userList{
+            if(email == item.emailId){
+                let name1 = item.firstName
+                let name2 = item.lastName
+        cell.avatarLabel.text = String(name1[name1.startIndex])+String( name2[name2.startIndex])
+        cell.avatarLabel.backgroundColor = pickColor(alphabet: name1[name1.startIndex])
+        cell.avatarLabel.textAlignment = NSTextAlignment.center
+        cell.avatarLabel.frame.size = CGSize(width: 52.0, height: 52.0)
+        cell.avatarLabel.shadowColor = UIColor.black
+        cell.avatarLabel.isHighlighted = true
+        cell.avatarLabel.highlightedTextColor = UIColor.white
+        cell.avatarLabel.layer.cornerRadius = 30
+        cell.avatarLabel.layer.masksToBounds = true
+        cell.avatarLabel.isEnabled = true
+            }
+        }
 
         return cell
     }
-    
+
+    func pickColor(alphabet: Character) -> UIColor {
+        let alphabetColors = [0x9A89B5, 0xB2B7BB, 0x6FA9AB, 0xF5AF29, 0x0088B9, 0xF18636, 0xD93A37, 0xA6B12E, 0x5C9BBC, 0xF5888D, 0x9A89B5, 0x407887, 0x5A8770, 0x5A8770, 0xD33F33, 0xA2B01F, 0xF0B126, 0x0087BF, 0xF18636, 0x0087BF, 0xB2B7BB, 0x72ACAE, 0x9C8AB4, 0x5A8770, 0xEEB424, 0x407887]
+        let str = String(alphabet).unicodeScalars
+        let unicode = Int(str[str.startIndex].value)
+        if 65...90 ~= unicode {
+            let hex = alphabetColors[unicode - 65]
+            return UIColor(red: CGFloat(Double((hex >> 16) & 0xFF)) / 255.0, green: CGFloat(Double((hex >> 8) & 0xFF)) / 255.0, blue: CGFloat(Double((hex >> 0) & 0xFF)) / 255.0, alpha: 1.0)
+        }
+        return UIColor.black
+    }
 
     /*
     // Override to support conditional editing of the table view.

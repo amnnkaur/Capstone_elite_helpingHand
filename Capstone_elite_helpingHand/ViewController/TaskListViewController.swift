@@ -109,8 +109,8 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func transitionToNew(_ menuType: MenuType) {
-        let title = String(describing: menuType).capitalized
-        self.title = title
+//        let title = String(describing: menuType).capitalized
+        self.title = "Home"
 
         topView?.removeFromSuperview()
         switch menuType {
@@ -220,22 +220,25 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
             }
             
-           func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-              let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
-
-                let label = UILabel()
-                label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-20, height: headerView.frame.height-20)
-            
-                label.text = "Recent Jobs"
-                headerView.addSubview(label)
-
-               return headerView
-            }
-            
-            func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-                return 50
-            }
-
+//           func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//              let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+//
+//                let label = UILabel()
+//                label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-20, height: headerView.frame.height-20)
+//            
+//                label.text = "Recent Jobs"
+//                headerView.addSubview(label)
+//
+//               return headerView
+//            }
+//            
+//            func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//                return 50
+//            }
+        func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                      section: Int) -> String? {
+             return "Recent Jobs"
+          }
             
             func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
@@ -248,12 +251,12 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 let backgroundColorView = UIView()
                 backgroundColorView.backgroundColor = UIColor.clear
                 cell.selectedBackgroundView = backgroundColorView
-                cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-                cell.layer.shadowColor = UIColor.black.cgColor
-                cell.layer.shadowRadius = 5
+//                cell.layer.shadowOffset = CGSize(width: 0, height: 0.2)
+//                cell.layer.shadowColor = UIColor.black.cgColor
+//                cell.layer.shadowRadius = 4
 
-                cell.layer.cornerRadius = 20
-                cell.layer.shadowOpacity = 0.40
+                cell.layer.cornerRadius = 10
+//                cell.layer.shadowOpacity = 0.40
                 cell.layer.masksToBounds = true;
                 cell.clipsToBounds = false;
                 

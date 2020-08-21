@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+//import FirebaseAuth
 
 class MyTaskTableViewController: UITableViewController {
     
@@ -53,12 +53,12 @@ class MyTaskTableViewController: UITableViewController {
         let backgroundColorView = UIView()
         backgroundColorView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundColorView
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowRadius = 5
+//        cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowRadius = 5
 
         cell.layer.cornerRadius = 20
-        cell.layer.shadowOpacity = 0.40
+//        cell.layer.shadowOpacity = 0.40
         cell.layer.masksToBounds = true;
         cell.clipsToBounds = false;
         
