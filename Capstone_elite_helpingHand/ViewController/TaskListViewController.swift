@@ -118,8 +118,11 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         case .myTasks:
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let myTaskVC = storyBoard.instantiateViewController(withIdentifier: "MyTasksVC") as! MyTaskTableViewController
-                    self.present(myTaskVC, animated: true, completion: nil)
+            self.present(myTaskVC, animated: true, completion: nil)
         case .toDoTasks:
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let favTaskVC = storyBoard.instantiateViewController(withIdentifier: "favTasksVC") as! FavTasksTableViewController
+            self.present(favTaskVC, animated: true, completion: nil)
             break
         case .logout:
              performLogout(title: "Logout", message: "Do you want to logout?")
@@ -275,7 +278,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             
                     let message = UIAction(title: "Ignite this", image: UIImage(systemName: "message"),
                                            attributes: .init()) { _ in
-                                            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskDueDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+                    DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskDueDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
                         let insert = ["taskTitle": self.filteredTasks[indexPath.row].taskTitle, "taskUID":self.filteredTasks[indexPath.row].taskID, "taskEmail": self.filteredTasks[indexPath.row].taskEmail, "date": self.filteredTasks[indexPath.row].taskDueDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
                           guard let key = self.ref.child("messages").childByAutoId().key else {return}
                           let childUpdates = ["/messages/\(key)": insert]

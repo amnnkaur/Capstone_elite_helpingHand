@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class TaskDetailViewController: UIViewController {
     
@@ -25,6 +27,8 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var amount: UILabel!
     let gradientLayer = CAGradientLayer()
+     var ref = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +63,12 @@ class TaskDetailViewController: UIViewController {
         self.amount.text? = "Amount: \(task.taskPay)"
     }
     
+    
+    
+    @IBAction func favoriteTasks(_ sender: UIButton) {
+        self.displayAlert(title: "♥️ To-do Tasks", message: "Do you want to save this task in your to-do task list and get reminder one day prior of task due date?", flag: 0)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -69,4 +79,26 @@ class TaskDetailViewController: UIViewController {
     }
     */
 
+    func displayAlert(title: String, message: String, flag: Int){
+          let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if flag == 0{
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                self.saveToFavoriteToDo()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        }
+         
+          self.present(alert, animated: true)
+      }
+    
+    func saveToFavoriteToDo(){
+        
+        DataStorage.getInstance().addFavoriteTask(favTask: FavoiteTasks(taskID: self.task.taskID, taskTitle: self.task.taskTitle, taskDueDate: self.task.taskDueDate, taskEmail: self.task.taskEmail, userId: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+        
+        let insert = ["taskName": self.task.taskTitle , "dueDate":  self.task.taskDueDate, "taskID": self.task.taskID, "taskEmail": self.task.taskEmail, "userEmail": Auth.auth().currentUser?.email ?? "no email found", "userID": Auth.auth().currentUser?.uid ?? "no uid found"]
+            guard let key = self.ref.child("favoriteTasks").childByAutoId().key else {return}
+            let childUpdates = ["/favoriteTasks/\(key)": insert]
+            self.ref.updateChildValues(childUpdates)
+    }
+    
 }

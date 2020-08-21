@@ -27,6 +27,10 @@ class MyTaskTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+           self.tableView.reloadData()
+       }
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection

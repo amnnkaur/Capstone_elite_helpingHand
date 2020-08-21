@@ -1,5 +1,5 @@
 //
-//  MyTaskRepliesTableViewController.swift
+//  FavTasksTableViewController.swift
 //  Capstone_elite_helpingHand
 //
 //  Created by Anmol singh on 2020-08-21.
@@ -8,39 +8,26 @@
 
 import UIKit
 
-class MyTaskRepliesTableViewController: UITableViewController {
+class FavTasksTableViewController: UITableViewController {
     
-    var task: Task?
-    var repliesMessageList: [CustomerMessages] = []
-    var filteredList: [CustomerMessages] = []
-    var userList: [User] = []
+    var favTaskList: [FavoiteTasks] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        favTaskList = DataStorage.getInstance().getAllFavoriteTask()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        initials()
-        
-        
     }
-    
-    func initials() {
-        userList = DataStorage.getInstance().getAllUsers()
-        repliesMessageList = DataStorage.getInstance().getAllMessages()
-        for item in repliesMessageList {
-            if (item.taskEmail == task?.taskEmail && item.taskTitle == task?.taskTitle && item.taskPostingDate == task?.taskDueDate){
-                self.filteredList.append(item)
-            }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-           self.tableView.reloadData()
-       }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,41 +37,23 @@ class MyTaskRepliesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return filteredList.count
+        return favTaskList.count
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection
-                                      section: Int) -> String? {
-        return "Replies for: \(task?.taskTitle ?? "No such task name is there")"
-          }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repliesCell", for: indexPath)
 
-        let replies = filteredList[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favTaskCell", for: indexPath)
+
+        let favTask = favTaskList[indexPath.row]
         // Configure the cell...
-        for item in self.userList {
-            if replies.userEmail  == item.emailId {
-                cell.textLabel?.text = "\(item.firstName.capitalizingFirstLetter()) \(item.lastName.capitalizingFirstLetter())"
-                cell.detailTextLabel?.text = item.emailId
-            }
-        }
-     
+        cell.textLabel?.text = favTask.taskTitle
+        cell.detailTextLabel?.text = favTask.taskDueDate
+
         return cell
     }
    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let replies = self.filteredList[indexPath.row]
-               
-               if let viewController = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController {
-                 
-                    viewController.user2Name = replies.taskTitle + " || " + replies.taskEmail
-                    viewController.user2UID = replies.userUID
-                   
-                   
-                   present(viewController, animated: true, completion: nil)
-               }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Your short-listed tasks:"
     }
 
     /*

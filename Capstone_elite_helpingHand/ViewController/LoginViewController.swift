@@ -119,12 +119,13 @@ class LoginViewController: UIViewController {
 
                     self.filterAccordingSpecificUser(userName: userName)
                     DataStorage.getInstance().loadUserList(userName: userName)
+                    DataStorage.getInstance().loadUserFavTasks(userName: userName)
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "appTabBar") as! UITabBarController
 //                    UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController!.present(viewController, animated: true, completion: nil)
                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                           UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = viewController
                 }
             }

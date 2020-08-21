@@ -17,6 +17,7 @@ class DataStorage{
     private lazy var taskList: [Task] = []
     private lazy var userTaskList: [Task] = []
     private lazy var taskMessageList: [CustomerMessages] = []
+    private lazy var favoriteTasksList: [FavoiteTasks] = []
     private init (){}
     
     static func getInstance() -> DataStorage{
@@ -41,6 +42,9 @@ class DataStorage{
         self.userTaskList.append(userTask)
     }
     
+    func addFavoriteTask(favTask: FavoiteTasks){
+        self.favoriteTasksList.append(favTask)
+    }
     //MARK: get list
     //user
     func getAllUsers() -> [User]{
@@ -60,6 +64,10 @@ class DataStorage{
         return self.userTaskList
     }
     
+    func getAllFavoriteTask() -> [FavoiteTasks] {
+        return self.favoriteTasksList
+    }
+    
     func removeAllTasks() {
         self.taskList.removeAll()
     }
@@ -68,10 +76,15 @@ class DataStorage{
         self.userTaskList.removeAll()
     }
     
+    func removeUserFavTaskList(){
+        self.favoriteTasksList.removeAll()
+    }
+    
     func removeAllData(){
         self.userList.removeAll()
         self.taskList.removeAll()
         self.taskMessageList.removeAll()
+        self.favoriteTasksList.removeAll()
     }
     // Getting data from Firebase
     
@@ -119,5 +132,19 @@ class DataStorage{
                 }
             }
         })
+    }
+    
+    func loadUserFavTasks(userName: String){
+        let favTasksRefer = self.ref.child("favoriteTasks")
+            favTasksRefer.observeSingleEvent(of: .value, with: {(snapshot) in
+                if let favTasksDict = snapshot.value as? [String: [String: String]]{
+                    for value in favTasksDict.values{
+                         if(value["userEmail"] == userName){
+                        self.favoriteTasksList.append(FavoiteTasks(taskID: value["taskID"] ?? "", taskTitle: value["taskName"] ?? "", taskDueDate: value["dueDate"] ?? "", taskEmail: value["taskEmail"] ?? "", userId: value["userID"] ?? "", userEmail: value["userEmail"] ?? ""))
+                 
+                        }
+                    }
+                }
+            })
     }
 }

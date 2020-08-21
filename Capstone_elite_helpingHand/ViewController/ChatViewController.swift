@@ -21,7 +21,6 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     var user2Name: String?
     var user2ImgUrl: String?
     var user2UID: String = ""
-//    ezFU1N9D4dhWob5RgMvhdEHhmhH2
     private var docReference: DocumentReference?
     
     var messages: [Message] = []
@@ -30,7 +29,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
         super.viewDidLoad()
         
         self.title = user2Name ?? "Chat"
-print("uid : \(user2UID)")
+//print("uid : \(user2UID)")
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = .blue
@@ -56,6 +55,7 @@ print("uid : \(user2UID)")
          let db = Firestore.firestore().collection("Chats")
          db.addDocument(data: data) { (error) in
              if let error = error {
+                self.displayAlert(title: "Error", message: "\(error.localizedDescription)", flag: 0)
                  print("Unable to create chat! \(error)")
                  return
              } else {
@@ -74,6 +74,7 @@ print("uid : \(user2UID)")
         db.getDocuments { (chatQuerySnap, error) in
             
             if let error = error {
+                self.displayAlert(title: "Error", message: "\(error.localizedDescription)", flag: 0)
                 print("Error: \(error)")
                 return
             } else {
@@ -82,7 +83,7 @@ print("uid : \(user2UID)")
                 guard let queryCount = chatQuerySnap?.documents.count else {
                     return
                 }
-                print("Query count: \(queryCount)")
+//                print("Query count: \(queryCount)")
                 if queryCount == 0 {
                     //If documents count is zero that means there is no chat available and we need to create a new instance
                     self.createNewChat()
@@ -101,6 +102,7 @@ print("uid : \(user2UID)")
                                 .order(by: "created", descending: false)
                                 .addSnapshotListener(includeMetadataChanges: true, listener: { (threadQuery, error) in
                             if let error = error {
+                                self.displayAlert(title: "Error", message: "\(error.localizedDescription)", flag: 0)
                                 print("Error: \(error)")
                                 return
                             } else {
@@ -109,7 +111,7 @@ print("uid : \(user2UID)")
 
                                         let msg = Message(dictionary: message.data())
                                         self.messages.append(msg!)
-                                        print("Data: \(msg?.content ?? "No message found")")
+//                                        print("Data: \(msg?.content ?? "No message found")")
                                     }
                                 self.messagesCollectionView.reloadData()
                                 self.messagesCollectionView.scrollToBottom(animated: true)
@@ -150,6 +152,7 @@ print("uid : \(user2UID)")
         docReference?.collection("thread").addDocument(data: data, completion: { (error) in
             
             if let error = error {
+                self.displayAlert(title: "Error sending message:", message: "\(error.localizedDescription)", flag: 0)
                 print("Error Sending message: \(error)")
                 return
             }
@@ -191,7 +194,7 @@ print("uid : \(user2UID)")
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         
         if messages.count == 0 {
-            print("No messages to display")
+//            print("No messages to display")
             return 0
         } else {
             return messages.count
@@ -228,6 +231,12 @@ print("uid : \(user2UID)")
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight: .bottomLeft
         return .bubbleTail(corner, .curved)
 
+    }
+    
+    func displayAlert(title: String, message: String, flag: Int){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
 }
