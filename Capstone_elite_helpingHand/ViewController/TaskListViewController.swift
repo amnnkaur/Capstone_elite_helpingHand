@@ -41,6 +41,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()
+        notificationsCall()
     }
     
     func initials(){
@@ -296,11 +297,75 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: "TaskDetailVC") as! TaskDetailViewController
         viewController.task = task
-        print("cityyyy: \(viewController.task.taskCity)")
-//            navigationController?.pushViewController(viewController, animated: true)
         present(viewController, animated: true, completion: nil)
     
     }
+    
+      //MARK: Notification centre
+     func notificationsCall() {
+            // fire test notification
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { success, error in
+            if success {
+                // schedule
+                NotificationCenter.default.addObserver(self, selector: #selector(self.scheduleNotifications), name: UIApplication.willResignActiveNotification, object: nil)
+            }
+            else if error != nil {
+                print("error occurred")
+                }
+            })
+        }
+        
+
+            @objc func scheduleNotifications() {
+                
+                let favTasks = DataStorage.getInstance().getAllFavoriteTask()
+                print(favTasks.count)
+                
+                let formatter = DateFormatter()
+                    formatter.dateStyle = .medium
+                    formatter.timeStyle = .short
+                
+                for task in favTasks{
+
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MMM d, yyyy"
+                    let taskDate = dateFormatter.date(from: task.taskDueDate)!
+                    
+                    let calendar = Calendar.current
+                    let date1 = calendar.startOfDay(for: Date())
+                    let date2 = calendar.startOfDay(for: taskDate)
+                    
+
+                    let components = calendar.dateComponents([.day], from: date1, to: date2)
+                   
+                    
+                    if components.day! == 1 {
+                      
+                        let content = UNMutableNotificationContent()
+                        content.title = "Upcoming task: \(task.taskTitle ?? "No title")"
+                        content.sound = .default
+                        content.body = "By: \(task.taskEmail ?? "No user") \nDue Date: \(task.taskDueDate)"
+
+    //                    let targetDate = Date().addingTimeInterval(10)
+                        var dateComponents = DateComponents()
+                        dateComponents.hour = calendar.component(.hour, from: taskDate)
+                        dateComponents.minute = calendar.component(.minute, from: taskDate)
+                       
+//                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                      let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7200, repeats: true)
+                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+                            if error != nil {
+                                print("Error while generating notification: \(error?.localizedDescription)")
+                            }
+                        })
+                    }
+                }
+            }
+
+           
+
+    
 }
 extension TaskListViewController: UIViewControllerTransitioningDelegate {
     
