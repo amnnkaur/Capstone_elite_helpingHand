@@ -36,7 +36,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     var ref = Database.database().reference()
     var userList: [User] = []
     var taskList: [Task] = []
-    
+    var customerMessagesList: [CustomerMessages] = []
     //MARK: View did load()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         userName = defaults.string(forKey: "userName") ?? "noUserFound"
         userList = DataStorage.getInstance().getAllUsers()
         taskList = DataStorage.getInstance().getAllTasks()
+       
         for item in userList{
             if item.emailId == userName{
                 self.headerLabel.text = " Welcome, \(item.firstName.capitalizingFirstLetter())"
@@ -273,19 +274,33 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                 return cell
             }
             
-    func tableView(_ tableView: UITableView,
-                     contextMenuConfigurationForRowAt indexPath: IndexPath,
-                     point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
             
-                    let message = UIAction(title: "Ignite this", image: UIImage(systemName: "message"),
-                                           attributes: .init()) { _ in
-                    DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskDueDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
-                        let insert = ["taskTitle": self.filteredTasks[indexPath.row].taskTitle, "taskUID":self.filteredTasks[indexPath.row].taskID, "taskEmail": self.filteredTasks[indexPath.row].taskEmail, "date": self.filteredTasks[indexPath.row].taskDueDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
-                          guard let key = self.ref.child("messages").childByAutoId().key else {return}
-                          let childUpdates = ["/messages/\(key)": insert]
-                          self.ref.updateChildValues(childUpdates)
-                
+        let message = UIAction(title: "Ignite this🔥", image: UIImage(systemName: "message"), attributes: .init()) { _ in
+            self.customerMessagesList.removeAll()
+            self.customerMessagesList = DataStorage.getInstance().getAllMessages()
+            for item in self.customerMessagesList{
+                if (item.taskEmail == self.filteredTasks[indexPath.row].taskEmail && item.taskTitle == self.filteredTasks[indexPath.row].taskTitle && item.taskUID == self.filteredTasks[indexPath.row].taskID && item.taskPostingDate == self.filteredTasks[indexPath.row].taskDueDate)
+                {
+                    self.displayAlert(title: "Message", message: "This task is already ignited🔥. Navigated to messages tab", flag: 0)
+                    return
                 }
+            }
+            
+            self.displayAlert(title: "Success", message: "Ignition🔥 done succesfully!!, Navigate to messages screen", flag: 0)
+               
+
+            DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskDueDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
+                                                    
+            let insert = ["taskTitle": self.filteredTasks[indexPath.row].taskTitle, "taskUID":self.filteredTasks[indexPath.row].taskID, "taskEmail": self.filteredTasks[indexPath.row].taskEmail, "date": self.filteredTasks[indexPath.row].taskDueDate, "userUID": Auth.auth().currentUser?.uid ?? "no uid found", "userEmail": Auth.auth().currentUser?.email ?? "no email found"]
+                                                              
+            guard let key = self.ref.child("messages").childByAutoId().key else {return}
+                                          
+            let childUpdates = ["/messages/\(key)": insert]
+                                            
+            self.ref.updateChildValues(childUpdates)
+            
+        }
                 return UIContextMenuConfiguration(identifier: nil,
                     previewProvider: nil) { _ in
                        UIMenu(title: "Actions", children: [ message])
@@ -300,6 +315,12 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         present(viewController, animated: true, completion: nil)
     
     }
+    
+    func displayAlert(title: String, message: String, flag: Int){
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+         }
     
       //MARK: Notification centre
      func notificationsCall() {
@@ -319,7 +340,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             @objc func scheduleNotifications() {
                 
                 let favTasks = DataStorage.getInstance().getAllFavoriteTask()
-                print(favTasks.count)
+//                print(favTasks.count)
                 
                 let formatter = DateFormatter()
                     formatter.dateStyle = .medium
