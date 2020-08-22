@@ -165,6 +165,12 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let address = addressField.text ?? ""
         let city = cityField.text ?? ""
         let postalCode = postalCodeField.text ?? ""
+        
+        if(taskName.isEmpty == true || taskDesc.isEmpty == true || contact.isEmpty == true || date.isEmpty == true || type.isEmpty == true || amount.isEmpty == true || address.isEmpty == true || city.isEmpty == true || postalCode.isEmpty == true){
+            displayAlert(title: "Error!! ❌", message: "All fields are mandatory", flag: 0)
+        }else if(!contact.isNumber()){
+             displayAlert(title: "Contact ❌", message: "Contact number should be in this format: xxx-xxx-xxxx", flag: 0)
+        }else{
        
         DataStorage.getInstance().addUserTask(userTask: Task(taskID: self.taskID, taskTitle: taskName, taskDesc: taskDesc, taskDueDate: date, tasktype: type, taskAddress: address, taskPay: amount, taskEmail: self.taskEmail, taskLat: self.finalLat, taskLong: self.finalLong, taskContact: contact, taskCity: city, taskPostalCode: postalCode))
         
@@ -172,8 +178,33 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         guard let key = self.ref.child("tasks").childByAutoId().key else {return}
         let childUpdates = ["/tasks/\(key)": insert]
         self.ref.updateChildValues(childUpdates)
+        displayAlert(title: "Success ✅", message: "Your task is saved and distributed over other users. Hopes high for quick reply😇", flag: 1)
+        }
     }
     
+    
+    func displayAlert(title: String, message: String, flag: Int){
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if(flag == 0){
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+        }else if (flag == 1){
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                self.taskNameField.text = ""
+                self.taskDescField.text = ""
+                self.contactField.text = ""
+                self.dateField.text = ""
+                self.typeField.text = ""
+                self.amountField.text = ""
+                self.addressField.text = ""
+                self.cityField.text = ""
+                self.postalCodeField.text = ""
+                
+                self.taskNameField.becomeFirstResponder()
+            }))
+        }
+            self.present(alert, animated: true)
+         }
     
         
         @IBAction func unwindToTaskVC(_ unwindSegue: UIStoryboardSegue) {

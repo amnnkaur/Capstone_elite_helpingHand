@@ -29,7 +29,9 @@ class MyTaskTableViewController: UITableViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
-           self.tableView.reloadData()
+        userTasks.removeAll()
+        userTasks = DataStorage.getInstance().getAllUserTask()
+        self.tableView.reloadData()
        }
     // MARK: - Table view data source
     
