@@ -82,7 +82,22 @@ class TaskDetailViewController: UIViewController, MKMapViewDelegate, CLLocationM
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
         gradientLayer.opacity = 0.7
         self.taskDetailView.layer.insertSublayer(gradientLayer, at: 0)
-
+        
+        addressView.layer.backgroundColor = UIColor.clear.cgColor
+        addressView.layer.borderWidth = 3
+        addressView.layer.borderColor = UIColor.orange.cgColor
+        addressView.layer.cornerRadius =  20
+        
+        contactView.layer.backgroundColor = UIColor.clear.cgColor
+        contactView.layer.borderWidth = 2
+        contactView.layer.borderColor = UIColor.orange.cgColor
+        contactView.layer.cornerRadius =  30
+       
+        dateView.layer.backgroundColor = UIColor.clear.cgColor
+        dateView.layer.borderWidth = 2
+        dateView.layer.borderColor = UIColor.orange.cgColor
+        dateView.layer.cornerRadius =  30
+       
         favBtn.layer.cornerRadius = 20
         favBtn.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
@@ -100,10 +115,8 @@ class TaskDetailViewController: UIViewController, MKMapViewDelegate, CLLocationM
         self.address.text = "\(task.taskAddress), \(task.taskCity), \(task.taskPostalCode)"
         self.contact.text = task.taskContact
         self.date.text = task.taskDueDate
-        self.amount.text? = "Amount: \(task.taskPay)"
+        self.amount.text? = task.taskPay
     }
-    
-    
     
     @IBAction func favoriteTasks(_ sender: UIButton) {
         self.displayAlert(title: "♥️ To-do Tasks", message: "Do you want to save this task in your to-do task list and get reminder one day prior of task due date?", flag: 0)
