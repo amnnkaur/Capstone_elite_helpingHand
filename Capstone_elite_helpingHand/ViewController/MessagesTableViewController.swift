@@ -30,12 +30,13 @@ class MessagesTableViewController: UITableViewController {
         userList = DataStorage.getInstance().getAllUsers()
         tasksMessagesList = DataStorage.getInstance().getAllMessages()
         for item in tasksMessagesList{
-            if item.userUID == Auth.auth().currentUser!.uid || item.taskEmail == Auth.auth().currentUser!.email{
+            if item.userUID == Auth.auth().currentUser!.uid || item.userEmail == Auth.auth().currentUser!.email{
                 self.filteredMessages.append(item)
                    }
                }
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         tasksMessagesList.removeAll()
         filteredMessages.removeAll()
        initials()
@@ -43,13 +44,25 @@ class MessagesTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+       
         self.tableView.reloadData()
     }
     
     @IBAction func reloadTable(_ sender: UIBarButtonItem) {
        
-        self.tableView.reloadData()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let reloadVC = storyBoard.instantiateViewController(withIdentifier: "reloadVC") as! ReloadViewController
+        self.present(reloadVC, animated: true, completion: nil)
+        
+        DataStorage.getInstance().loadMessagesData()
+        tasksMessagesList.removeAll()
+        filteredMessages.removeAll()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.initials()
+            self.tableView.reloadData()
+        }
+
+       
     }
     // MARK: - Table view data source
 
@@ -69,33 +82,23 @@ class MessagesTableViewController: UITableViewController {
 
         let task = self.filteredMessages[indexPath.row]
         let email: String
-        if (task.taskEmail != Auth.auth().currentUser!.email){
-                       email =  task.taskEmail
-                   }
-                   else{
-                    email = task.userEmail
-                   }
+        email =  task.taskEmail
         for item in userList{
             if(email == item.emailId){
                 cell.senderLabel.text = item.firstName.capitalizingFirstLetter()
-            }
-        }
-        cell.repliedForLabel.text = "Replied for: \(task.taskTitle)"
-        
-        for item in userList{
-            if(email == item.emailId){
+                cell.repliedForLabel.text = "Replied for: \(task.taskTitle)"
                 let name1 = item.firstName
                 let name2 = item.lastName
-        cell.avatarLabel.text = String(name1[name1.startIndex])+String( name2[name2.startIndex])
-        cell.avatarLabel.backgroundColor = pickColor(alphabet: name1[name1.startIndex])
-        cell.avatarLabel.textAlignment = NSTextAlignment.center
-        cell.avatarLabel.frame.size = CGSize(width: 52.0, height: 52.0)
-        cell.avatarLabel.shadowColor = UIColor.black
-        cell.avatarLabel.isHighlighted = true
-        cell.avatarLabel.highlightedTextColor = UIColor.white
-        cell.avatarLabel.layer.cornerRadius = 30
-        cell.avatarLabel.layer.masksToBounds = true
-        cell.avatarLabel.isEnabled = true
+                       cell.avatarLabel.text = String(name1[name1.startIndex])+String( name2[name2.startIndex])
+                       cell.avatarLabel.backgroundColor = pickColor(alphabet: name1[name1.startIndex])
+                       cell.avatarLabel.textAlignment = NSTextAlignment.center
+                       cell.avatarLabel.frame.size = CGSize(width: 52.0, height: 52.0)
+                       cell.avatarLabel.shadowColor = UIColor.black
+                       cell.avatarLabel.isHighlighted = true
+                       cell.avatarLabel.highlightedTextColor = UIColor.white
+                       cell.avatarLabel.layer.cornerRadius = 30
+                       cell.avatarLabel.layer.masksToBounds = true
+                       cell.avatarLabel.isEnabled = true
             }
         }
 

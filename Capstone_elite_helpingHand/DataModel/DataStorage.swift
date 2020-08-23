@@ -142,9 +142,36 @@ class DataStorage{
                          if(value["userEmail"] == userName){
                         self.favoriteTasksList.append(FavoiteTasks(taskID: value["taskID"] ?? "", taskTitle: value["taskName"] ?? "", taskDueDate: value["dueDate"] ?? "", taskEmail: value["taskEmail"] ?? "", userId: value["userID"] ?? "", userEmail: value["userEmail"] ?? ""))
                  
-                        }
                     }
                 }
-            })
+            }
+        })
+    }
+    
+    func loadMessagesData(){
+        
+        self.userList.removeAll()
+        self.taskMessageList.removeAll()
+        
+        let userRefer = self.ref.child("users")
+        userRefer.observeSingleEvent(of: .value, with: {(snapshot)
+            in
+            if let userDict = snapshot.value as? [String: [String: String]]{
+                for value in userDict.values{
+                    self.userList.append(User(id: "1", firstName: value["firstName"] ?? "", lastName: value["lastName"] ?? "", mobileNumber: value["contact"] ?? "", emailId: value["email"] ?? "", password: value["password"] ?? "", radius: value["radius"] ?? "0km", street: value["street"] ?? "", postal: value["postal"] ?? "", city: value["city"] ?? ""))
+                }
+            }
+        })
+        
+        let messageRefer = self.ref.child("messages")
+                    messageRefer.observeSingleEvent(of: .value, with: {(snapshot)
+                        in
+                        if let messageDict = snapshot.value as? [String: [String: String]]{
+                            for value in messageDict.values{
+                                self.taskMessageList.append(CustomerMessages(taskUID: value["taskUID"] ?? "", taskTitle: value["taskTitle"] ?? "", taskPostingDate: value["date"] ?? "", taskEmail: value["taskEmail"] ?? "", userUID: value["userUID"] ?? "" , userEmail: value["userEmail"] ?? ""))
+                      }
+            }
+        })
+        
     }
 }
