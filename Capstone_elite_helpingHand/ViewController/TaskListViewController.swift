@@ -41,7 +41,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()
-        notificationsCall()
+//        notificationsCall()
     }
     
     func initials(){

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseCore
 import FirebaseDatabase
+import FirebaseFirestore
 import Braintree
 
 @UIApplicationMain

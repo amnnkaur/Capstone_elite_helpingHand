@@ -7,23 +7,77 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class FavTasksTableViewController: UITableViewController {
     
-    var favTaskList: [FavoiteTasks] = []
-
+//    var favTaskList: [FavoiteTasks] = []
+    
+    var db = Firestore.firestore()
+    var taskStatusArray = [TaskStatus]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        favTaskList = DataStorage.getInstance().getAllFavoriteTask()
+//        favTaskList = DataStorage.getInstance().getAllFavoriteTask()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        loadData()
+        checkForUpdates()
+       
     }
-
+    
+    func loadData(){
+        db.collection("taskStatus").getDocuments() {
+                  (querySnapshot, error) in
+                  if let error = error {
+                      print("\(error.localizedDescription)")
+                  }else{
+                    guard let queryCount = querySnapshot?.documents.count else { return }
+                    if queryCount == 0{
+                        print("No task in progress")
+                    }else if queryCount >= 1{
+                    for doc in querySnapshot!.documents{
+                        print("Dic: \(doc.data())")
+                        let taskStatus = TaskStatus(dictionary: doc.data())
+                        self.taskStatusArray.append(taskStatus)
+                        }
+                    }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                      }
+                  }
+              }
+    }
+    
+    func checkForUpdates(){
+        
+        db.collection("taskStatus").whereField("timeStamp", isGreaterThan: Date())
+                 .addSnapshotListener {
+                     querySnapshot, error in
+                     
+                     guard let snapshot = querySnapshot else {return}
+                     
+                     snapshot.documentChanges.forEach {
+                         diff in
+                         
+                         if diff.type == .added {
+                             self.taskStatusArray.append(TaskStatus(dictionary: diff.document.data()))
+                             DispatchQueue.main.async {
+                                 self.tableView.reloadData()
+                             }
+                         }
+                     }
+                     
+             }
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
@@ -37,23 +91,23 @@ class FavTasksTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return favTaskList.count
+        return taskStatusArray.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favTaskCell", for: indexPath)
 
-        let favTask = favTaskList[indexPath.row]
+        let taskStatus = self.taskStatusArray[indexPath.row]
         // Configure the cell...
-        cell.textLabel?.text = favTask.taskTitle
-        cell.detailTextLabel?.text = favTask.taskDueDate
+        cell.textLabel?.text = "\(taskStatus.taskName), \(taskStatus.taskEmail) "
+        cell.detailTextLabel?.text = "\(taskStatus.timeStamp)"
 
         return cell
     }
    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Your short-listed tasks:"
+        return "Your in-progress tasks:"
     }
 
     /*

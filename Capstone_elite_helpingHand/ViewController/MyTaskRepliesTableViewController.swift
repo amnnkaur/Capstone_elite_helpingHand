@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class MyTaskRepliesTableViewController: UITableViewController {
     
@@ -14,6 +15,8 @@ class MyTaskRepliesTableViewController: UITableViewController {
     var repliesMessageList: [CustomerMessages] = []
     var filteredList: [CustomerMessages] = []
     var userList: [User] = []
+    
+    var db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -112,6 +115,34 @@ class MyTaskRepliesTableViewController: UITableViewController {
                }
     }
 
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+              let replies = filteredList[indexPath.row]
+        var userEmail: String = ""
+        var userId: String = ""
+            for item in self.userList {
+                if replies.userEmail  == item.emailId {
+                    userEmail = item.emailId
+                    userId = item.id
+            }
+        }
+        let message = UIAction(title: "Assign task to this user", image: UIImage(systemName: "person.fill"), attributes: .init()) { _ in
+            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description)
+            var ref: DocumentReference? = nil
+            ref = self.db.collection("taskStatus").addDocument(data: taskStatus.dictionary){
+                error in
+                if let error = error {
+                    print("Error adding document: \(error.localizedDescription)")
+                }else{
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
+        }
+        return UIContextMenuConfiguration(identifier: nil,
+                       previewProvider: nil) { _ in
+                          UIMenu(title: "Actions", children: [ message])
+               }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
