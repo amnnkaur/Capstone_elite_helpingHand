@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This application want to access user&apos;s location</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This application want to access user&apos;s location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -30,13 +26,27 @@
 				<string>com.googleusercontent.apps.355118547925-mup9loudkpb4hioebkrqora6kj8q9498</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.lambton.capstoneEliteHelpingHand</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.lambton.capstoneEliteHelpingHand.payments</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This application want to access user's location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This application want to access user's location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

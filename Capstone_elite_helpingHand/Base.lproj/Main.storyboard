@@ -303,7 +303,7 @@
         <!--Profile-->
         <scene sceneID="AEZ-0l-g4w">
             <objects>
-                <viewController id="AbZ-hr-o8Q" sceneMemberID="viewController">
+                <viewController id="AbZ-hr-o8Q" customClass="UserProfileViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oAe-rF-l5V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,12 +383,21 @@
                                     <navigationItem title="Your Profile" id="448-Lk-F0y"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-rp-4qm">
+                                <rect key="frame" x="154" y="758" width="107" height="30"/>
+                                <state key="normal" title="Pay with PayPal"/>
+                                <connections>
+                                    <action selector="payBtn:" destination="AbZ-hr-o8Q" eventType="touchUpInside" id="n26-1q-Whg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="EIj-AL-TGL" firstAttribute="trailing" secondItem="oAe-rF-l5V" secondAttribute="trailingMargin" id="0HI-wj-875"/>
+                            <constraint firstItem="JMn-rp-4qm" firstAttribute="top" secondItem="jEX-82-bzn" secondAttribute="bottom" constant="40" id="18m-RS-oQ5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JVd-W4-RhJ" secondAttribute="trailing" constant="329" id="24G-Pp-NDl"/>
                             <constraint firstItem="J3C-QA-GnE" firstAttribute="trailing" secondItem="oAe-rF-l5V" secondAttribute="trailingMargin" id="3WX-3R-EhQ"/>
+                            <constraint firstItem="JMn-rp-4qm" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" constant="134" id="6Uk-fV-AJ2"/>
                             <constraint firstItem="J3C-QA-GnE" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" id="6c7-AJ-yw7"/>
                             <constraint firstItem="NQD-HP-IEn" firstAttribute="top" secondItem="fWX-hh-Dnz" secondAttribute="bottom" constant="8" id="6cW-4u-JHS"/>
                             <constraint firstItem="JVd-W4-RhJ" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" id="7Gf-Md-chM"/>
@@ -412,6 +421,7 @@
                             <constraint firstItem="EIj-AL-TGL" firstAttribute="top" secondItem="JVd-W4-RhJ" secondAttribute="bottom" constant="8" id="hEC-sn-UbX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fWX-hh-Dnz" secondAttribute="trailing" constant="333" id="jJz-dV-cr8"/>
                             <constraint firstItem="jEX-82-bzn" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" constant="10" id="mSl-jm-aWO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JMn-rp-4qm" secondAttribute="trailing" constant="133" id="pF8-Qw-Ouv"/>
                             <constraint firstItem="jEX-82-bzn" firstAttribute="top" secondItem="J3C-QA-GnE" secondAttribute="bottom" constant="162" id="qYa-U1-ita"/>
                             <constraint firstItem="JVd-W4-RhJ" firstAttribute="top" secondItem="oAe-rF-l5V" secondAttribute="topMargin" constant="104" id="rPq-x7-tLV"/>
                             <constraint firstItem="NQD-HP-IEn" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" id="z7Y-c2-cDO"/>

@@ -15,4 +15,5 @@ pod 'Firebase/Messaging'
 pod 'GoogleSignIn'
 pod 'MessageKit'
 pod 'SDWebImage'
+pod 'Braintree'
 end
