@@ -11,6 +11,7 @@ import SwiftUI
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import LocalAuthentication
 
 class LoginViewController: UIViewController {
 
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController {
     var userList: [User] = []
     var userLatitude: Double = 0.0
     var userLongitude: Double = 0.0
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,46 @@ class LoginViewController: UIViewController {
                       print("Get Location failed \(self.getLocation.didFailWithError)")
                   }
               }
+    }
+    
+    @IBAction func faceIDLogin(_ sender: UIButton) {
+        beginFaceID()
+    }
+    
+    func beginFaceID() {
+
+        guard #available(iOS 8.0, *) else {
+            return print("Not supported")
+        }
+
+        let context = LAContext()
+        var error: NSError?
+
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+            return print(error)
+        }
+
+        let reason = "Face ID authentication"
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { isAuthorized, error in
+            guard isAuthorized == true else {
+                return print(error)
+            }
+
+            print("success")
+//            var username = ""
+//            var password = ""
+//            self.userNameField.text = ""
+//            self.passwordField.text = ""
+//            let defaults: UserDefaults? = UserDefaults.standard
+//            defaults?.set(username, forKey: "SavedUserName")
+//            defaults?.set(password, forKey: "SavedPassword")
+//            self.userNameField.text = username
+//            self.passwordField.text = password
+            DispatchQueue.main.async {
+                 self.verify()
+            }
+        }
+
     }
     
     

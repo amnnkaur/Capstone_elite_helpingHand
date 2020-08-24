@@ -739,6 +739,21 @@
                                     </switch>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUy-dZ-f3y">
+                                <rect key="frame" x="199" y="447" width="19" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQd-gl-UHe">
+                                <rect key="frame" x="139" y="506" width="138" height="30"/>
+                                <state key="normal" title="Log in using Face ID">
+                                    <color key="titleColor" red="0.73471208759999995" green="0.26034613010000002" blue="0.1123044887" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="faceIDLogin:" destination="VVG-op-wgV" eventType="touchUpInside" id="ZPE-hd-Z59"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -746,17 +761,23 @@
                             <constraint firstItem="NWJ-pV-QZT" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="8" id="4co-Sv-vtR"/>
                             <constraint firstItem="tSB-Rs-fYK" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="16" id="5Ms-qf-Tvo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pRR-df-8iO" secondAttribute="trailing" constant="5" id="5vi-D4-6aZ"/>
+                            <constraint firstItem="UQd-gl-UHe" firstAttribute="top" secondItem="HUy-dZ-f3y" secondAttribute="bottom" constant="38.5" id="ABa-XW-eZu"/>
                             <constraint firstItem="NWJ-pV-QZT" firstAttribute="top" secondItem="9gm-3e-Gja" secondAttribute="bottom" constant="39" id="BVl-Wg-DsQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UQd-gl-UHe" secondAttribute="trailing" constant="117" id="G79-jX-DRQ"/>
                             <constraint firstItem="WUE-sG-Mx0" firstAttribute="top" secondItem="tSB-Rs-fYK" secondAttribute="bottom" constant="8" id="GXS-3G-k5U"/>
+                            <constraint firstItem="HUy-dZ-f3y" firstAttribute="top" secondItem="NWJ-pV-QZT" secondAttribute="bottom" constant="31" id="Isw-d7-cKv"/>
                             <constraint firstItem="9gm-3e-Gja" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="154" id="LkL-W1-hFg"/>
                             <constraint firstItem="PGi-iV-iJx" firstAttribute="top" secondItem="WUE-sG-Mx0" secondAttribute="bottom" constant="56" id="MSS-E2-uH6"/>
                             <constraint firstItem="pRR-df-8iO" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="8" id="Oho-YR-7fF"/>
                             <constraint firstItem="tSB-Rs-fYK" firstAttribute="top" secondItem="Y0p-nb-ZCB" secondAttribute="topMargin" constant="56" id="Tk1-Qo-ubs"/>
+                            <constraint firstItem="UQd-gl-UHe" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="119" id="Twq-IY-zdw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9gm-3e-Gja" secondAttribute="trailing" constant="5.5" id="XT7-8c-MkY"/>
                             <constraint firstItem="pRR-df-8iO" firstAttribute="top" secondItem="PGi-iV-iJx" secondAttribute="bottom" constant="38" id="YHc-DN-elY"/>
                             <constraint firstItem="PGi-iV-iJx" firstAttribute="top" secondItem="tSB-Rs-fYK" secondAttribute="bottom" constant="70" id="ZcE-3V-jxP"/>
                             <constraint firstItem="PGi-iV-iJx" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="8" id="cqI-do-dOL"/>
                             <constraint firstItem="WUE-sG-Mx0" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="8" id="dYg-Ge-zhW"/>
+                            <constraint firstItem="HUy-dZ-f3y" firstAttribute="leading" secondItem="Y0p-nb-ZCB" secondAttribute="leadingMargin" constant="179" id="fFN-t2-jZK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HUy-dZ-f3y" secondAttribute="trailing" constant="176" id="gSD-Xj-pfo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NWJ-pV-QZT" secondAttribute="trailing" constant="11" id="lAK-xp-9BC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PGi-iV-iJx" secondAttribute="trailing" constant="5" id="mje-eK-1k3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WUE-sG-Mx0" secondAttribute="trailing" constant="5" id="pDu-75-6bw"/>
@@ -774,7 +795,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsk-Wp-gOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="1wo-UK-4FN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="885.60000000000002" y="-128.18590704647679"/>
+            <point key="canvasLocation" x="885.50724637681162" y="-128.57142857142856"/>
         </scene>
         <!--Home-->
         <scene sceneID="nWV-q6-I1u">
