@@ -21,6 +21,7 @@
 		2A737A4524EAFE2C0058805A /* sort.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A737A4424EAFE2C0058805A /* sort.png */; };
 		2A737A4724EB0DB20058805A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A737A4624EB0DB20058805A /* MapViewController.swift */; };
 		2A97E91224F3624600AF50A5 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */; };
+		2A97E91A24F4688000AF50A5 /* ToDoTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */; };
 		2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38724E21C6400F84405 /* Color+Extension.swift */; };
 		2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1D924E08C100003B085 /* AppDelegate.swift */; };
 		2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */; };
@@ -64,6 +65,7 @@
 		2A737A4424EAFE2C0058805A /* sort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort.png; sourceTree = "<group>"; };
 		2A737A4624EB0DB20058805A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskTableViewCell.swift; sourceTree = "<group>"; };
 		2A9DC38724E21C6400F84405 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		2AE8F1D624E08C100003B085 /* Capstone_elite_helpingHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone_elite_helpingHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE8F1D924E08C100003B085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				8ECF9F0324F04414000C7C13 /* FavTasksTableViewController.swift */,
 				8E79460824F1E82F00FB0877 /* ReloadViewController.swift */,
 				2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */,
+				2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */,
 				8E5A678A24E4581400CA329F /* DataStorage.swift in Sources */,
 				8ECF9F0424F04414000C7C13 /* FavTasksTableViewController.swift in Sources */,
+				2A97E91A24F4688000AF50A5 /* ToDoTaskTableViewCell.swift in Sources */,
 				2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */,
 				2A56FE1E24E39A85005F6CD9 /* TaskTableViewCell.swift in Sources */,
 				2A1AF4BF24F05CFA00C466C9 /* OnboardingViewController.swift in Sources */,

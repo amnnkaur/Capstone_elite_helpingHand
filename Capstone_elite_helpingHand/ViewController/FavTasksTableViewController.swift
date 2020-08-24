@@ -96,12 +96,30 @@ class FavTasksTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favTaskCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favTaskCell", for: indexPath) as! ToDoTaskTableViewCell
 
         let taskStatus = self.taskStatusArray[indexPath.row]
         // Configure the cell...
-        cell.textLabel?.text = "\(taskStatus.taskName), \(taskStatus.taskEmail) "
-        cell.detailTextLabel?.text = "\(taskStatus.timeStamp)"
+//        cell.textLabel?.text = "\(taskStatus.taskName), \(taskStatus.taskEmail) "
+//        cell.detailTextLabel?.text = "\(taskStatus.timeStamp)"
+        cell.taskTitle.text = taskStatus.taskName
+        cell.taskEmail.text = taskStatus.taskEmail
+        
+//        let taskDate = taskStatus.timeStamp
+//        let todayDate = Date()
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let taskDate = dateFormatter.date(from: taskStatus.timeStamp)!
+//
+//        let calendar = Calendar.current
+//        let currentDate = calendar.startOfDay(for: todayDate)
+//        let assignedDate = calendar.startOfDay(for: taskDate)
+//
+//        let components = calendar.dateComponents([.day], from: currentDate, to: assignedDate)
+//
+//        cell.daysLeft.text = "\(components.day)"
+        
 
         return cell
     }
