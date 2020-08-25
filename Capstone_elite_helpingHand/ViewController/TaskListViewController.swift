@@ -126,7 +126,9 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         case .toDoTasks:
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let favTaskVC = storyBoard.instantiateViewController(withIdentifier: "favTasksVC") as! FavTasksTableViewController
-            self.present(favTaskVC, animated: true, completion: nil)
+            let navigationController = UINavigationController(rootViewController: favTaskVC)
+            navigationController.navigationBar.prefersLargeTitles = true
+            self.present(navigationController, animated: true, completion: nil)
             break
         case .logout:
              performLogout(title: "Logout", message: "Do you want to logout?")

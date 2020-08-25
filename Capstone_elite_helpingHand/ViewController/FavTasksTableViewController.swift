@@ -29,9 +29,13 @@ class FavTasksTableViewController: UITableViewController {
         
         loadData()
         checkForUpdates()
-       
-    }
-    
+    self.navigationItem.title = "To-Do Tasks"
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneBarButton))
+        }
+
+    @objc func doneBarButton(){
+               self.dismiss(animated: true, completion: nil)
+           }
     func loadData(){
         db.collection("taskStatus").getDocuments() {
                   (querySnapshot, error) in
@@ -123,11 +127,11 @@ class FavTasksTableViewController: UITableViewController {
 
         return cell
     }
-   
+   /*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Your in-progress tasks:"
     }
-
+*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
