@@ -21,12 +21,17 @@ class MyTaskTableViewController: UITableViewController {
         super.viewDidLoad()
         userTasks = DataStorage.getInstance().getAllUserTask()
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.title = "Your Tasks"
+//        self.navigationController?.title
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneBarButton))
     }
 
+    @objc func doneBarButton(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         userTasks.removeAll()
@@ -34,12 +39,12 @@ class MyTaskTableViewController: UITableViewController {
         self.tableView.reloadData()
        }
     // MARK: - Table view data source
-    
+  /*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection
                                    section: Int) -> String? {
           return "Tasks posted by you:"
        }
-
+*/
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -83,7 +88,8 @@ class MyTaskTableViewController: UITableViewController {
         
         if let viewController = storyboard?.instantiateViewController(identifier: "myTasksRepliesVC") as? MyTaskRepliesTableViewController{
             viewController.task = task
-            present(viewController, animated: true, completion: nil)
+            navigationController?.pushViewController(viewController, animated: true)
+//            present(viewController, animated: true, completion: nil)
         }
     }
     

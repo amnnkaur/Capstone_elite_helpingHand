@@ -26,10 +26,12 @@ class MyTaskRepliesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         initials()
-        
-        
-    }
-    
+        self.navigationItem.title = "\(task?.taskTitle ?? "No Title")"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneBarButton))
+}
+@objc func doneBarButton(){
+            self.dismiss(animated: true, completion: nil)
+        }
     func initials() {
         userList = DataStorage.getInstance().getAllUsers()
         repliesMessageList = DataStorage.getInstance().getAllMessages()
@@ -55,12 +57,12 @@ class MyTaskRepliesTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return filteredList.count
     }
-
+/*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection
                                       section: Int) -> String? {
         return "Replies for: \(task?.taskTitle ?? "No such task name is there")"
           }
-    
+   */
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repliesCell", for: indexPath) as! MessageTableViewCell
@@ -107,11 +109,11 @@ class MyTaskRepliesTableViewController: UITableViewController {
                
                if let viewController = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController {
                  
-                    viewController.user2Name = replies.taskTitle + " || " + replies.taskEmail
+                viewController.user2Name = replies.taskTitle + " || " + replies.userEmail
                     viewController.user2UID = replies.userUID
                    
-                   
-                   present(viewController, animated: true, completion: nil)
+                   navigationController?.pushViewController(viewController, animated: true)
+//                   present(viewController, animated: true, completion: nil)
                }
     }
 
