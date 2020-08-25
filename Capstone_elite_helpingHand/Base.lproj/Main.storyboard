@@ -1759,40 +1759,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favTaskCell" rowHeight="124" id="6F7-4s-RrM" customClass="ToDoTaskTableViewCell" customModule="Capstone_elite_helpingHand" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="124"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favTaskCell" rowHeight="157" id="6F7-4s-RrM" customClass="ToDoTaskTableViewCell" customModule="Capstone_elite_helpingHand" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6F7-4s-RrM" id="2Gt-s4-dua">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bN-wG-EZL">
-                                            <rect key="frame" x="128" y="11" width="98" height="22"/>
-                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bN-wG-EZL">
+                                            <rect key="frame" x="20" y="11" width="109" height="25"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l73-sf-e1a">
-                                            <rect key="frame" x="128" y="41" width="44" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l73-sf-e1a">
+                                            <rect key="frame" x="20" y="44" width="44" height="22"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-nO-QMI">
-                                            <rect key="frame" x="319" y="47" width="72" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Task Done"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-nO-QMI">
+                                            <rect key="frame" x="314" y="110" width="72" height="30"/>
+                                            <state key="normal" title="END TASK"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Days Left:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dn-Us-dKV">
-                                            <rect key="frame" x="128" y="94" width="69" height="18"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBa-01-0pg">
+                                            <rect key="frame" x="307" y="33" width="87" height="30"/>
+                                            <state key="normal" title="START TASK"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days Left:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dn-Us-dKV">
+                                            <rect key="frame" x="20" y="116" width="69" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5Dn-Us-dKV" firstAttribute="top" secondItem="l73-sf-e1a" secondAttribute="bottom" constant="31" id="0Og-aB-Rhu"/>
-                                        <constraint firstItem="l73-sf-e1a" firstAttribute="top" secondItem="8bN-wG-EZL" secondAttribute="bottom" constant="8" id="cFM-nD-ZSG"/>
+                                        <constraint firstItem="KSO-nO-QMI" firstAttribute="leading" secondItem="5Dn-Us-dKV" secondAttribute="trailing" constant="225" id="4JQ-1z-Pob"/>
+                                        <constraint firstItem="l73-sf-e1a" firstAttribute="leading" secondItem="2Gt-s4-dua" secondAttribute="leadingMargin" id="7jd-DM-ViZ"/>
+                                        <constraint firstItem="8bN-wG-EZL" firstAttribute="top" secondItem="2Gt-s4-dua" secondAttribute="topMargin" id="8EN-jf-RDe"/>
+                                        <constraint firstItem="jBa-01-0pg" firstAttribute="trailing" secondItem="2Gt-s4-dua" secondAttribute="trailingMargin" id="Bjx-lR-Tib"/>
+                                        <constraint firstItem="jBa-01-0pg" firstAttribute="top" secondItem="2Gt-s4-dua" secondAttribute="topMargin" constant="22" id="Dwd-ax-JpT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5Dn-Us-dKV" secondAttribute="bottom" constant="12" id="L3i-Dp-kRH"/>
+                                        <constraint firstItem="KSO-nO-QMI" firstAttribute="top" secondItem="jBa-01-0pg" secondAttribute="bottom" constant="47" id="OzU-nZ-sfS"/>
+                                        <constraint firstItem="5Dn-Us-dKV" firstAttribute="leading" secondItem="2Gt-s4-dua" secondAttribute="leadingMargin" id="Zko-IV-esr"/>
+                                        <constraint firstItem="l73-sf-e1a" firstAttribute="top" secondItem="8bN-wG-EZL" secondAttribute="bottom" constant="8" id="bwx-ah-ley"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="KSO-nO-QMI" secondAttribute="bottom" constant="6" id="fd2-ag-IUm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="KSO-nO-QMI" secondAttribute="trailing" constant="8" id="nLl-pR-kYr"/>
+                                        <constraint firstItem="5Dn-Us-dKV" firstAttribute="top" secondItem="l73-sf-e1a" secondAttribute="bottom" constant="50" id="wgv-fl-jlB"/>
+                                        <constraint firstItem="8bN-wG-EZL" firstAttribute="leading" secondItem="2Gt-s4-dua" secondAttribute="leadingMargin" id="y0j-Ti-sCs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1811,7 +1825,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8b-Ai-rpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6126" y="-877"/>
+            <point key="canvasLocation" x="6124.6376811594209" y="-877.23214285714278"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="qdz-S1-RvD">
