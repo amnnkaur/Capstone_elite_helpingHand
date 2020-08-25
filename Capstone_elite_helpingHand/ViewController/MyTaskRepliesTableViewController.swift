@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class MyTaskRepliesTableViewController: UITableViewController {
     
@@ -128,16 +129,27 @@ class MyTaskRepliesTableViewController: UITableViewController {
             }
         }
         let message = UIAction(title: "Assign task to this user", image: UIImage(systemName: "person.fill"), attributes: .init()) { _ in
-            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate)
-            var ref: DocumentReference? = nil
-            ref = self.db.collection("taskStatus").addDocument(data: taskStatus.dictionary){
-                error in
-                if let error = error {
-                    print("Error adding document: \(error.localizedDescription)")
-                }else{
-                    print("Document added with ID: \(ref!.documentID)")
-                }
+            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate, taskHours: "0", taskAmount: "0.00")
+         
+      /*
+            self.db.collection("taskStatus").whereField("userEmail", isEqualTo: userEmail).whereField("taskEmail", isEqualTo: taskStatus.taskEmail).whereField("taskDueDate", isEqualTo: taskStatus.taskDueDate).whereField("taskName", isEqualTo: taskStatus.taskName).whereField("taskId", isEqualTo: taskStatus.taskId).getDocuments() { (querySnapshot, err) in
+                            if let err = err {
+                                self.displayAlert(title: "Error", message: "\(err.localizedDescription)", flag: 0)
+                             print("Error getting documents: \(err)")
+                            } else {
+                                for document in querySnapshot!.documents {
+                                    if (document.exists){
+                                        print(document.data())
+                                        self.displayAlert(title: "Already Assigned", message: "This task is already assigned to helper. Helper is on its way to rescue you😇", flag: 0)
+                                     return
+                                    }
+                  }
             }
+
+        }*/
+            
+            self.saveToTaskStatusCollection(taskStatus: taskStatus)
+         
         }
         return UIContextMenuConfiguration(identifier: nil,
                        previewProvider: nil) { _ in
@@ -145,49 +157,23 @@ class MyTaskRepliesTableViewController: UITableViewController {
                }
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func displayAlert(title: String, message: String, flag: Int){
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    
+    func saveToTaskStatusCollection(taskStatus: TaskStatus) {
+        print("saveTo")
+        var ref: DocumentReference? = nil
+        ref = self.db.collection("taskStatus").addDocument(data: taskStatus.dictionary){
+                     error in
+                     if let error = error {
+                         print("Error adding document: \(error.localizedDescription)")
+                     }else{
+                         print("Document added with ID: \(ref!.documentID)")
+                     }
+                 }
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
