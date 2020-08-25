@@ -47,7 +47,7 @@
 		8ECDDCD124E1DE4F00AEABBA /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */; };
 		8ECF9F0024F00992000C7C13 /* MyTaskRepliesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF9EFF24F00992000C7C13 /* MyTaskRepliesTableViewController.swift */; };
 		8ECF9F0224F03F87000C7C13 /* FavoriteTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF9F0124F03F87000C7C13 /* FavoriteTasks.swift */; };
-		8ECF9F0424F04414000C7C13 /* FavTasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF9F0324F04414000C7C13 /* FavTasksTableViewController.swift */; };
+		8ECF9F0424F04414000C7C13 /* ToDoTasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECF9F0324F04414000C7C13 /* ToDoTasksTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +94,7 @@
 		8ECDDCD024E1DE4F00AEABBA /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8ECF9EFF24F00992000C7C13 /* MyTaskRepliesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTaskRepliesTableViewController.swift; sourceTree = "<group>"; };
 		8ECF9F0124F03F87000C7C13 /* FavoriteTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTasks.swift; sourceTree = "<group>"; };
-		8ECF9F0324F04414000C7C13 /* FavTasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavTasksTableViewController.swift; sourceTree = "<group>"; };
+		8ECF9F0324F04414000C7C13 /* ToDoTasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTasksTableViewController.swift; sourceTree = "<group>"; };
 		E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capstone_elite_helpingHand.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,7 +137,7 @@
 				2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */,
 				8ECF9EFF24F00992000C7C13 /* MyTaskRepliesTableViewController.swift */,
 				2A1AF4BE24F05CFA00C466C9 /* OnboardingViewController.swift */,
-				8ECF9F0324F04414000C7C13 /* FavTasksTableViewController.swift */,
+				8ECF9F0324F04414000C7C13 /* ToDoTasksTableViewController.swift */,
 				8E79460824F1E82F00FB0877 /* ReloadViewController.swift */,
 				2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */,
 				2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */,
@@ -381,7 +381,7 @@
 				2A737A4724EB0DB20058805A /* MapViewController.swift in Sources */,
 				8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */,
 				8E5A678A24E4581400CA329F /* DataStorage.swift in Sources */,
-				8ECF9F0424F04414000C7C13 /* FavTasksTableViewController.swift in Sources */,
+				8ECF9F0424F04414000C7C13 /* ToDoTasksTableViewController.swift in Sources */,
 				2A97E91A24F4688000AF50A5 /* ToDoTaskTableViewCell.swift in Sources */,
 				2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */,
 				2A56FE1E24E39A85005F6CD9 /* TaskTableViewCell.swift in Sources */,

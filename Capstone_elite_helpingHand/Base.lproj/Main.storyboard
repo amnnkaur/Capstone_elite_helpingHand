@@ -1750,10 +1750,10 @@
             </objects>
             <point key="canvasLocation" x="5276.811594202899" y="-847.09821428571422"/>
         </scene>
-        <!--Fav Tasks Table View Controller-->
+        <!--To Do Tasks Table View Controller-->
         <scene sceneID="Ud6-dw-cN7">
             <objects>
-                <tableViewController storyboardIdentifier="favTasksVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OUh-Ir-F5R" customClass="FavTasksTableViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="favTasksVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OUh-Ir-F5R" customClass="ToDoTasksTableViewController" customModule="Capstone_elite_helpingHand" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="l4y-EH-umH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1781,10 +1781,16 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSO-nO-QMI">
                                             <rect key="frame" x="314" y="110" width="72" height="30"/>
                                             <state key="normal" title="END TASK"/>
+                                            <connections>
+                                                <action selector="endTask:" destination="6F7-4s-RrM" eventType="touchUpInside" id="KQ1-9w-jPn"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBa-01-0pg">
                                             <rect key="frame" x="307" y="33" width="87" height="30"/>
                                             <state key="normal" title="START TASK"/>
+                                            <connections>
+                                                <action selector="startTask:" destination="6F7-4s-RrM" eventType="touchUpInside" id="cim-TW-7pD"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days Left:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dn-Us-dKV">
                                             <rect key="frame" x="20" y="116" width="69" height="18"/>
@@ -1810,7 +1816,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="btnTaskDone" destination="KSO-nO-QMI" id="IWw-Qg-dBy"/>
+                                    <outlet property="btnTaskDone" destination="KSO-nO-QMI" id="bzF-wR-mZU"/>
+                                    <outlet property="btnTaskStart" destination="jBa-01-0pg" id="baE-Sf-ohz"/>
                                     <outlet property="daysLeft" destination="5Dn-Us-dKV" id="CMz-yG-vXb"/>
                                     <outlet property="taskEmail" destination="l73-sf-e1a" id="ed4-Ku-5HU"/>
                                     <outlet property="taskTitle" destination="8bN-wG-EZL" id="hwJ-fL-HTB"/>

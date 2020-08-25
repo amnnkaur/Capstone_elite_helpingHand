@@ -128,7 +128,7 @@ class MyTaskRepliesTableViewController: UITableViewController {
             }
         }
         let message = UIAction(title: "Assign task to this user", image: UIImage(systemName: "person.fill"), attributes: .init()) { _ in
-            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description)
+            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate)
             var ref: DocumentReference? = nil
             ref = self.db.collection("taskStatus").addDocument(data: taskStatus.dictionary){
                 error in

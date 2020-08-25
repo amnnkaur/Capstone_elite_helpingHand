@@ -8,14 +8,18 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
-class FavTasksTableViewController: UITableViewController {
+class ToDoTasksTableViewController: UITableViewController {
     
 //    var favTaskList: [FavoiteTasks] = []
     
     var db = Firestore.firestore()
     var taskStatusArray = [TaskStatus]()
     
+    @IBOutlet weak var endTaskBtn: UIButton!
+    @IBOutlet weak var startTaskBtn: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,17 +41,18 @@ class FavTasksTableViewController: UITableViewController {
                self.dismiss(animated: true, completion: nil)
            }
     func loadData(){
-        db.collection("taskStatus").getDocuments() {
+        db.collection("taskStatus").whereField("userEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").getDocuments() {
                   (querySnapshot, error) in
                   if let error = error {
                       print("\(error.localizedDescription)")
                   }else{
                     guard let queryCount = querySnapshot?.documents.count else { return }
                     if queryCount == 0{
-                        print("No task in progress")
+                        self.displayAlert(title: "Hurray🎊", message: "All tasks are sorted. You have no in due tasks", flag: 0)
+
                     }else if queryCount >= 1{
                     for doc in querySnapshot!.documents{
-                        print("Dic: \(doc.data())")
+
                         let taskStatus = TaskStatus(dictionary: doc.data())
                         self.taskStatusArray.append(taskStatus)
                         }
@@ -61,7 +66,7 @@ class FavTasksTableViewController: UITableViewController {
     
     func checkForUpdates(){
         
-        db.collection("taskStatus").whereField("timeStamp", isGreaterThan: Date())
+        db.collection("taskStatus").whereField("userEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").whereField("timeStamp", isLessThan: Date())
                  .addSnapshotListener {
                      querySnapshot, error in
                      
@@ -106,9 +111,19 @@ class FavTasksTableViewController: UITableViewController {
         // Configure the cell...
 //        cell.textLabel?.text = "\(taskStatus.taskName), \(taskStatus.taskEmail) "
 //        cell.detailTextLabel?.text = "\(taskStatus.timeStamp)"
+        if(taskStatus.status == "inProgress"){
+            cell.btnTaskStart.isEnabled = true
+            cell.btnTaskDone.isEnabled = false
+        }else if (taskStatus.status == "started"){
+            cell.btnTaskStart.isEnabled = false
+            cell.btnTaskDone.isEnabled = true
+        }else if(taskStatus.status == "done"){
+            cell.btnTaskStart.isEnabled = false
+            cell.btnTaskDone.isEnabled = false
+        }
         cell.taskTitle.text = taskStatus.taskName
         cell.taskEmail.text = taskStatus.taskEmail
-        
+        cell.toDoTaskCellDelegate =  self
 //        let taskDate = taskStatus.timeStamp
 //        let todayDate = Date()
 //
@@ -127,54 +142,65 @@ class FavTasksTableViewController: UITableViewController {
 
         return cell
     }
-   /*
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Your in-progress tasks:"
+
+    func displayAlert(title: String, message: String, flag: Int){
+          let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+          self.present(alert, animated: true)
+      }
+    func updateTaskStatusInFireStore(taskStatus: TaskStatus, flag: Int) {
+        if flag == 0{
+
+            self.db.collection("taskStatus").whereField("userEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").whereField("taskEmail", isEqualTo: taskStatus.taskEmail).whereField("taskDueDate", isEqualTo: taskStatus.taskDueDate).whereField("taskName", isEqualTo: taskStatus.taskName).whereField("taskId", isEqualTo: taskStatus.taskId).limit(to: 1).getDocuments() { (querySnapshot, err) in
+                   if let err = err {
+                     self.displayAlert(title: "Error!", message: "\(err.localizedDescription)", flag: 0)
+                    print("Error getting documents: \(err)")
+                   } else {
+                       for document in querySnapshot!.documents {
+                        document.reference.updateData([
+                            "status": "started"
+                        ])
+                       }
+        }
     }
-*/
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        }else if flag == 1{
+            
+    self.db.collection("taskStatus").whereField("userEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").whereField("taskEmail", isEqualTo: taskStatus.taskEmail).whereField("taskDueDate", isEqualTo: taskStatus.taskDueDate).whereField("taskName", isEqualTo: taskStatus.taskName).whereField("taskId", isEqualTo: taskStatus.taskId).limit(to: 1).getDocuments() { (querySnapshot, err) in
+                           if let err = err {
+                            self.displayAlert(title: "Error!", message: "\(err.localizedDescription)", flag: 0)
+                               print("Error getting documents: \(err)")
+                           } else {
+                               for document in querySnapshot!.documents {
+                                document.reference.updateData([
+                                    "status": "done"
+                                ])
+                               }
+                }
+            }
+            
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+extension ToDoTasksTableViewController: ToDoTaskTableViewCellDelegate{
+    func toDoCell(cell: ToDoTaskTableViewCell, didTappedThe button: UIButton?) {
+        if button == cell.btnTaskStart{
+            guard let indexPath = tableView.indexPath(for: cell) else  { return }
+            let taskStatus = self.taskStatusArray[indexPath.row]
+            self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 0)
+            cell.btnTaskStart.isEnabled = false
+            cell.btnTaskDone.isEnabled = true
+            
+        }else if button == cell.btnTaskDone{
+            guard let indexPath = tableView.indexPath(for: cell) else  { return }
+            let taskStatus = self.taskStatusArray[indexPath.row]
+            self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 1)
+            cell.btnTaskStart.isEnabled = false
+            cell.btnTaskDone.isEnabled = false
+        }
+       
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

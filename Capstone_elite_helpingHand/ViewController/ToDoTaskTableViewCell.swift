@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol ToDoTaskTableViewCellDelegate:class {
+    func toDoCell(cell:ToDoTaskTableViewCell, didTappedThe button:UIButton?)
+}
+
 class ToDoTaskTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var btnTaskStart: UIButton!
     @IBOutlet weak var btnTaskDone: UIButton!
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var taskEmail: UILabel!
@@ -19,6 +24,16 @@ class ToDoTaskTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+     weak var toDoTaskCellDelegate:ToDoTaskTableViewCellDelegate?
+    
+    @IBAction func startTask(_ sender: UIButton) {
+        toDoTaskCellDelegate?.toDoCell(cell: self, didTappedThe: sender as? UIButton)
+    }
+    
+    @IBAction func endTask(_ sender: UIButton) {
+          toDoTaskCellDelegate?.toDoCell(cell: self, didTappedThe: sender as? UIButton)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

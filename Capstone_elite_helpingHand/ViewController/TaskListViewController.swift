@@ -125,7 +125,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             self.present(navigationController, animated: true, completion: nil)
         case .toDoTasks:
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let favTaskVC = storyBoard.instantiateViewController(withIdentifier: "favTasksVC") as! FavTasksTableViewController
+            let favTaskVC = storyBoard.instantiateViewController(withIdentifier: "favTasksVC") as! ToDoTasksTableViewController
             let navigationController = UINavigationController(rootViewController: favTaskVC)
             navigationController.navigationBar.prefersLargeTitles = true
             self.present(navigationController, animated: true, completion: nil)
