@@ -9,15 +9,19 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import Braintree
 
 class PayTableViewController: UITableViewController {
     
     var db = Firestore.firestore()
     var paymentDueArray = [PaymentDue]()
     var userList: [User] = []
+    var braintreeClient: BTAPIClient?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        braintreeClient = BTAPIClient(authorization: "sandbox_hcwxk8yn_yk2kgrnb4ncwqzmw")
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -132,9 +136,65 @@ extension PayTableViewController: PayTableViewCellDelegate{
     func toDoPayCell(cell: PayTableViewCell, didTappedThe button: UIButton?) {
        
         if button == cell.payBtn{
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            let paymentDue = self.paymentDueArray[indexPath.row]
             print("pay")
+            let payPalDriver = BTPayPalDriver(apiClient: braintreeClient!)
+                                      payPalDriver.viewControllerPresentingDelegate = self
+                                      payPalDriver.appSwitchDelegate = self // Optional
+                            
+                            let request = BTPayPalRequest(amount: paymentDue.calculatedAmount)
+                               request.currencyCode = "CAD" // Optional; see BTPayPalRequest.h for more options
+            
+            
+                               payPalDriver.requestOneTimePayment(request) { (tokenizedPayPalAccount, error) in
+                                   if let tokenizedPayPalAccount = tokenizedPayPalAccount {
+                                       print("Got a nonce: \(tokenizedPayPalAccount.nonce)")
+
+                                       // Access additional information
+                                       let email = tokenizedPayPalAccount.email
+                                       let firstName = tokenizedPayPalAccount.firstName
+                                       let lastName = tokenizedPayPalAccount.lastName
+                                       let phone = tokenizedPayPalAccount.phone
+
+                                       // See BTPostalAddress.h for details
+                                       let billingAddress = tokenizedPayPalAccount.billingAddress
+                                       let shippingAddress = tokenizedPayPalAccount.shippingAddress
+                                   } else if let error = error {
+                                       // Handle error here...
+                                   } else {
+                                       // Buyer canceled payment approval
+                                   }
+                               }
             
         }
+    }
+
+}
+
+extension PayTableViewController : BTViewControllerPresentingDelegate{
+    func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
+        
+    }
+    
+    func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
+         
+    }
+    
+    
+}
+
+extension PayTableViewController : BTAppSwitchDelegate{
+    func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
+           
+    }
+    
+    func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
+        
+    }
+    
+    func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
+          
     }
     
     
