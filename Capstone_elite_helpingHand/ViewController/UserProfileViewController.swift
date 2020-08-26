@@ -7,53 +7,57 @@
 //
 
 import UIKit
-import Braintree
+import FirebaseAuth
+import FirebaseDatabase
+
 
 class UserProfileViewController: UIViewController {
     
-    var braintreeClient: BTAPIClient?
-
+    @IBOutlet weak var profileView: UIView!
+    
+    @IBOutlet weak var personImg: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var contact: UILabel!
+    
+    var userName: String?
+    var ref = Database.database().reference()
+    var userList: [User] = []
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        braintreeClient = BTAPIClient(authorization: "sandbox_hcwxk8yn_yk2kgrnb4ncwqzmw")
-
+     
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func payBtn(_ sender: UIButton) {
+           
+        let gradientLayer = CAGradientLayer()
+
+        gradientLayer.frame = profileView.bounds
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.orange.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
+        gradientLayer.opacity = 0.7
+        self.profileView.layer.insertSublayer(gradientLayer, at: 0)
         
-        let payPalDriver = BTPayPalDriver(apiClient: braintreeClient!)
-                            payPalDriver.viewControllerPresentingDelegate = self
-                            payPalDriver.appSwitchDelegate = self // Optional
-                     
-                     // Specify the transaction amount here. "2.32" is used in this example.
-                     let request = BTPayPalRequest(amount: "2.32")
-                     request.currencyCode = "USD" // Optional; see BTPayPalRequest.h for more options
-
-                     payPalDriver.requestOneTimePayment(request) { (tokenizedPayPalAccount, error) in
-                         if let tokenizedPayPalAccount = tokenizedPayPalAccount {
-                             print("Got a nonce: \(tokenizedPayPalAccount.nonce)")
-
-                             // Access additional information
-                             let email = tokenizedPayPalAccount.email
-                             let firstName = tokenizedPayPalAccount.firstName
-                             let lastName = tokenizedPayPalAccount.lastName
-                             let phone = tokenizedPayPalAccount.phone
-
-                             // See BTPostalAddress.h for details
-                             let billingAddress = tokenizedPayPalAccount.billingAddress
-                             let shippingAddress = tokenizedPayPalAccount.shippingAddress
-                         } else if let error = error {
-                             // Handle error here...
-                         } else {
-                             // Buyer canceled payment approval
-                         }
-                     }
-              
-          }
-    
+        personImg.layer.cornerRadius = 50
+        
+        userList = DataStorage.getInstance().getAllUsers()
+        
+        for item in userList{
+            if item.emailId == Auth.auth().currentUser?.email{
+                self.user = item
+                  }
+              }
+        initials()
+        
     }
     
+    func initials() {
+        self.name.text = "\(user?.firstName ?? "No first name") \(user?.lastName ?? "No last name")"
+        self.email.text = user?.emailId ?? "No email id"
+        self.address.text = user?.street ?? "No address"
+        self.contact.text = user?.mobileNumber ?? "No mobile number"
+    }
     /*
     // MARK: - Navigation
 
@@ -64,31 +68,4 @@ class UserProfileViewController: UIViewController {
     }
     */
 
-extension UserProfileViewController : BTViewControllerPresentingDelegate{
-    func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
-        
-    }
-    
-    func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
-         
-    }
-    
-    
 }
-
-extension UserProfileViewController : BTAppSwitchDelegate{
-    func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
-           
-    }
-    
-    func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
-        
-    }
-    
-    func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
-          
-    }
-    
-    
-}
-

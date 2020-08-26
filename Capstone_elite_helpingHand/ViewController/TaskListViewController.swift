@@ -293,7 +293,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             self.customerMessagesList.removeAll()
             self.customerMessagesList = DataStorage.getInstance().getAllMessages()
             for item in self.customerMessagesList{
-                if (item.taskEmail == self.filteredTasks[indexPath.row].taskEmail && item.taskTitle == self.filteredTasks[indexPath.row].taskTitle && item.taskUID == self.filteredTasks[indexPath.row].taskID && item.taskPostingDate == self.filteredTasks[indexPath.row].taskDueDate)
+                if (item.taskEmail == self.filteredTasks[indexPath.row].taskEmail && item.taskTitle == self.filteredTasks[indexPath.row].taskTitle && item.taskUID == self.filteredTasks[indexPath.row].taskID && item.taskPostingDate == self.filteredTasks[indexPath.row].taskDueDate && item.userEmail == Auth.auth().currentUser?.email ?? "No email found")
                 {
                     self.displayAlert(title: "Message", message: "This task is already ignited🔥. Navigated to messages tab", flag: 0)
                     return
