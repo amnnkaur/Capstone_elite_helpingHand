@@ -129,7 +129,7 @@ class MyTaskRepliesTableViewController: UITableViewController {
             }
         }
         let message = UIAction(title: "Assign task to this user", image: UIImage(systemName: "person.fill"), attributes: .init()) { _ in
-            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate, taskHours: "0", taskAmount: self.task!.taskPay)
+            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate, taskHours: "0", taskAmount: self.task!.taskPay, calculatedAmount: "0.00")
          
       /*
             self.db.collection("taskStatus").whereField("userEmail", isEqualTo: userEmail).whereField("taskEmail", isEqualTo: taskStatus.taskEmail).whereField("taskDueDate", isEqualTo: taskStatus.taskDueDate).whereField("taskName", isEqualTo: taskStatus.taskName).whereField("taskId", isEqualTo: taskStatus.taskId).getDocuments() { (querySnapshot, err) in
@@ -164,7 +164,7 @@ class MyTaskRepliesTableViewController: UITableViewController {
         }
     
     func saveToTaskStatusCollection(taskStatus: TaskStatus) {
-        print("saveTo")
+        
         var ref: DocumentReference? = nil
         ref = self.db.collection("taskStatus").addDocument(data: taskStatus.dictionary){
                      error in

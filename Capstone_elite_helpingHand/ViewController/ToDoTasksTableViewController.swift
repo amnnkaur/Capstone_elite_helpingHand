@@ -20,6 +20,9 @@ class ToDoTasksTableViewController: UITableViewController {
     @IBOutlet weak var endTaskBtn: UIButton!
     @IBOutlet weak var startTaskBtn: UIButton!
     var startTimeString: String = ""
+    var totalWorkingHours: String = ""
+    var totalAmountAccHours: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +39,12 @@ class ToDoTasksTableViewController: UITableViewController {
     self.navigationItem.title = "To-Do Tasks"
     self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneBarButton))
         }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.startTimeString = ""
+        self.totalWorkingHours = ""
+        self.totalAmountAccHours = ""
+    }
 
     @objc func doneBarButton(){
                self.dismiss(animated: true, completion: nil)
@@ -123,6 +132,10 @@ class ToDoTasksTableViewController: UITableViewController {
             cell.btnTaskStart.isHidden = true
             cell.btnTaskDone.isHidden = true
             cell.requestPaymentButton.isHidden = false
+        }else if(taskStatus.status == "completed"){
+            cell.btnTaskStart.isHidden = true
+            cell.btnTaskDone.isHidden = true
+            cell.requestPaymentButton.isHidden = true
         }
         cell.taskTitle.text = taskStatus.taskName
         cell.taskEmail.text = taskStatus.taskEmail
@@ -179,13 +192,30 @@ class ToDoTasksTableViewController: UITableViewController {
                            } else {
                                for document in querySnapshot!.documents {
                                 document.reference.updateData([
-                                    "status": "done"
+                                    "status": "done",
+                                    "taskHours": "\(self.totalWorkingHours)",
+                                    "calculatedAmount": "\(self.totalAmountAccHours)"
                                 ])
                                }
                 }
             }
             
-        }
+        }else if flag == 2{
+                
+        self.db.collection("taskStatus").whereField("userEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").whereField("taskEmail", isEqualTo: taskStatus.taskEmail).whereField("taskDueDate", isEqualTo: taskStatus.taskDueDate).whereField("taskName", isEqualTo: taskStatus.taskName).whereField("taskId", isEqualTo: taskStatus.taskId).limit(to: 1).getDocuments() { (querySnapshot, err) in
+                               if let err = err {
+                                self.displayAlert(title: "Error!", message: "\(err.localizedDescription)", flag: 0)
+                                   print("Error getting documents: \(err)")
+                               } else {
+                                   for document in querySnapshot!.documents {
+                                    document.reference.updateData([
+                                        "status": "completed"
+                                ])
+                        }
+                    }
+                }
+                
+            }
     }
     
     func startTimeHour() -> String {
@@ -203,7 +233,7 @@ class ToDoTasksTableViewController: UITableViewController {
         let time1 = startTime
         let time2 = formatter.string(from: Date())
 
-        let date1 = formatter.date(from: time1)!
+        let date1 = formatter.date(from: time1) ?? formatter.date(from: self.startTimeString)!
         let date2 = formatter.date(from: time2)!
 
         let elapsedTime = date2.timeIntervalSince(date1)
@@ -212,20 +242,42 @@ class ToDoTasksTableViewController: UITableViewController {
         let hours = floor(elapsedTime / 60 / 60)
 
         let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
-
-        print("\(Int(hours)) hr and \(Int(minutes)) min")
         var amount: String
         amount = taskAmount.replacingOccurrences(of: "$ ", with: "")
         amount = amount.replacingOccurrences(of: "/hr", with: "")
-        print("\(amount)")
         var amountValue: Double
         let hoursValue = Float(amount)! * (Float(hours))
         let minuteValue = (Float(amount)!/60) * (Float(minutes))
         amountValue = Double(hoursValue + minuteValue)
-        print("\(String(format: "%.2f", amountValue)) ||  \(amountValue)")
+        
+        self.totalWorkingHours = "\(Int(hours)) hr and \(Int(minutes)) min"
+        self.totalAmountAccHours = "\(String(format: "%.2f", amountValue))"
         
     }
 
+    func paymentRequestActivity(taskStatus: TaskStatus){
+         
+        var amount: String?
+        var hours: String?
+        
+        hours = taskStatus.taskHours
+        amount = taskStatus.calculatedAmount
+        
+        displayAlert(title: "Payment Request💰", message: "Your request for \(hours ?? self.totalWorkingHours) of service, which sums up to: $\(amount ?? self.totalAmountAccHours) is submitted to the user", flag: 0)
+        
+        let paymentDue = PaymentDue(taskName: taskStatus.taskName, taskId: taskStatus.taskId, taskEmail: taskStatus.taskEmail, userEmail: taskStatus.userEmail, status: "completed", taskDueDate: taskStatus.taskDueDate, taskHours: hours ?? self.totalWorkingHours, taskAmount: taskStatus.taskAmount, calculatedAmount: amount ?? self.totalAmountAccHours, paymentStatus: "paymentDue")
+       var ref: DocumentReference? = nil
+        ref = self.db.collection("paymentStatus").addDocument(data: paymentDue.dictionary){
+                error in
+            if let error = error {
+                print("Error adding document: \(error.localizedDescription)")
+            }else{
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+        
+        
+    }
     
 }
 
@@ -238,15 +290,25 @@ extension ToDoTasksTableViewController: ToDoTaskTableViewCellDelegate{
             cell.btnTaskStart.isHidden = true
             cell.btnTaskDone.isHidden = false
             cell.requestPaymentButton.isHidden = true
-            
+
         }else if button == cell.btnTaskDone{
             guard let indexPath = tableView.indexPath(for: cell) else  { return }
             let taskStatus = self.taskStatusArray[indexPath.row]
-            self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 1)
             self.calculateWorkingHours(startTime: taskStatus.taskHours, taskAmount: taskStatus.taskAmount)
+            self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 1)
             cell.btnTaskStart.isHidden = true
             cell.btnTaskDone.isHidden = true
             cell.requestPaymentButton.isHidden = false
+
+        }else if button == cell.requestPaymentButton{
+            guard let indexPath = tableView.indexPath(for: cell) else  { return }
+            let taskStatus = self.taskStatusArray[indexPath.row]
+            self.paymentRequestActivity(taskStatus: taskStatus)
+            self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 2)
+            cell.btnTaskStart.isHidden = true
+            cell.btnTaskDone.isHidden = true
+            cell.requestPaymentButton.isHidden = true
+
         }
        
     }

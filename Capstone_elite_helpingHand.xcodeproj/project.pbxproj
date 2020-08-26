@@ -32,6 +32,7 @@
 		2AE8F1EE24E08C5D0003B085 /* backg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE8F1ED24E08C5D0003B085 /* backg.jpg */; };
 		2AE8F1F024E09C7E0003B085 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */; };
 		3ED5DF406373367AB026F476 /* Pods_Capstone_elite_helpingHand.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FF3C1DF30ED8BF77E557A0 /* Pods_Capstone_elite_helpingHand.framework */; };
+		8E07EBB524F604A7005E3658 /* PaymentDue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E07EBB424F604A7005E3658 /* PaymentDue.swift */; };
 		8E2A628224E5A04E0080274D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628124E5A04E0080274D /* ChatViewController.swift */; };
 		8E2A628424E5A0B70080274D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628324E5A0B70080274D /* Chat.swift */; };
 		8E2A628624E5A0C80080274D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2A628524E5A0C80080274D /* Message.swift */; };
@@ -79,6 +80,7 @@
 		2AE8F1EF24E09C7E0003B085 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E0185AC124955A9E5FB7107 /* Pods-Capstone_elite_helpingHand.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.debug.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.debug.xcconfig"; sourceTree = "<group>"; };
 		485E377FE832B70AAA78E8B7 /* Pods-Capstone_elite_helpingHand.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capstone_elite_helpingHand.release.xcconfig"; path = "Target Support Files/Pods-Capstone_elite_helpingHand/Pods-Capstone_elite_helpingHand.release.xcconfig"; sourceTree = "<group>"; };
+		8E07EBB424F604A7005E3658 /* PaymentDue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDue.swift; sourceTree = "<group>"; };
 		8E2A628124E5A04E0080274D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8E2A628324E5A0B70080274D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		8E2A628524E5A0C80080274D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				8E9526EF24ECA33D007EE895 /* GetLocation.swift */,
 				8ECF9F0124F03F87000C7C13 /* FavoriteTasks.swift */,
 				8ECAD9B724F4200D0095B1A8 /* TaskStatus.swift */,
+				8E07EBB424F604A7005E3658 /* PaymentDue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				2A1AF4B524EE0C4500C466C9 /* slideInTransition.swift in Sources */,
 				8E2A628424E5A0B70080274D /* Chat.swift in Sources */,
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
+				8E07EBB524F604A7005E3658 /* PaymentDue.swift in Sources */,
 				2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */,
 				8ECF9F0024F00992000C7C13 /* MyTaskRepliesTableViewController.swift in Sources */,
 			);

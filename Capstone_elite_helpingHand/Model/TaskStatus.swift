@@ -25,6 +25,7 @@ struct TaskStatus {
     var taskDueDate: String
     var taskHours: String
     var taskAmount: String
+    var calculatedAmount: String
     
     var dictionary:[String:Any] {
         return [
@@ -37,7 +38,8 @@ struct TaskStatus {
             "status" : status,
             "taskDueDate": taskDueDate,
             "taskHours": taskHours,
-            "taskAmount": taskAmount
+            "taskAmount": taskAmount,
+            "calculatedAmount": calculatedAmount
         ]
     }
     
@@ -45,7 +47,7 @@ struct TaskStatus {
 
 extension TaskStatus : DocumentSerializable {
     init(dictionary: [String : Any]) {
-        self.init(taskName: dictionary["taskName"] as! String, taskId: dictionary["taskId"] as! String, taskEmail: dictionary["taskEmail"] as! String, userEmail: dictionary["userEmail"] as! String, userId: dictionary["userId"] as! String, timeStamp: dictionary ["timeStamp"] as! String, status: dictionary["status"] as! String, taskDueDate: dictionary["taskDueDate"] as! String, taskHours: dictionary["taskHours"] as! String, taskAmount:  dictionary["taskAmount"] as! String)
+        self.init(taskName: dictionary["taskName"] as! String, taskId: dictionary["taskId"] as! String, taskEmail: dictionary["taskEmail"] as! String, userEmail: dictionary["userEmail"] as! String, userId: dictionary["userId"] as! String, timeStamp: dictionary ["timeStamp"] as! String, status: dictionary["status"] as! String, taskDueDate: dictionary["taskDueDate"] as! String, taskHours: dictionary["taskHours"] as! String, taskAmount:  dictionary["taskAmount"] as! String, calculatedAmount: dictionary["calculatedAmount"] as! String)
     }
 }
 
