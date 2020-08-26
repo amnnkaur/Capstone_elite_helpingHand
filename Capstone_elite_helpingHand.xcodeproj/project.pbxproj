@@ -13,6 +13,7 @@
 		2A1AF4B924EF108F00C466C9 /* MyTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */; };
 		2A1AF4BB24EF4D7300C466C9 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */; };
 		2A1AF4BF24F05CFA00C466C9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1AF4BE24F05CFA00C466C9 /* OnboardingViewController.swift */; };
+		2A295E2124F6F11300955013 /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A295E2024F6F11300955013 /* PayTableViewCell.swift */; };
 		2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */; };
 		2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */; };
 		2A56FE1A24E39972005F6CD9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A56FE1924E39972005F6CD9 /* Task.swift */; };
@@ -22,6 +23,7 @@
 		2A737A4724EB0DB20058805A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A737A4624EB0DB20058805A /* MapViewController.swift */; };
 		2A97E91224F3624600AF50A5 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */; };
 		2A97E91A24F4688000AF50A5 /* ToDoTaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */; };
+		2A97E91C24F6E75C00AF50A5 /* PayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A97E91B24F6E75C00AF50A5 /* PayTableViewController.swift */; };
 		2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9DC38724E21C6400F84405 /* Color+Extension.swift */; };
 		2AE8F1DA24E08C100003B085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1D924E08C100003B085 /* AppDelegate.swift */; };
 		2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE8F1DB24E08C100003B085 /* SceneDelegate.swift */; };
@@ -58,6 +60,7 @@
 		2A1AF4B824EF108F00C466C9 /* MyTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTaskTableViewController.swift; sourceTree = "<group>"; };
 		2A1AF4BA24EF4D7300C466C9 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		2A1AF4BE24F05CFA00C466C9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		2A295E2024F6F11300955013 /* PayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewCell.swift; sourceTree = "<group>"; };
 		2A56FDE624E30B35005F6CD9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2A56FE1724E39907005F6CD9 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		2A56FE1924E39972005F6CD9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		2A737A4624EB0DB20058805A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskTableViewCell.swift; sourceTree = "<group>"; };
+		2A97E91B24F6E75C00AF50A5 /* PayTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewController.swift; sourceTree = "<group>"; };
 		2A9DC38724E21C6400F84405 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		2AE8F1D624E08C100003B085 /* Capstone_elite_helpingHand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone_elite_helpingHand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE8F1D924E08C100003B085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				8E79460824F1E82F00FB0877 /* ReloadViewController.swift */,
 				2A97E91124F3624600AF50A5 /* UserProfileViewController.swift */,
 				2A97E91924F4688000AF50A5 /* ToDoTaskTableViewCell.swift */,
+				2A97E91B24F6E75C00AF50A5 /* PayTableViewController.swift */,
+				2A295E2024F6F11300955013 /* PayTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				2A1AF4BF24F05CFA00C466C9 /* OnboardingViewController.swift in Sources */,
 				8E9526F024ECA33D007EE895 /* GetLocation.swift in Sources */,
 				2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */,
+				2A97E91C24F6E75C00AF50A5 /* PayTableViewController.swift in Sources */,
 				2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */,
 				2A9DC38824E21C6400F84405 /* Color+Extension.swift in Sources */,
 				8E2A628224E5A04E0080274D /* ChatViewController.swift in Sources */,
@@ -406,6 +413,7 @@
 				2AE8F1DC24E08C100003B085 /* SceneDelegate.swift in Sources */,
 				8E07EBB524F604A7005E3658 /* PaymentDue.swift in Sources */,
 				2A1AF4B724EE0D8100C466C9 /* MenuViewController.swift in Sources */,
+				2A295E2124F6F11300955013 /* PayTableViewCell.swift in Sources */,
 				8ECF9F0024F00992000C7C13 /* MyTaskRepliesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

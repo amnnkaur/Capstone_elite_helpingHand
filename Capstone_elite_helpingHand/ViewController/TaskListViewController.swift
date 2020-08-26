@@ -20,6 +20,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
     var filtered: [Task] = []
     var sortedArray: [Task] = []
     
+    @IBOutlet weak var walletBtn: UIButton!
     let locationManager = CLLocationManager()
     var radiusInKm: String = ""
     @IBOutlet weak var jobTableView: UITableView!
@@ -109,6 +110,14 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
                menuViewController.modalPresentationStyle = .overCurrentContext
                menuViewController.transitioningDelegate = self
                present(menuViewController, animated: true)
+    }
+    
+    @IBAction func payBtnAction(_ sender: UIButton) {
+       let VC = self.storyboard?.instantiateViewController(withIdentifier: "PayVC") as! PayTableViewController
+       let navigationController = UINavigationController(rootViewController: VC)
+        navigationController.navigationBar.prefersLargeTitles = true
+        self.present(navigationController, animated: true, completion: nil)
+       
     }
     
     func transitionToNew(_ menuType: MenuType) {
