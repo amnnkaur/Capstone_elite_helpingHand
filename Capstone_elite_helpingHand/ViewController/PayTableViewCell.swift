@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PayTableViewCellDelegate:class {
+    func toDoPayCell(cell:PayTableViewCell, didTappedThe button:UIButton?)
+}
+
 class PayTableViewCell: UITableViewCell {
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var name: UILabel!
@@ -20,6 +24,14 @@ class PayTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+     weak var payTableViewCellDelegate:PayTableViewCellDelegate?
+    
+    @IBAction func payNowBtn(_ sender: Any) {
+        payTableViewCellDelegate?.toDoPayCell(cell:  self, didTappedThe: sender as? UIButton)
+    }
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

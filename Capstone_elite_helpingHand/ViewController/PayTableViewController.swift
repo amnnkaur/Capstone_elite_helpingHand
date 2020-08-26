@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class PayTableViewController: UITableViewController {
+    
+    var db = Firestore.firestore()
+    var paymentDueArray = [PaymentDue]()
+    var userList: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +28,64 @@ class PayTableViewController: UITableViewController {
                 self.navigationItem.title = "Payment"
         //        self.navigationController?.title
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneBarButton))
+        
+        loadData()
+        checkForUpdates()
             }
 
             @objc func doneBarButton(){
                 self.dismiss(animated: true, completion: nil)
             }
 
+    
+    
+    func loadData(){
+        userList = DataStorage.getInstance().getAllUsers()
+        db.collection("paymentStatus").whereField("taskEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").getDocuments() {
+                  (querySnapshot, error) in
+                  if let error = error {
+                      print("\(error.localizedDescription)")
+                  }else{
+                    guard let queryCount = querySnapshot?.documents.count else { return }
+                    if queryCount == 0{
+//                        self.displayAlert(title: "Hurray🎊", message: "All tasks are sorted. You have no in due tasks", flag: 0)
+
+                    }else if queryCount >= 1{
+                    for doc in querySnapshot!.documents{
+
+                        let paymentDue = PaymentDue(dictionary: doc.data())
+                        self.paymentDueArray.append(paymentDue)
+                        }
+                    }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                      }
+                  }
+              }
+    }
+    
+    func checkForUpdates(){
+        
+        db.collection("paymentStatus").whereField("taskEmail", isEqualTo: Auth.auth().currentUser?.email ?? "No user").whereField("timeStamp", isLessThan: Date())
+                 .addSnapshotListener {
+                     querySnapshot, error in
+                     
+                     guard let snapshot = querySnapshot else {return}
+                     
+                     snapshot.documentChanges.forEach {
+                         diff in
+                         
+                         if diff.type == .added {
+                             self.paymentDueArray.append(PaymentDue(dictionary: diff.document.data()))
+                             DispatchQueue.main.async {
+                                 self.tableView.reloadData()
+                             }
+                         }
+                     }
+                     
+             }
+        
+    }
 
     // MARK: - Table view data source
 
@@ -38,17 +96,26 @@ class PayTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return paymentDueArray.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "payCell", for: indexPath) as! PayTableViewCell
 
-        cell.jobTitle.text = "Cleaning"
-        cell.name.text = "Payment to: Aman"
-        cell.hours.text = "Total Hours: 2"
-        cell.amount.text = "Amount: $20"
+        cell.payTableViewCellDelegate = self
+        let paymentDue = paymentDueArray[indexPath.row]
+        
+        for item in self.userList{
+            if paymentDue.userEmail == item.emailId{
+                cell.name.text = "Payment to: \(item.firstName.capitalizingFirstLetter())"
+            }
+        }
+        
+        cell.jobTitle.text = paymentDue.taskName
+       
+        cell.hours.text = "Total Hours: \(paymentDue.taskHours)"
+        cell.amount.text = "Amount: $\(paymentDue.calculatedAmount)"
 
         cell.payBtn.backgroundColor = .clear
         cell.payBtn.layer.borderWidth = 2
@@ -58,49 +125,17 @@ class PayTableViewController: UITableViewController {
     }
 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+   
+}
+
+extension PayTableViewController: PayTableViewCellDelegate{
+    func toDoPayCell(cell: PayTableViewCell, didTappedThe button: UIButton?) {
+       
+        if button == cell.payBtn{
+            print("pay")
+            
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }
