@@ -50,6 +50,10 @@ class PayTableViewController: UITableViewController {
         cell.hours.text = "Total Hours: 2"
         cell.amount.text = "Amount: $20"
 
+        cell.payBtn.backgroundColor = .clear
+        cell.payBtn.layer.borderWidth = 2
+        cell.payBtn.layer.borderColor = UIColor.orange.cgColor
+        cell.payBtn.layer.cornerRadius = 10
         return cell
     }
 
