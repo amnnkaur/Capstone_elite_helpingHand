@@ -19,7 +19,7 @@ class ToDoTasksTableViewController: UITableViewController {
     
     @IBOutlet weak var endTaskBtn: UIButton!
     @IBOutlet weak var startTaskBtn: UIButton!
-
+    var startTimeString: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -112,35 +112,41 @@ class ToDoTasksTableViewController: UITableViewController {
 //        cell.textLabel?.text = "\(taskStatus.taskName), \(taskStatus.taskEmail) "
 //        cell.detailTextLabel?.text = "\(taskStatus.timeStamp)"
         if(taskStatus.status == "inProgress"){
-            cell.btnTaskStart.isEnabled = true
-            cell.btnTaskDone.isEnabled = false
+            cell.btnTaskStart.isHidden = false
+            cell.btnTaskDone.isHidden = true
+            cell.requestPaymentButton.isHidden = true
         }else if (taskStatus.status == "started"){
-            cell.btnTaskStart.isEnabled = false
-            cell.btnTaskDone.isEnabled = true
+            cell.btnTaskStart.isHidden = true
+            cell.btnTaskDone.isHidden = false
+            cell.requestPaymentButton.isHidden = true
         }else if(taskStatus.status == "done"){
-            cell.btnTaskStart.isEnabled = false
-            cell.btnTaskDone.isEnabled = false
+            cell.btnTaskStart.isHidden = true
+            cell.btnTaskDone.isHidden = true
+            cell.requestPaymentButton.isHidden = false
         }
         cell.taskTitle.text = taskStatus.taskName
         cell.taskEmail.text = taskStatus.taskEmail
+        cell.taskAmount.text = taskStatus.taskAmount
+        cell.daysLeft.text = self.calculateDaysLeft(taskDate: taskStatus.taskDueDate)
         cell.toDoTaskCellDelegate =  self
-//        let taskDate = taskStatus.timeStamp
-//        let todayDate = Date()
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        let taskDate = dateFormatter.date(from: taskStatus.timeStamp)!
-//
-//        let calendar = Calendar.current
-//        let currentDate = calendar.startOfDay(for: todayDate)
-//        let assignedDate = calendar.startOfDay(for: taskDate)
-//
-//        let components = calendar.dateComponents([.day], from: currentDate, to: assignedDate)
-//
-//        cell.daysLeft.text = "\(components.day)"
-        
-
         return cell
+    }
+    
+    func calculateDaysLeft(taskDate: String) -> String {
+          let formatter = DateFormatter()
+                formatter.dateStyle = .medium
+                formatter.timeStyle = .short
+        
+        let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, yyyy"
+        let taskDate = dateFormatter.date(from: taskDate)!
+                          
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: Date())
+        let date2 = calendar.startOfDay(for: taskDate)
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        return "\(components.day ?? 0) days left"
+
     }
 
     func displayAlert(title: String, message: String, flag: Int){
@@ -158,7 +164,8 @@ class ToDoTasksTableViewController: UITableViewController {
                    } else {
                        for document in querySnapshot!.documents {
                         document.reference.updateData([
-                            "status": "started"
+                            "status": "started",
+                            "taskHours": "\(self.startTimeHour())"
                         ])
                        }
         }
@@ -181,7 +188,46 @@ class ToDoTasksTableViewController: UITableViewController {
         }
     }
     
+    func startTimeHour() -> String {
+        self.startTimeString = ""
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        self.startTimeString = formatter.string(from: Date())
+        return formatter.string(from: Date())
     }
+
+    func calculateWorkingHours(startTime: String, taskAmount: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        
+        let time1 = startTime
+        let time2 = formatter.string(from: Date())
+
+        let date1 = formatter.date(from: time1)!
+        let date2 = formatter.date(from: time2)!
+
+        let elapsedTime = date2.timeIntervalSince(date1)
+
+
+        let hours = floor(elapsedTime / 60 / 60)
+
+        let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+
+        print("\(Int(hours)) hr and \(Int(minutes)) min")
+        var amount: String
+        amount = taskAmount.replacingOccurrences(of: "$ ", with: "")
+        amount = amount.replacingOccurrences(of: "/hr", with: "")
+        print("\(amount)")
+        var amountValue: Double
+        let hoursValue = Float(amount)! * (Float(hours))
+        let minuteValue = (Float(amount)!/60) * (Float(minutes))
+        amountValue = Double(hoursValue + minuteValue)
+        print("\(String(format: "%.2f", amountValue)) ||  \(amountValue)")
+        
+    }
+
+    
+}
 
 extension ToDoTasksTableViewController: ToDoTaskTableViewCellDelegate{
     func toDoCell(cell: ToDoTaskTableViewCell, didTappedThe button: UIButton?) {
@@ -189,15 +235,18 @@ extension ToDoTasksTableViewController: ToDoTaskTableViewCellDelegate{
             guard let indexPath = tableView.indexPath(for: cell) else  { return }
             let taskStatus = self.taskStatusArray[indexPath.row]
             self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 0)
-            cell.btnTaskStart.isEnabled = false
-            cell.btnTaskDone.isEnabled = true
+            cell.btnTaskStart.isHidden = true
+            cell.btnTaskDone.isHidden = false
+            cell.requestPaymentButton.isHidden = true
             
         }else if button == cell.btnTaskDone{
             guard let indexPath = tableView.indexPath(for: cell) else  { return }
             let taskStatus = self.taskStatusArray[indexPath.row]
             self.updateTaskStatusInFireStore(taskStatus: taskStatus, flag: 1)
-            cell.btnTaskStart.isEnabled = false
-            cell.btnTaskDone.isEnabled = false
+            self.calculateWorkingHours(startTime: taskStatus.taskHours, taskAmount: taskStatus.taskAmount)
+            cell.btnTaskStart.isHidden = true
+            cell.btnTaskDone.isHidden = true
+            cell.requestPaymentButton.isHidden = false
         }
        
     }

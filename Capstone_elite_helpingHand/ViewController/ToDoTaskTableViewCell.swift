@@ -16,6 +16,8 @@ class ToDoTaskTableViewCell: UITableViewCell {
 
     @IBOutlet weak var btnTaskStart: UIButton!
     @IBOutlet weak var btnTaskDone: UIButton!
+    @IBOutlet weak var requestPaymentButton: UIButton!
+    @IBOutlet weak var taskAmount: UILabel!
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var taskEmail: UILabel!
     @IBOutlet weak var taskTitle: UILabel!
@@ -34,6 +36,9 @@ class ToDoTaskTableViewCell: UITableViewCell {
           toDoTaskCellDelegate?.toDoCell(cell: self, didTappedThe: sender as? UIButton)
     }
     
+    @IBAction func requestPayment(_ sender: UIButton) {
+        toDoTaskCellDelegate?.toDoCell(cell: self, didTappedThe: sender as? UIButton)
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

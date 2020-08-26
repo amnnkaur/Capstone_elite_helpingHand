@@ -129,7 +129,7 @@ class MyTaskRepliesTableViewController: UITableViewController {
             }
         }
         let message = UIAction(title: "Assign task to this user", image: UIImage(systemName: "person.fill"), attributes: .init()) { _ in
-            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate, taskHours: "0", taskAmount: "0.00")
+            let taskStatus = TaskStatus(taskName: self.task!.taskTitle, taskId: self.task!.taskID, taskEmail: self.task!.taskEmail, userEmail: userEmail, userId: userId, timeStamp: Date().description, status: "inProgress", taskDueDate: self.task!.taskDueDate, taskHours: "0", taskAmount: self.task!.taskPay)
          
       /*
             self.db.collection("taskStatus").whereField("userEmail", isEqualTo: userEmail).whereField("taskEmail", isEqualTo: taskStatus.taskEmail).whereField("taskDueDate", isEqualTo: taskStatus.taskDueDate).whereField("taskName", isEqualTo: taskStatus.taskName).whereField("taskId", isEqualTo: taskStatus.taskId).getDocuments() { (querySnapshot, err) in
