@@ -9,9 +9,9 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import MapKit
 
-
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var profileView: UIView!
     
@@ -20,16 +20,24 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var contact: UILabel!
-    
+    @IBOutlet weak var mapView: MKMapView!
+    var locationManager = CLLocationManager()
     var userName: String?
     var ref = Database.database().reference()
     var userList: [User] = []
     var user: User?
+        
+    var circle:MKCircle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        // Do any additional setup after loading the view.
+        mapView.isZoomEnabled = false
+        mapView.delegate = self
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
            
         let gradientLayer = CAGradientLayer()
 
@@ -55,17 +63,56 @@ class UserProfileViewController: UIViewController {
     func initials() {
         self.name.text = "\(user?.firstName ?? "No first name") \(user?.lastName ?? "No last name")"
         self.email.text = user?.emailId ?? "No email id"
-        self.address.text = user?.street ?? "No address"
-        self.contact.text = user?.mobileNumber ?? "No mobile number"
+//        self.address.text = user?.street ?? "No address"
+//        self.contact.text = user?.mobileNumber ?? "No mobile number"
     }
-    /*
-    // MARK: - Navigation
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //       let userLocation = locations[0]
+           
+           let latitude = 43.6532
+           let longitude = -79.3832
+        
+           let latDelta: CLLocationDegrees = 0.05
+           let longDelta: CLLocationDegrees = 0.05
+            
+            // 3 - Creating the span, location coordinate and region
+           let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+            let customLocation = CLLocationCoordinate2D(latitude: latitude , longitude: longitude)
+           let region = MKCoordinateRegion(center: customLocation, span: span)
+            
+            let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { (placemarks, error) in
+                    if let places = placemarks {
+                        for place in places {
+                            annotation.title = place.name
+                            annotation.subtitle = "\(place.locality!) ,  \(place.postalCode!)"
+                        }
+                    }
+                self.mapView.addAnnotation(annotation)
+                self.mapView.setRegion(region, animated: true)
+                self.loadOverlayForRegionWithLatitude(latitude: latitude, andLongitude: longitude)
+            }
+            
+        }
+    
+    
+     func loadOverlayForRegionWithLatitude(latitude: Double, andLongitude longitude: Double) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        circle = MKCircle(center: coordinates, radius: 6000)
+        self.mapView.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
+        self.mapView.addOverlay(circle)
     }
-    */
 
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let circleRenderer = MKCircleRenderer(overlay: overlay)
+        circleRenderer.fillColor = UIColor.blue.withAlphaComponent(0.1)
+        circleRenderer.strokeColor = UIColor.blue
+        circleRenderer.lineWidth = 1
+        return circleRenderer
+    }
 }

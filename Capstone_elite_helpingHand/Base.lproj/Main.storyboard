@@ -322,24 +322,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-0n-9qe">
-                                <rect key="frame" x="20" y="502" width="92" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKo-dc-KjY">
                                 <rect key="frame" x="0.0" y="36" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Your Profile" id="448-Lk-F0y"/>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAG-oE-MCo">
-                                <rect key="frame" x="20" y="426" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntW-bB-nOr">
                                 <rect key="frame" x="0.0" y="80" width="414" height="174"/>
                                 <subviews>
@@ -367,24 +355,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NPj-hw-B5U">
+                                <rect key="frame" x="0.0" y="386" width="414" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="343" id="IU2-yP-SaZ"/>
+                                    <constraint firstAttribute="width" constant="414" id="l7b-P2-PVE"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="hAG-oE-MCo" firstAttribute="top" secondItem="ntW-bB-nOr" secondAttribute="bottom" constant="172" id="2Yx-Eg-UCI"/>
                             <constraint firstItem="fWX-hh-Dnz" firstAttribute="trailing" secondItem="oAe-rF-l5V" secondAttribute="trailingMargin" id="3ZX-Pl-0jJ"/>
-                            <constraint firstItem="qzR-0n-9qe" firstAttribute="top" secondItem="hAG-oE-MCo" secondAttribute="bottom" constant="55" id="3wt-ty-BKh"/>
-                            <constraint firstItem="qzR-0n-9qe" firstAttribute="leading" secondItem="ca0-sA-Oo7" secondAttribute="leading" constant="20" id="68M-Pn-pvy"/>
                             <constraint firstItem="JVd-W4-RhJ" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" id="8wR-jT-wHv"/>
                             <constraint firstItem="fWX-hh-Dnz" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leadingMargin" id="A5J-50-2Yu"/>
                             <constraint firstItem="yKo-dc-KjY" firstAttribute="top" secondItem="oAe-rF-l5V" secondAttribute="top" constant="36" id="Dih-7r-6fy"/>
-                            <constraint firstItem="ca0-sA-Oo7" firstAttribute="bottom" secondItem="qzR-0n-9qe" secondAttribute="bottom" constant="290" id="KBY-rS-oit"/>
+                            <constraint firstAttribute="trailing" secondItem="NPj-hw-B5U" secondAttribute="trailing" id="HPy-cd-nXv"/>
                             <constraint firstItem="yKo-dc-KjY" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leading" id="MhO-We-ZCQ"/>
                             <constraint firstItem="JVd-W4-RhJ" firstAttribute="trailing" secondItem="oAe-rF-l5V" secondAttribute="trailingMargin" id="QCk-r6-1ln"/>
                             <constraint firstAttribute="trailing" secondItem="yKo-dc-KjY" secondAttribute="trailing" id="YI3-bw-pRF"/>
                             <constraint firstItem="JVd-W4-RhJ" firstAttribute="top" secondItem="ntW-bB-nOr" secondAttribute="bottom" constant="67" id="dxv-Vf-VNz"/>
                             <constraint firstItem="ntW-bB-nOr" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leading" id="gfm-oH-kvk"/>
-                            <constraint firstItem="hAG-oE-MCo" firstAttribute="leading" secondItem="ca0-sA-Oo7" secondAttribute="leading" constant="20" id="kA5-78-HFj"/>
                             <constraint firstItem="ntW-bB-nOr" firstAttribute="top" secondItem="yKo-dc-KjY" secondAttribute="bottom" id="pmW-eS-KWg"/>
+                            <constraint firstItem="NPj-hw-B5U" firstAttribute="leading" secondItem="oAe-rF-l5V" secondAttribute="leading" id="qE2-86-xZb"/>
+                            <constraint firstItem="NPj-hw-B5U" firstAttribute="top" secondItem="fWX-hh-Dnz" secondAttribute="bottom" constant="8" id="sHr-Ff-MtN"/>
                             <constraint firstItem="fWX-hh-Dnz" firstAttribute="top" secondItem="JVd-W4-RhJ" secondAttribute="bottom" constant="8" id="yMN-F0-WuM"/>
                             <constraint firstAttribute="trailing" secondItem="ntW-bB-nOr" secondAttribute="trailing" id="zVg-5k-tEy"/>
                         </constraints>
@@ -392,9 +385,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="ScJ-b2-vlK"/>
                     <connections>
-                        <outlet property="address" destination="hAG-oE-MCo" id="uhh-0e-AeK"/>
-                        <outlet property="contact" destination="qzR-0n-9qe" id="c5d-kR-RqV"/>
                         <outlet property="email" destination="fWX-hh-Dnz" id="r7P-6d-blU"/>
+                        <outlet property="mapView" destination="NPj-hw-B5U" id="DaX-Ck-hgl"/>
                         <outlet property="name" destination="JVd-W4-RhJ" id="OGb-KY-1lW"/>
                         <outlet property="personImg" destination="whZ-WN-ePx" id="5o0-Nn-mVx"/>
                         <outlet property="profileView" destination="ntW-bB-nOr" id="1eg-b8-T5g"/>
