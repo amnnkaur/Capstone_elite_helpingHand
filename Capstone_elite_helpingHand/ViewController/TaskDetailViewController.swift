@@ -44,7 +44,16 @@ class TaskDetailViewController: UIViewController, MKMapViewDelegate, CLLocationM
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneBarButton))
     }
+
+    @IBAction func doneBtn(_ sender: UIButton) {
+         self.dismiss(animated: true, completion: nil)
+    }
+    @objc func doneBarButton(){
+     self.dismiss(animated: true, completion: nil)
+ }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //       let userLocation = locations[0]

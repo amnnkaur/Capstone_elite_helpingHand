@@ -22,6 +22,7 @@ class ToDoTaskTableViewCell: UITableViewCell {
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var taskEmail: UILabel!
     @IBOutlet weak var taskTitle: UILabel!
+    @IBOutlet weak var dueDate: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

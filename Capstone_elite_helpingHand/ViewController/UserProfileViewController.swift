@@ -13,14 +13,16 @@ import MapKit
 
 class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    @IBOutlet weak var profileView: UIView!
     
     @IBOutlet weak var personImg: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var contact: UILabel!
+    @IBOutlet weak var mobileNumber: UILabel!
+    @IBOutlet weak var postal: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var streetAddress: UILabel!
+    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var radius: UILabel!
     var locationManager = CLLocationManager()
     var userName: String?
     var ref = Database.database().reference()
@@ -72,6 +74,12 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
 //        self.contact.text = user?.mobileNumber ?? "No mobile number"
         self.lat = defaults?.value(forKey: "currentlatitude") as! Double
         self.long = defaults?.value(forKey: "currentLongitude") as! Double
+        self.streetAddress.text = user?.street ?? "No address"
+        self.city.text = user?.city ?? "No city"
+        self.postal.text = user?.postal ?? "No postal"
+        self.mobileNumber.text = user?.mobileNumber ?? "No mobile"
+        self.radius.text = user?.radius ?? "No radius"
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

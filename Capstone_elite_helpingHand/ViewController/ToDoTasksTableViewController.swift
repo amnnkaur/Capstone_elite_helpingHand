@@ -120,6 +120,8 @@ class ToDoTasksTableViewController: UITableViewController {
         // Configure the cell...
 //        cell.textLabel?.text = "\(taskStatus.taskName), \(taskStatus.taskEmail) "
 //        cell.detailTextLabel?.text = "\(taskStatus.timeStamp)"
+        
+        
         if(taskStatus.status == "inProgress"){
             cell.btnTaskStart.isHidden = false
             cell.btnTaskDone.isHidden = true
@@ -136,12 +138,15 @@ class ToDoTasksTableViewController: UITableViewController {
             cell.btnTaskStart.isHidden = true
             cell.btnTaskDone.isHidden = true
             cell.requestPaymentButton.isHidden = true
+            cell.backgroundColor = UIColor.lightGray
         }
         cell.taskTitle.text = taskStatus.taskName
         cell.taskEmail.text = taskStatus.taskEmail
+        cell.dueDate.text = "Due Date: \(taskStatus.taskDueDate)"
         cell.taskAmount.text = taskStatus.taskAmount
         cell.daysLeft.text = self.calculateDaysLeft(taskDate: taskStatus.taskDueDate)
         cell.toDoTaskCellDelegate =  self
+       
         return cell
     }
     

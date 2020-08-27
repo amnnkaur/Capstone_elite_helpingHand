@@ -289,18 +289,18 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
             
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
             
-        let message = UIAction(title: "Ignite this🔥", image: UIImage(systemName: "message"), attributes: .init()) { _ in
+        let message = UIAction(title: "Send Message", image: UIImage(systemName: "message"), attributes: .init()) { _ in
             self.customerMessagesList.removeAll()
             self.customerMessagesList = DataStorage.getInstance().getAllMessages()
             for item in self.customerMessagesList{
                 if (item.taskEmail == self.filteredTasks[indexPath.row].taskEmail && item.taskTitle == self.filteredTasks[indexPath.row].taskTitle && item.taskUID == self.filteredTasks[indexPath.row].taskID && item.taskPostingDate == self.filteredTasks[indexPath.row].taskDueDate && item.userEmail == Auth.auth().currentUser?.email ?? "No email found")
                 {
-                    self.displayAlert(title: "Message", message: "This task is already ignited🔥. Navigated to messages tab", flag: 0)
+                    self.displayAlert(title: "Message", message: "You have already sent message for this task. Navigated to messages tab", flag: 0)
                     return
                 }
             }
             
-            self.displayAlert(title: "Success", message: "Ignition🔥 done succesfully!!, Navigate to messages screen", flag: 0)
+            self.displayAlert(title: "Success", message: "Message sent succesfully!!, Navigate to messages screen", flag: 0)
                
 
             DataStorage.getInstance().addTaskMessage(customerMessage: CustomerMessages(taskUID: self.filteredTasks [indexPath.row].taskID, taskTitle: self.filteredTasks[indexPath.row].taskTitle, taskPostingDate: self.filteredTasks[indexPath.row].taskDueDate, taskEmail: self.filteredTasks[indexPath.row].taskEmail, userUID: Auth.auth().currentUser?.uid ?? "no uid found", userEmail: Auth.auth().currentUser?.email ?? "no email found"))
@@ -326,6 +326,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         let viewController = storyboard.instantiateViewController(identifier: "TaskDetailVC") as! TaskDetailViewController
         viewController.task = task
         present(viewController, animated: true, completion: nil)
+    
     
     }
     
