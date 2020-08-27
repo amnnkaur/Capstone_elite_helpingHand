@@ -41,11 +41,14 @@ class ToDoTasksTableViewController: UITableViewController {
         }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("viewwilldis")
         self.startTimeString = ""
         self.totalWorkingHours = ""
         self.totalAmountAccHours = ""
     }
 
+  
+    
     @objc func doneBarButton(){
                self.dismiss(animated: true, completion: nil)
            }
@@ -257,15 +260,22 @@ class ToDoTasksTableViewController: UITableViewController {
 
     func paymentRequestActivity(taskStatus: TaskStatus){
          
-        var amount: String?
-        var hours: String?
+        var amount: String
+        var hours: String
         
-        hours = taskStatus.taskHours
-        amount = taskStatus.calculatedAmount
+        if(self.totalWorkingHours == "" || self.totalAmountAccHours == ""){
+            hours = taskStatus.taskHours
+            amount = taskStatus.calculatedAmount
+        }else{
+            hours = self.totalWorkingHours
+            amount = self.totalAmountAccHours
+        }
         
-        displayAlert(title: "Payment Request💰", message: "Your request for \(hours ?? self.totalWorkingHours) of service, which sums up to: $\(amount ?? self.totalAmountAccHours) is submitted to the user", flag: 0)
+     
         
-        let paymentDue = PaymentDue(taskName: taskStatus.taskName, taskId: taskStatus.taskId, taskEmail: taskStatus.taskEmail, userEmail: taskStatus.userEmail, status: "completed", taskDueDate: taskStatus.taskDueDate, taskHours: hours ?? self.totalWorkingHours, taskAmount: taskStatus.taskAmount, calculatedAmount: amount ?? self.totalAmountAccHours, paymentStatus: "paymentDue")
+        displayAlert(title: "Payment Request💰", message: "Your request for \(hours) of service, which sums up to: $\(amount) is submitted to the user", flag: 0)
+        
+        let paymentDue = PaymentDue(taskName: taskStatus.taskName, taskId: taskStatus.taskId, taskEmail: taskStatus.taskEmail, userEmail: taskStatus.userEmail, status: "completed", taskDueDate: taskStatus.taskDueDate, taskHours: hours, taskAmount: taskStatus.taskAmount, calculatedAmount: amount, paymentStatus: "paymentDue")
        var ref: DocumentReference? = nil
         ref = self.db.collection("paymentStatus").addDocument(data: paymentDue.dictionary){
                 error in
