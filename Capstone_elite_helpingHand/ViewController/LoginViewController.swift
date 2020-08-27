@@ -45,12 +45,16 @@ class LoginViewController: UIViewController {
     }
 
     func initials() {
+        let defaults: UserDefaults? = UserDefaults.standard
+        
         userList = DataStorage.getInstance().getAllUsers()
         taskList = DataStorage.getInstance().getAllTasks()
         getLocation.run {
                   if let location = $0 {
                       self.userLatitude = location.coordinate.latitude
                       self.userLongitude = location.coordinate.longitude
+                    defaults?.set(location.coordinate.latitude, forKey: "currentlatitude")
+                    defaults?.set(location.coordinate.longitude, forKey: "currentLongitude")
                      
                   } else {
                       print("Get Location failed \(self.getLocation.didFailWithError)")

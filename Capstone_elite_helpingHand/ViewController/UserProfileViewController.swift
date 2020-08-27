@@ -28,6 +28,11 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
     var user: User?
         
     var circle:MKCircle!
+     
+    var lat :Double = 0.0
+    var long :Double = 0.0
+    
+     let defaults: UserDefaults? = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,13 +70,15 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
         self.email.text = user?.emailId ?? "No email id"
 //        self.address.text = user?.street ?? "No address"
 //        self.contact.text = user?.mobileNumber ?? "No mobile number"
+        self.lat = defaults?.value(forKey: "currentlatitude") as! Double
+        self.long = defaults?.value(forKey: "currentLongitude") as! Double
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     //       let userLocation = locations[0]
            
-           let latitude = 43.6532
-           let longitude = -79.3832
+        let latitude = self.lat
+        let longitude = self.long
         
            let latDelta: CLLocationDegrees = 0.05
            let longDelta: CLLocationDegrees = 0.05
@@ -100,9 +107,10 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
      func loadOverlayForRegionWithLatitude(latitude: Double, andLongitude longitude: Double) {
-
+        var radius = ((user?.radius.replacingOccurrences(of: "km", with: ""))! as NSString).doubleValue
+        radius = radius * 1000
         let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        circle = MKCircle(center: coordinates, radius: 6000)
+        circle = MKCircle(center: coordinates, radius: radius)
         self.mapView.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
         self.mapView.addOverlay(circle)
     }
