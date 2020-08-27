@@ -86,7 +86,10 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
         emailAddress.addTarget(self, action: #selector(checkEmailAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
         password.addTarget(self, action: #selector(checkPasswordAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
         confirmPassword.addTarget(self, action: #selector(checkConfirmPasswordAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
-        contactNumber.addTarget(self, action: #selector(checkContactNumberAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        contactNumber.addTarget(self, action: #selector(convertStringToContactNumber(textfield:)), for: UIControl.Event.editingDidEnd)
+//        contactNumber.addTarget(self, action: #selector(checkContactNumberAndDisplayError(textfield:)), for: UIControl.Event.editingChanged)
+        contactNumber.keyboardType = .asciiCapableNumberPad
+        
         
     }
     
@@ -128,7 +131,9 @@ class SignUpViewController: UIViewController,UIPickerViewDelegate, UIPickerViewD
                   errorLabel.text = ""
               }
           }
-    
+    @objc func convertStringToContactNumber(textfield: UITextField){
+        textfield.text = textfield.text!.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: nil)
+    }
     
     @objc func keyboardWillShow(sender: NSNotification) {
         if !self.keyboardFlag{

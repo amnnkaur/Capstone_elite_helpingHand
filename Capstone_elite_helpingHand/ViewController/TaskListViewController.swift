@@ -43,6 +43,7 @@ class TaskListViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         initials()
 //        notificationsCall()
+        self.hideKeyboardWhenTappedAround()
     }
     
     func initials(){
@@ -413,4 +414,20 @@ extension TaskListViewController: UIViewControllerTransitioningDelegate {
         transiton.isPresenting = false
         return transiton
     }
+
+
+    //MARK: hide keyboard by swiping down
+       func hideKeyboardWhenTappedAround() {
+           let swipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(NewTaskViewController.dismissKeyboard))
+           swipe.direction = .down
+           self.view.addGestureRecognizer(swipe)
+
+
+       }
+
+       @objc func dismissKeyboard() {
+           view.endEditing(true)
+       }
+       
+    
 }

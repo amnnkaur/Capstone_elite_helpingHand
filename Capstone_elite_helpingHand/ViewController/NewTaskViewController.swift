@@ -50,8 +50,15 @@ class NewTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         self.hideKeyboardWhenTappedAround()
         
+            contactField.addTarget(self, action: #selector(convertStringToContactNumber(textfield:)), for: UIControl.Event.editingDidEnd)
+            contactField.keyboardType = .asciiCapableNumberPad
+        
      }
    
+    @objc func convertStringToContactNumber(textfield: UITextField){
+        textfield.text = textfield.text!.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "$1-$2-$3", options: .regularExpression, range: nil)
+    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView.tag == 0 {
