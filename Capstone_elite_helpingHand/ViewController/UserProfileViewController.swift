@@ -44,16 +44,16 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
            
-        let gradientLayer = CAGradientLayer()
-
-        gradientLayer.frame = profileView.bounds
-        gradientLayer.colors = [UIColor.red.cgColor, UIColor.orange.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
-        gradientLayer.opacity = 0.7
-        self.profileView.layer.insertSublayer(gradientLayer, at: 0)
+//        let gradientLayer = CAGradientLayer()
+//
+//        gradientLayer.frame = profileView.bounds
+//        gradientLayer.colors = [UIColor.red.cgColor, UIColor.orange.cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0.4)
+//        gradientLayer.opacity = 0.7
+//        self.profileView.layer.insertSublayer(gradientLayer, at: 0)
         
         personImg.layer.cornerRadius = 50
-        
+
         userList = DataStorage.getInstance().getAllUsers()
         
         for item in userList{
