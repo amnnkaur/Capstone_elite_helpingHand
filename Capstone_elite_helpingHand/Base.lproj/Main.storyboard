@@ -2133,7 +2133,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="ceZ-kB-nks">
-                                <rect key="frame" x="166" y="778" width="83" height="37"/>
+                                <rect key="frame" x="165.5" y="778" width="83" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="JbX-Na-LKK"/>
                                     <constraint firstAttribute="height" constant="37" id="QA9-dm-WkI"/>
@@ -2161,9 +2161,9 @@
                             <constraint firstItem="ofM-RV-zHH" firstAttribute="top" secondItem="ceZ-kB-nks" secondAttribute="bottom" constant="8" id="Nk8-mN-7rI"/>
                             <constraint firstItem="ofM-RV-zHH" firstAttribute="bottom" secondItem="3g8-yi-G3w" secondAttribute="bottom" id="O5V-b5-X45"/>
                             <constraint firstItem="L4F-Ey-FzI" firstAttribute="top" secondItem="FnY-kc-nuw" secondAttribute="top" constant="34" id="U76-Ya-eAd"/>
-                            <constraint firstItem="ceZ-kB-nks" firstAttribute="leading" secondItem="FnY-kc-nuw" secondAttribute="leadingMargin" constant="146" id="Y8I-he-Gvf"/>
                             <constraint firstItem="ofM-RV-zHH" firstAttribute="trailing" secondItem="FnY-kc-nuw" secondAttribute="trailingMargin" id="fv8-kA-2JQ"/>
                             <constraint firstItem="L4F-Ey-FzI" firstAttribute="trailing" secondItem="3g8-yi-G3w" secondAttribute="trailing" id="md3-Sz-GJB"/>
+                            <constraint firstItem="ceZ-kB-nks" firstAttribute="centerX" secondItem="FnY-kc-nuw" secondAttribute="centerX" id="vVQ-NT-ACA"/>
                             <constraint firstItem="ofM-RV-zHH" firstAttribute="top" secondItem="L4F-Ey-FzI" secondAttribute="bottom" constant="44" id="yLe-5n-mVo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3g8-yi-G3w"/>
@@ -2194,8 +2194,8 @@
         <image name="mappin" catalog="system" width="105" height="128"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
-        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person" width="128" height="128"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
