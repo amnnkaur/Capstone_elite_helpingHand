@@ -24,7 +24,9 @@ class LoginViewController: UIViewController {
     var userLatitude: Double = 0.0
     var userLongitude: Double = 0.0
     
-   
+    @IBOutlet weak var orLabelTxt: UILabel!
+    @IBOutlet weak var loginWithFaceIdBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initials()
@@ -60,7 +62,26 @@ class LoginViewController: UIViewController {
                       print("Get Location failed \(self.getLocation.didFailWithError)")
                   }
               }
+        checkAuth()
     }
+    
+    func checkAuth() {
+         let authType = LocalAuthManager.shared.biometricType
+            switch authType {
+            case .none:
+                print("Device not registered with TouchID/FaceID")
+                self.orLabelTxt.isHidden = true
+                self.loginWithFaceIdBtn.isHidden = true
+            case .touchID:
+                print("Device support TouchID")
+                self.orLabelTxt.isHidden = true
+                self.loginWithFaceIdBtn.isHidden = true
+            case .faceID:
+                print("Device support FaceID")
+                self.orLabelTxt.isHidden = false
+                self.loginWithFaceIdBtn.isHidden = false
+            }
+     }
     
     @IBAction func faceIDLogin(_ sender: UIButton) {
         beginFaceID()

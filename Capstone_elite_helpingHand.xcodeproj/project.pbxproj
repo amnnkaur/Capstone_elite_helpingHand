@@ -44,6 +44,7 @@
 		8E5A678724E3779E00CA329F /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678624E3779E00CA329F /* NewTaskViewController.swift */; };
 		8E5A678A24E4581400CA329F /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678924E4581400CA329F /* DataStorage.swift */; };
 		8E5A678C24E4586F00CA329F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A678B24E4586F00CA329F /* User.swift */; };
+		8E790F9924F89D7C00BC9A23 /* LocalAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E790F9824F89D7C00BC9A23 /* LocalAuthManager.swift */; };
 		8E79460924F1E82F00FB0877 /* ReloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E79460824F1E82F00FB0877 /* ReloadViewController.swift */; };
 		8E9526F024ECA33D007EE895 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9526EF24ECA33D007EE895 /* GetLocation.swift */; };
 		8ECAD9B824F4200D0095B1A8 /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECAD9B724F4200D0095B1A8 /* TaskStatus.swift */; };
@@ -94,6 +95,7 @@
 		8E5A678624E3779E00CA329F /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		8E5A678924E4581400CA329F /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		8E5A678B24E4586F00CA329F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8E790F9824F89D7C00BC9A23 /* LocalAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthManager.swift; sourceTree = "<group>"; };
 		8E79460824F1E82F00FB0877 /* ReloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadViewController.swift; sourceTree = "<group>"; };
 		8E9526EF24ECA33D007EE895 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
 		8ECAD9B724F4200D0095B1A8 /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		2AE8F1D824E08C100003B085 /* Capstone_elite_helpingHand */ = {
 			isa = PBXGroup;
 			children = (
+				8E790F9724F89D5E00BC9A23 /* Singleton */,
 				8E5A678824E457F400CA329F /* DataModel */,
 				2A9DC39124E2261900F84405 /* Images */,
 				2A9DC38424E21B0D00F84405 /* ViewController */,
@@ -215,6 +218,14 @@
 				8E5A678924E4581400CA329F /* DataStorage.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		8E790F9724F89D5E00BC9A23 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				8E790F9824F89D7C00BC9A23 /* LocalAuthManager.swift */,
+			);
+			path = Singleton;
 			sourceTree = "<group>";
 		};
 		8ECDDCCC24E1DE0A00AEABBA /* Model */ = {
@@ -396,6 +407,7 @@
 				2A56FE1E24E39A85005F6CD9 /* TaskTableViewCell.swift in Sources */,
 				2A1AF4BF24F05CFA00C466C9 /* OnboardingViewController.swift in Sources */,
 				8E9526F024ECA33D007EE895 /* GetLocation.swift in Sources */,
+				8E790F9924F89D7C00BC9A23 /* LocalAuthManager.swift in Sources */,
 				2A56FE1824E39907005F6CD9 /* TaskListViewController.swift in Sources */,
 				2A97E91C24F6E75C00AF50A5 /* PayTableViewController.swift in Sources */,
 				2A56FDE724E30B35005F6CD9 /* SignUpViewController.swift in Sources */,

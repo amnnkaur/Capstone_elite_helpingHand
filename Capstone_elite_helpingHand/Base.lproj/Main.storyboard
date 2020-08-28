@@ -872,6 +872,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Bam-vQ-gWb"/>
                     <connections>
+                        <outlet property="loginWithFaceIdBtn" destination="UQd-gl-UHe" id="YPA-lP-Eej"/>
+                        <outlet property="orLabelTxt" destination="HUy-dZ-f3y" id="Yce-j1-dJ9"/>
                         <outlet property="passwordField" destination="pRR-df-8iO" id="F8H-PS-ZzE"/>
                         <outlet property="rememberMe" destination="Wv0-JM-yqR" id="suf-sO-xDg"/>
                         <outlet property="userNameField" destination="PGi-iV-iJx" id="3PI-oG-71Z"/>
@@ -2192,8 +2194,8 @@
         <image name="mappin" catalog="system" width="105" height="128"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="message.fill" catalog="system" width="128" height="113"/>
-        <image name="person" width="128" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person" width="128" height="128"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
