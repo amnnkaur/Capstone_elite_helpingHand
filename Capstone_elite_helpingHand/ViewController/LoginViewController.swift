@@ -117,12 +117,48 @@ class LoginViewController: UIViewController {
 //            self.userNameField.text = username
 //            self.passwordField.text = password
             DispatchQueue.main.async {
-                 self.verify()
+                 self.verifying(userName: "anmol@gmail.com", password: "Aa1!aaaa")
             }
         }
 
     }
     
+    func verifying(userName: String, password: String){
+                let userName = userName
+                let password = password
+                 
+                if userName != "" && password != ""{
+                     
+                     Auth.auth().signIn(withEmail: userName, password: password) { (res, err) in
+                         
+                         if err != nil{
+                             
+                            print(err!.localizedDescription)
+                            self.displayAlert(title: "Error!", message: "\(err!.localizedDescription)")
+                             return
+                         }
+                         else{
+                         print("success")
+                            self.performSegue(withIdentifier: "rootIdentifier", sender: self)
+                            let defaults = UserDefaults.standard
+                            defaults.set(userName, forKey: "userName")
+
+                            self.filterAccordingSpecificUser(userName: userName)
+                            DataStorage.getInstance().loadUserList(userName: userName)
+                            DataStorage.getInstance().loadUserFavTasks(userName: userName)
+                            
+                            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "appTabBar") as! UITabBarController
+        //                    UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController!.present(viewController, animated: true, completion: nil)
+                           
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                                  UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = viewController
+                        }
+                    }
+                }
+            }
+        
+    }
     
     func filterTaskArrayOverGeolocation(radius: Int) {
         var filteredTaskList: [Task] = []
