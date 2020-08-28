@@ -160,6 +160,8 @@ extension PayTableViewController: PayTableViewCellDelegate{
                                        // See BTPostalAddress.h for details
                                        let billingAddress = tokenizedPayPalAccount.billingAddress
                                        let shippingAddress = tokenizedPayPalAccount.shippingAddress
+                                    cell.payBtn.isHidden = true
+                                    cell.backgroundColor = UIColor.lightGray
                                    } else if let error = error {
                                        // Handle error here...
                                    } else {
