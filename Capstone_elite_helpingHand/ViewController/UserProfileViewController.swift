@@ -54,7 +54,7 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
 //        gradientLayer.opacity = 0.7
 //        self.profileView.layer.insertSublayer(gradientLayer, at: 0)
         
-        personImg.layer.cornerRadius = 50
+        personImg.layer.cornerRadius = 10
 
         userList = DataStorage.getInstance().getAllUsers()
         
