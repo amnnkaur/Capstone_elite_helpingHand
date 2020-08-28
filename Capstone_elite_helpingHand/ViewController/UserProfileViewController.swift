@@ -88,8 +88,8 @@ class UserProfileViewController: UIViewController, CLLocationManagerDelegate, MK
         let latitude = self.lat
         let longitude = self.long
         
-           let latDelta: CLLocationDegrees = 0.05
-           let longDelta: CLLocationDegrees = 0.05
+           let latDelta: CLLocationDegrees = 0.01
+           let longDelta: CLLocationDegrees = 0.01
             
             // 3 - Creating the span, location coordinate and region
            let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
