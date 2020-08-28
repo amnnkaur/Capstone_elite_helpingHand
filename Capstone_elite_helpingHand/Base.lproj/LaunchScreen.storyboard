@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="helpbg" translatesAutoresizingMaskIntoConstraints="NO" id="saa-R7-DOq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="-4" width="416" height="900"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anmol Preet Singh C0777245" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMs-cF-z6A">
                                 <rect key="frame" x="88" y="800" width="210" height="24"/>
@@ -45,26 +45,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="saa-R7-DOq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="20D-Lp-G5S"/>
-                            <constraint firstItem="LfI-u1-k5I" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="701" id="83y-di-aMt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e1x-uI-Hkn" secondAttribute="trailing" constant="125" id="EFc-Xq-Ug7"/>
-                            <constraint firstItem="JMs-cF-z6A" firstAttribute="top" secondItem="QuK-xB-lpp" secondAttribute="bottom" constant="32" id="Ef2-f9-IZp"/>
-                            <constraint firstItem="JMs-cF-z6A" firstAttribute="top" secondItem="LfI-u1-k5I" secondAttribute="bottom" constant="8" id="F1P-tD-dEW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JMs-cF-z6A" secondAttribute="trailing" constant="116" id="IhW-TZ-qff"/>
-                            <constraint firstItem="saa-R7-DOq" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="L5P-LL-LJy"/>
-                            <constraint firstItem="e1x-uI-Hkn" firstAttribute="top" secondItem="JMs-cF-z6A" secondAttribute="bottom" constant="8" id="LZS-po-AoN"/>
-                            <constraint firstItem="e1x-uI-Hkn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97" id="NzN-Ww-JS6"/>
-                            <constraint firstAttribute="bottom" secondItem="saa-R7-DOq" secondAttribute="bottom" id="YBn-lK-ipg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LfI-u1-k5I" secondAttribute="trailing" constant="72" id="aU8-gT-6I3"/>
-                            <constraint firstItem="QuK-xB-lpp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="n6f-pr-9Xi"/>
-                            <constraint firstItem="JMs-cF-z6A" firstAttribute="top" secondItem="LfI-u1-k5I" secondAttribute="bottom" constant="8" id="pku-9X-VCB"/>
-                            <constraint firstItem="saa-R7-DOq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rDQ-c7-Zrb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QuK-xB-lpp" secondAttribute="trailing" constant="158" id="tEq-rW-Tli"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e1x-uI-Hkn" secondAttribute="bottom" constant="6" id="vD2-xF-6mt"/>
-                            <constraint firstItem="JMs-cF-z6A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="88" id="vsn-eD-bF7"/>
-                            <constraint firstItem="LfI-u1-k5I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="249" id="wDa-Eo-8u0"/>
-                            <constraint firstItem="QuK-xB-lpp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="670" id="wSd-t9-ksb"/>
-                            <constraint firstItem="e1x-uI-Hkn" firstAttribute="top" secondItem="JMs-cF-z6A" secondAttribute="bottom" constant="8" id="waa-sH-Rlk"/>
+                            <constraint firstItem="e1x-uI-Hkn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="77" id="BZH-5h-KjW"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="LfI-u1-k5I" secondAttribute="bottom" constant="70" id="JM5-Gi-xMz"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QuK-xB-lpp" secondAttribute="bottom" constant="94" id="OBe-Qg-4iU"/>
+                            <constraint firstItem="QuK-xB-lpp" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="46" id="OFJ-8A-fnT"/>
+                            <constraint firstItem="LfI-u1-k5I" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="229" id="RSW-eA-a8S"/>
+                            <constraint firstAttribute="bottom" secondItem="saa-R7-DOq" secondAttribute="bottom" id="Vxu-Um-0cI"/>
+                            <constraint firstItem="saa-R7-DOq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kAM-JB-9pH"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="JMs-cF-z6A" secondAttribute="bottom" constant="38" id="vTX-Qc-qny"/>
+                            <constraint firstItem="JMs-cF-z6A" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="68" id="w6s-f9-Hyn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="e1x-uI-Hkn" secondAttribute="bottom" constant="6" id="ygo-AI-P3L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
